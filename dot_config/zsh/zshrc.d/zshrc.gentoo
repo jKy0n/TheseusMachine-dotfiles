@@ -1,0 +1,23 @@
+# ~/.zshrc - Arquivo principal para carregar módulos modularizados
+
+# Define o diretório onde os módulos estão localizados
+ZSHRC_D="$HOME/.config/zsh/zshrc.d"
+
+# Carrega chaves API (mantido seguro e criptografado)
+if [ -r "$ZSHRC_D/zsh-secrets/api-keys" ]; then
+    source "$ZSHRC_D/zsh-secrets/api-keys"
+fi
+
+# Carrega todos os arquivos *.zsh no diretório de módulos
+[ -r "$ZSHRC_D/theme.zsh" ] && source "$ZSHRC_D/theme.zsh"
+
+# Detecta a distribuição e carrega o módulo correspondente
+[ -r "$ZSHRC_D/plugins-gentoo.zsh" ] && source "$ZSHRC_D/plugins-gentoo.zsh"
+
+# Adicione aqui qualquer configuração que você prefira manter no arquivo principal
+[ -r "$ZSHRC_D/environment.zsh" ] && source "$ZSHRC_D/environment.zsh"
+# [ -r "$ZSHRC_D/tmux-powerline.zsh" ] && source "$ZSHRC_D/tmux-powerline.zsh"
+
+[ -r "$ZSHRC_D/keybinds.zsh" ] && source "$ZSHRC_D/keybinds.zsh"
+
+[ -r "$ZSHRC_D/aliases.zsh" ] && source "$ZSHRC_D/aliases.zsh"

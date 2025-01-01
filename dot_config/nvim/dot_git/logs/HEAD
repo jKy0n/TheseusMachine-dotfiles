@@ -1,0 +1,11 @@
+0000000000000000000000000000000000000000 d53c83e6fb6684a3e96951a7c0eea937890325d0 jKy0n <jk.1989@hotmail.com> 1718417409 -0300	clone: from https://github.com/jKy0n/AstroNvim.config.git
+d53c83e6fb6684a3e96951a7c0eea937890325d0 3215611b2576ebdf653ff200facfb7569c2e2795 jKy0n <jk.1989@hotmail.com> 1722302282 -0300	commit: Config stable
+3215611b2576ebdf653ff200facfb7569c2e2795 f80d21460f610bc6e21dd1f99e2cc20e76a6f4bf John Kennedy Loria Segundo <jk.1989@hotmail.com> 1722515720 -0300	commit: ~ Alias | + GPU usage fast script for WMstatus
+f80d21460f610bc6e21dd1f99e2cc20e76a6f4bf 203b90780286a6eb4828aa438b7368c878920bf0 John Kennedy Loria Segundo <jk.1989@hotmail.com> 1722604384 -0300	commit: Add vim-visual-multi plugin
+203b90780286a6eb4828aa438b7368c878920bf0 30349c40996c08e5a5d55271432140005d2c222b John Kennedy Loria Segundo <jk.1989@hotmail.com> 1722703521 -0300	commit: Add minimap on (Astro)nvim
+30349c40996c08e5a5d55271432140005d2c222b 72fe81966db3ba07bd5e5a78fc1008a9ceba35ba John Kennedy Loria Segundo <jk.1989@hotmail.com> 1724491380 -0300	commit: pre VM config
+72fe81966db3ba07bd5e5a78fc1008a9ceba35ba a74869c67b953f9aa42def8ec6db2085f58d9c95 John Kennedy Loria Segundo <jk.1989@hotmail.com> 1724491540 -0300	rebase (start): checkout refs/remotes/origin/main
+a74869c67b953f9aa42def8ec6db2085f58d9c95 4400794f5b180a0b9451931c9ffdb2a91475d7d0 John Kennedy Loria Segundo <jk.1989@hotmail.com> 1724491622 -0300	commit: rebase before VM
+4400794f5b180a0b9451931c9ffdb2a91475d7d0 aedf714554fa3db89deb397d488b249de9e63b7e John Kennedy Loria Segundo <jk.1989@hotmail.com> 1734044926 -0300	commit: rebase?? D=
+aedf714554fa3db89deb397d488b249de9e63b7e 533fa45ae127d918e9433de261989a266f4a293b John Kennedy Loria Segundo <jk.1989@hotmail.com> 1735522744 -0300	commit (amend): rebase?? D=
+533fa45ae127d918e9433de261989a266f4a293b 533fa45ae127d918e9433de261989a266f4a293b John Kennedy Loria Segundo <jk.1989@hotmail.com> 1735522751 -0300	rebase (finish): returning to refs/heads/main

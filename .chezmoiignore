@@ -1,0 +1,5 @@
+# Ignorar apenas arquivos dentro de zsh-secrets que não estão gerenciados
+.config/zsh/zshrc.d/zsh-secrets/*
+# Exceto os arquivos específicos que queremos gerenciar
+!.config/zsh/zshrc.d/zsh-secrets/api-keys
+!.config/zsh/zshrc.d/zsh-secrets/histfile

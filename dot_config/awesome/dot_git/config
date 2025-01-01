@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[submodule "awesome-wm-widgets"]
+	url = https://github.com/streetturtle/awesome-wm-widgets.git
+	active = true
+[submodule "lain"]
+	url = https://github.com/lcpz/lain.git
+	active = true
