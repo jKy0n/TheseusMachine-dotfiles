@@ -1,5 +1,6 @@
-# Ignorar apenas arquivos dentro de zsh-secrets que não estão gerenciados
-dot_config/zsh/zshrc.d/zsh-secrets/*
+# Ignorar apenas arquivos dentro de private_zsh-secrets que não estão gerenciados
+dot_config/zsh/zshrc.d/private_zsh-secrets/*
+
 # Exceto os arquivos específicos que queremos gerenciar
-!dot_config/zsh/zshrc.d/zsh-secrets/api-keys
-!dot_config/zsh/zshrc.d/zsh-secrets/histfile
+!dot_config/zsh/zshrc.d/private_zsh-secrets/private_api-keys
+!dot_config/zsh/zshrc.d/private_zsh-secrets/private_histfile
