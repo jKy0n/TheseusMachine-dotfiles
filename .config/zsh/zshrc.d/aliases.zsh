@@ -1,0 +1,1 @@
+/home/jkyon/ShellScript/aliases.sh
