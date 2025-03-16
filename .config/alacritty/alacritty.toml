@@ -1,0 +1,62 @@
+# Arquivos de configuração do Alacritty em formato TOML
+
+[general]
+import = [
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+    "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+#teste
+# Configuração do Shell
+[terminal]
+shell = { program = "/bin/zsh", args = ["-l"] }
+
+[env]
+TERM = "xterm-256color"
+
+# Configurações gerais
+[font]
+#    normal = { family = "JetBrainsMonoNerdFontPropo" }
+#    normal = { family = "JetBrainsMonoNerdFontPropo" }
+#    normal = { family = "MesloLGMDZNerdFont" }
+    normal = { family = "MesloLGS Nerd Font" }
+    size = 9.0
+
+[window]
+    opacity = 0.8
+    dynamic_title = true
+
+[cursor]
+    style = { shape = "Beam", blinking = "On" }
+    vi_mode_style  = { shape = "Block", blinking = "On" }
+
+# Seção de mapeamento de teclas
+[keyboard] 
+
+bindings = [
+# Enter vi mode with Ctrl+Space 
+{ key = "Space", mods = "Shift|Control",  mode = "~Search", action = "ToggleViMode" },
+# Vi mode bindings 
+{ key = "h", mode = "Vi", action = "Left" },
+{ key = "j", mode = "Vi", action = "Down" },
+{ key = "k", mode = "Vi", action = "Up" },
+{ key = "l", mode = "Vi", action = "Right" },
+# Exit vi mode with Escape 
+{ key = "Escape", mode = "Vi", action = "ToggleViMode" },
+# Move to the start of the line 
+{ key = "0", mode = "Vi", action = "First" },
+# Move to the end of the line 
+{ key = "$", mode = "Vi", action = "Last" },
+# Delete a character 
+#{ key = "x", mode = "Vi", action = "ViMotionDeleteChar" },
+# Enter insert mode with 'i' 
+#{ key = "i", mode = "Vi", action = "ViMotionInsert" } ]
+# Mapeamento de teclas para Control+Setas
+{ key = "Left",  mods = "Control", chars = "\u001b[1;5D" },
+{ key = "Right", mods = "Control", chars = "\u001b[1;5C" },
+{ key = "Home",  chars = "\u001b[H" },
+{ key = "End",   chars = "\u001b[F" },
+]
