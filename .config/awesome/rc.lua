@@ -44,6 +44,8 @@ require("awful.hotkeys_popup.keys")
 
 local dnd_widget = require("jkyon-widgets/DoNotDisturb-Widget")
 
+
+
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 ------------------------------- Error handling ------------------------------
@@ -366,6 +368,12 @@ awful.tag.add(" etc (5) ", {
 
 awful.tag.add(" Study (6) ", {
     layout = awful.layout.suit.tile.left,
+    screen = 1,
+    selected = false
+})
+
+awful.tag.add(" Queen (7) ", {
+    layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
 })
@@ -1673,5 +1681,8 @@ gears.timer {
     autostart = true,
     callback = function() collectgarbage() end
 }
+
+awful.spawn.with_shell("light-locker --lock-after-screensaver 5")
+awful.spawn.with_shell("xset s 3600 3600")
 
 awful.spawn.with_shell("sh /home/jkyon/.config/awesome/AwesomeWMstartupApps.sh")

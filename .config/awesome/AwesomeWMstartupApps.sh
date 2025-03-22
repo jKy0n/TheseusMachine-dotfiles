@@ -6,6 +6,11 @@ sh /home/jkyon/.screenlayout/arandr.config.sh
 feh --no-xinerama --bg-fill ~/Pictures/Wallpapers/LinuxWallpapers/multi-monitor-wallpapers.jpg
 picom --config /home/jkyon/.config/picom/picom.conf --log-file /home/jkyon/.logs/picom.log --daemon --backend glx &
 
+if ! pgrep -x "light-locker" > /dev/null
+then
+    light-locker &
+fi
+
 #gammastep -x && gammastep &
 if ! pgrep -x "gammastep" > /dev/null
 then

@@ -23,7 +23,7 @@ local function check_internet()
             end)
         else
             -- Se o ping falhar, a internet não está funcionando e o widget mostra uma mensagem
-            internet_widget:set_markup("<span font='MesloLGS Nerd Font Bold 9' color='red'>🔴 SEM INTERNET |</span>")
+            internet_widget:set_markup("<span font='MesloLGS Nerd Font Bold 9' color='red'> 🔴 SEM INTERNET |</span>")
         end
     end)
 end
