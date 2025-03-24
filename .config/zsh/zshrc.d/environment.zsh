@@ -27,6 +27,9 @@ export QT_QPA_PLATFORMTHEME="qt6ct"
 export PATH="/usr/local/bin:$PATH"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
+export OMP_NUM_THREADS=28  # Usa todas as 28 threads do Ryzen
+export OLLAMA_NUM_GPU=1    # Força uso da RX 7800 XT via ROCm (verifique compatibilidade)
+
 if [ -n "$(tty)" ]; then
     export GPG_TTY=$(tty)
 fi
