@@ -1682,7 +1682,7 @@ gears.timer {
     callback = function() collectgarbage() end
 }
 
-awful.spawn.with_shell("light-locker --lock-after-screensaver 5")
-awful.spawn.with_shell("xset s 3600 3600")
+-- awful.spawn.with_shell("light-locker --lock-after-screensaver 5")
+-- awful.spawn.with_shell("xset s 3600 3600")
 
 awful.spawn.with_shell("sh /home/jkyon/.config/awesome/AwesomeWMstartupApps.sh")
