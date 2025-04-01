@@ -19,8 +19,8 @@ setopt beep
 setopt extendedglob
 setopt notify
 
-# Ativa o TheFuck
-eval $(thefuck --alias)
+# Ativa o pay-respects
+eval "$(pay-respects zsh --alias)"
 
 # Configurações adicionais, se aplicável
 export QT_QPA_PLATFORMTHEME="qt6ct"

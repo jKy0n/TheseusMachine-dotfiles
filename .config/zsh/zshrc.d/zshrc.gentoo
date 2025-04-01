@@ -21,3 +21,5 @@ fi
 [ -r "$ZSHRC_D/keybinds.zsh" ] && source "$ZSHRC_D/keybinds.zsh"
 
 [ -r "$ZSHRC_D/aliases.zsh" ] && source "$ZSHRC_D/aliases.zsh"
+
+[ -r "$ZSHRC_D/assis.zsh" ] && source "$ZSHRC_D/assis.zsh"
