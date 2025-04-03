@@ -2,7 +2,7 @@
 
 ### It's all about my loved PC ❤️
 
-![Festfetch](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/fastfetch-02-Apr-2025.png)
+![Festfetch](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/main/Pictures/TheseusMachine-dotfiles-media/fastfetch-02-Apr-2025.png?)
 
 ---
 
