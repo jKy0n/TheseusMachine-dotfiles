@@ -1,5 +1,8 @@
 # ~/.config/zsh/zshrc.d/assis.zsh
 
+# Assis is a custom Zsh function that leverages artificial intelligence (via Ollama + Mistral-instruct)
+# to act as a virtual assistant directly in the terminal, aiding in administrative tasks and system management.
+
 # function assis() {
 #   # Coleta de contexto do sistema ANTES do sandbox
 #   local system_context=(
