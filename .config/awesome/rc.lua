@@ -1244,19 +1244,22 @@ clientkeys = gears.table.join(
         end,
         {description = "toggle fullscreen", group = "client"}),
 
+        -- Audio control
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end),
+    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end),
 
-        awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end),
-        awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end),
-        awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end),
+    awful.key({}, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
+    awful.key({}, "XF86AudioNext", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
+    awful.key({}, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
+    awful.key({}, "XF86AudioStop", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause") end),
 
-        awful.key({}, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
-        awful.key({}, "XF86AudioNext", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
-        awful.key({}, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
-        awful.key({}, "XF86AudioStop", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause") end),
+        -- Printscreen / Screenshot
+    awful.key({}, "Print", function () awful.util.spawn("flameshot gui") end),
+    awful.key({ "Shift" }, "Print", function () awful.util.spawn("flameshot screen") end),
+    awful.key({ "Control" }, "Print", function () awful.util.spawn("flameshot full") end),
 
-
-    awful.key({ }, "Print", function () awful.util.spawn("flameshot gui") end),
-
+        -- Lock screen
     awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("loginctl suspend") end),
     
 
@@ -1432,10 +1435,10 @@ awful.rules.rules = {
 --
         { rule = { class = "feh" },
         properties = { floating = true, name = "feh",
-        width = 2800,     -- Defina o tamanho que deseja
-        height = 1200,    -- Defina o tamanho que deseja
-        x = 1600,         -- Posição x
-        y = 100,          -- Posição y
+        width = 2752,     -- Defina o tamanho que deseja
+        height = 1152,    -- Defina o tamanho que deseja
+        x = 1424,          -- Posição x
+        y = 144,          -- Posição y
         screen = 1  }},
 -- G
 --
@@ -1460,6 +1463,12 @@ awful.rules.rules = {
         properties = { floating = true,
         placement = awful.placement.centered },},
         
+        { rule = { name = "GPT4All" },
+            properties = { floating = false,
+                callback = function(c)
+                    create_volatile_tag(c, " LLMs ", 1, awful.layout.suit.tile)
+                end,},},
+
         { rule = { class = "Gnome-screenshot" },
         properties = { floating = true,
         placement = awful.placement.centered },},        
@@ -1484,6 +1493,12 @@ awful.rules.rules = {
         tag = screen[1].tags[5] },},    
 -- L
 --
+        { rule_any = { name = {"lm studio", "LM Studio" } },
+            properties = { floating = false,
+                callback = function(c)
+                    create_volatile_tag(c, " LLMs ", 1, awful.layout.suit.tile)
+            end,},},
+
         { rule = { name = "Lutris" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -1579,9 +1594,9 @@ awful.rules.rules = {
 -- T
 --  
         { rule = { class = "teams-for-linux" },
-        properties = { floating = false,
-            callback = function(c)
-                create_volatile_tag(c, " Teams ", 3, awful.layout.suit.tile.left)
+            properties = { floating = false,
+                callback = function(c)
+                    create_volatile_tag(c, " Teams ", 3, awful.layout.suit.tile.left)
         end,},},
 
         { rule = { class = "Thunar" },
