@@ -772,10 +772,9 @@ awful.tag.add(" Media (3) ", {
                         tbox_separator_space,
 
                 logout_menu_widget{
-                    -- font = 'Noto Sans semibold 9',
                     font = 'MesloLGS Nerd Font Bold 10',
-                    onlogout   =  function() awesome.quit() end,
-                    --  onlock     =  function() awful.spawn.with_shell('xscreensaver-command -lock') end,
+                    onlogout   =  function() awful.spawn.with_shell("loginctl terminate-user $USER") end,
+                    onlock     =  function() awful.spawn.with_shell('light-locker-command --lock') end,
                     onsuspend  =  function() awful.spawn.with_shell("systemctl suspend") end,
                     onreboot   =  function() awful.spawn.with_shell("systemctl reboot") end,
                     onpoweroff =  function() awful.spawn.with_shell("systemctl poweroff") end,
@@ -915,10 +914,9 @@ awful.tag.add(" Media (3) ", {
                         tbox_separator_space,
 
                 logout_menu_widget{
-                    -- font = 'Noto Sans semibold 9',
                     font = 'MesloLGS Nerd Font Bold 10',
-                    onlogout   =  function() awesome.quit() end,
-                    --  onlock     =  function() awful.spawn.with_shell('xscreensaver-command -lock') end,
+                    onlogout   =  function() awful.spawn.with_shell("loginctl terminate-user $USER") end,
+                    onlock     =  function() awful.spawn.with_shell('light-locker-command --lock') end,
                     onsuspend  =  function() awful.spawn.with_shell("systemctl suspend") end,
                     onreboot   =  function() awful.spawn.with_shell("systemctl reboot") end,
                     onpoweroff =  function() awful.spawn.with_shell("systemctl poweroff") end,
@@ -1065,10 +1063,9 @@ awful.tag.add(" Media (3) ", {
                         tbox_separator_space,
 
                 logout_menu_widget{
-                    -- font = 'Noto Sans semibold 9',
                     font = 'MesloLGS Nerd Font Bold 10',
-                    onlogout   =  function() awesome.quit() end,
-                    --  onlock     =  function() awful.spawn.with_shell('xscreensaver-command -lock') end,
+                    onlogout   =  function() awful.spawn.with_shell("loginctl terminate-user $USER") end,
+                    onlock     =  function() awful.spawn.with_shell('light-locker-command --lock') end,
                     onsuspend  =  function() awful.spawn.with_shell("systemctl suspend") end,
                     onreboot   =  function() awful.spawn.with_shell("systemctl reboot") end,
                     onpoweroff =  function() awful.spawn.with_shell("systemctl poweroff") end,
@@ -1260,7 +1257,7 @@ clientkeys = gears.table.join(
     awful.key({ "Control" }, "Print", function () awful.util.spawn("flameshot full") end),
 
         -- Lock screen
-    awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("loginctl suspend") end),
+    awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-lolcker-command --lock") end),
     
 
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
@@ -1684,7 +1681,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 
--- jKyon Adds
+-- jKyon Adds --
 
 -- Notifications adjustments
 beautiful.notification_font = "MesloLGS Nerd Font 12"
@@ -1697,7 +1694,17 @@ gears.timer {
     callback = function() collectgarbage() end
 }
 
--- awful.spawn.with_shell("light-locker --lock-after-screensaver 5")
--- awful.spawn.with_shell("xset s 3600 3600")
 
-awful.spawn.with_shell("sh /home/jkyon/.config/awesome/AwesomeWMstartupApps.sh")
+-- Adjust screen layout
+awful.spawn.with_shell("sh /home/jkyon/.screenlayout/screenlayout.sh")
+-- Set wallpaper
+awful.spawn.with_shell("feh --no-xinerama --bg-fill ~/Pictures/Wallpapers/LinuxWallpapers/multi-monitor-wallpapers.jpg")
+
+-- Start awesome target on systemd
+awful.spawn.easy_async_with_shell(
+    "systemctl --user --no-block start lockScreen.service",
+    function(stdout, stderr, exit_reason, exit_code) end
+)
+
+-- Start some programs at startup
+awful.spawn.with_shell("sh /home/jkyon/.config/awesome/autorun.sh")
