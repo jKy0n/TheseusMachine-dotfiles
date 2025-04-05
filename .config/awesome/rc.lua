@@ -1257,7 +1257,7 @@ clientkeys = gears.table.join(
     awful.key({ "Control" }, "Print", function () awful.util.spawn("flameshot full") end),
 
         -- Lock screen
-    awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-lolcker-command --lock") end),
+    awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-locker-command --lock") end),
     
 
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,

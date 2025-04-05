@@ -22,5 +22,3 @@ if [[ -t 1 ]]; then
         fi
     fi
 fi
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/jkyon/.lmstudio/bin"

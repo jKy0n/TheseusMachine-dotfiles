@@ -23,10 +23,6 @@ bindkey '\e^H' backward-kill-word
 # 
 bindkey '^[[1;3B' menu-complete
 
-# Zsh History Substring Search
-# bindkey '^[[A' history-substring-search-up   # Seta para cima: busca no histórico
-# bindkey '^[[B' history-substring-search-down # Seta para baixo: busca no histórico
-
 # Aceitar sugestões do autosuggestions com seta para a direita
 bindkey '^[^[[C' autosuggest-accept
 

@@ -16,10 +16,18 @@ fi
 
 # Adicione aqui qualquer configuração que você prefira manter no arquivo principal
 [ -r "$ZSHRC_D/environment.zsh" ] && source "$ZSHRC_D/environment.zsh"
-# [ -r "$ZSHRC_D/tmux-powerline.zsh" ] && source "$ZSHRC_D/tmux-powerline.zsh"
 
+# Carrega o módulo de histórico
+[ -r "$ZSHRC_D/history.zsh" ] && source "$ZSHRC_D/history.zsh"
+
+# Carrega o módulo de keybinds
 [ -r "$ZSHRC_D/keybinds.zsh" ] && source "$ZSHRC_D/keybinds.zsh"
 
-[ -r "$ZSHRC_D/aliases.zsh" ] && source "$ZSHRC_D/aliases.zsh"
+# Carrega o módulo do pay-respects
+[ -r "$ZSHRC_D/pay-respects.zsh" ] && source "$ZSHRC_D/pay-respects.zsh"
 
+# Carrega o módulo de assistente de linha de comando Assis
 [ -r "$ZSHRC_D/assis.zsh" ] && source "$ZSHRC_D/assis.zsh"
+
+# Carrega a lista de aliases
+[ -r "$ZSHRC_D/aliases.zsh" ] && source "$ZSHRC_D/aliases.zsh"
