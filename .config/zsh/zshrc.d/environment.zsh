@@ -3,16 +3,16 @@
 export EDITOR=nvim
 export VISUAL=nvim
 
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
 setopt autocd
 setopt beep
 setopt extendedglob
 setopt notify
 
 # Configurações adicionais, se aplicável
-export QT_QPA_PLATFORMTHEME="qt6ct"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # Configurações específicas para o LLMs (ex: Ollama)
 export OMP_NUM_THREADS=28  # Usa todas as 28 threads do Ryzen
