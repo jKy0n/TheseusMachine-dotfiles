@@ -40,45 +40,45 @@
         },
         {
             "type": "command",
-            "key": "│  ",
+            "key": "  ",
             "text": "sh /home/jkyon/ShellScript/fastfetchCustomTerminal.sh"
         },
         {
             "type": "editor",
-            "key": "│  ",
+            "key": "  ",
             "format": "AstroNvim ({2} {5})"
         },
         {
             "type": "wm",
-            "key": "│  "
+            "key": "  "
         },
         {
             "type": "command",
-            "key": "│  󰓃",
+            "key": "  󰓃",
             "text": " pipewire --version | awk 'NR==1 {printf \"%s \", $1} NR==2 {print $4}' "
         },
         {
             "type": "command",
-            "key": "│  ",
+            "key": "  ",
             "text": " btrfs --version | awk 'NR==1 {print \"BtrFS\", $2}' "
         },
         // {
         //     "type": "command",
-        //     "key": "│  ",
+        //     "key": "  ",
         //     "text": "openrc --version | awk '{gsub(/[()]/, \"\", $2); print $2, $3}'"
         // },
         {
             "type": "initsystem",
-            "key": "│  "
+            "key": "  "
         },
         {
             "type": "command",
-            "key": "│  󱕵",
+            "key": "  󱕵",
             "text": " sudo --version | awk 'NR==1 {print $1, $3 }' "
         },
         {
             "type": "command",
-            "key": "│  󱫠",
+            "key": "  󱫠",
             "text": " sh -c 'grub-install --version | awk \"{print \\$2, \\$3}\" | awk \"{gsub(/\\(|\\)/,\\\"\\\"); print \\$1, \\$2}\"' "
         },
         {
@@ -88,22 +88,22 @@
         },
         {
             "type": "theme",
-            "key": "│  ",
+            "key": "  ",
             "format": "{2}"
         },
         {
             "type": "icons",
-            "key": "│  󰉋",
+            "key": "  󰉋",
             "format": "{2}"
         },
         {
             "type": "font",
-            "key": "│  ",
+            "key": "  ",
             "format": "{2}"
         },
         {
             "type": "cursor",
-            "key": "│  󰇀"
+            "key": "  󰇀"
         },
         {
             "type": "custom", // Hardware
@@ -112,30 +112,30 @@
         },
         {
             "type": "cpu",
-            "key": "│  "
+            "key": "  "
         },
         {
             "type": "custom",
-            "key": "│  󰈐",
+            "key": "  󰈐",
             "format": "Corsair iCue H150i RGB Pro XT (360mm)"
         },
         {
             "type": "memory",
-            "key": "│  ",
+            "key": "  ",
             "format": "Corsair Vengeance RGB RT - {1} / {2} ({3})"
         },
         {
             "type": "gpu",
             "detectionMethod": "pci",
-            "key": "│  󰢮"
+            "key": "  󰢮"
         },
         {
             "type": "board",
-            "key": "│  󰚗"
+            "key": "  󰚗"
         },
         {
             "type": "disk",
-            "key": "│  ",
+            "key": "  ",
             "percent": {},
             "format": "{10} - {1} / {2} - ({3}) - {9}"
         },
@@ -146,86 +146,86 @@
         },
         {
             "type": "custom",
-            "key": "│  ",
-            "format": "T-Dagger Bora (ABNT2) + Akko Purple Jelly + Generic Purple keycaps│"
+            "key": "  ",
+            "format": "T-Dagger Bora (ABNT2) + Akko Purple Jelly + Generic Purple keycaps"
         },
         {
             "type": "custom",
-            "key": "│  󰃬",
+            "key": "  󰃬",
             "format": "Exbom BK-N30"
         },
         {
             "type": "custom",
-            "key": "│  󰍽",
+            "key": "  󰍽",
             "format": "Logitech G403 Hero + switch Kaihl GM 4.0"
         },
         // {
         //     "type": "custom",
-        //     "key": "│  ",
+        //     "key": "  ",
         //     "format": "Wacom Intuos (CTL4100)"
         // },
         {
             "type": "custom",
-            "key": "│  󰖠",
+            "key": "  󰖠",
             "format": "Logitech C505"
         },
         {
             "type": "sound",
-            "key": "│  󰤽",
+            "key": "  󰤽",
             "format": "{2}"
         },
         {
             "type": "custom",
-            "key": "│  ",
+            "key": "  ",
             "format": "Behringer B2 (@ Cardioide & Low Cut)"
         },
         {
             "type": "custom",
-            "key": "│  ",
+            "key": "  ",
             "format": "Kuba Audio Uni (in ear)"
         },
         {
             "type": "display",
-            "key": "│  󱄄",
+            "key": "  󱄄",
             "format": "{6} - {1}x{2} @ {3}",
             "preciseRefreshRate": false
         },
         {
             "type": "custom", // Uptime
-            "format": "│─────────────────────────── \u001b[1m Uptime \u001b[0m ──────────────────────────|",
+            "format": "|─────────────────────────── \u001b[1m Uptime \u001b[0m ──────────────────────────|",
             "key": " "
         },
         {
             "type": "command",
-            "key": "│  ",
+            "key": "  ",
             "text": "whoami"
         },
         {
             "type": "command",
-            "key": "│  󰪫",
+            "key": "  󰪫",
             "text": "uname -n"
         },
         {
             "type": "host",
-            "key": "│  "
+            "key": "  "
         },
         {
             "type": "packages",
-            "key": "│  "
+            "key": "  "
         },
         {
             "type": "command",
-            "key": "│  ",
+            "key": "  ",
             "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
         {
             "type": "uptime",
-            "key": "│  "
-            //"keyColo│r": "magenta"
+            "key": "  "
+            //"keyColor": "magenta"
         },
         {
             "type": "localip",
-            "key": "│  󰌗",
+            "key": "  󰌗",
             "format": "{1}"
         },
         {
