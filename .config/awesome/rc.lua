@@ -1251,7 +1251,7 @@ clientkeys = gears.table.join(
     awful.key({}, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
     awful.key({}, "XF86AudioStop", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause") end),
 
-        -- Printscreen / Screenshot
+        -- Screenshot / Printscreen
     awful.key({}, "Print", function () awful.util.spawn("flameshot gui") end),
     awful.key({ "Shift" }, "Print", function () awful.util.spawn("flameshot screen") end),
     awful.key({ "Control" }, "Print", function () awful.util.spawn("flameshot full") end),
@@ -1259,6 +1259,13 @@ clientkeys = gears.table.join(
         -- Lock screen
     awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-locker-command --lock") end),
     
+        -- Centralize window --
+    awful.key({ modkey, "Shift" }, "o", function()
+        if client.focus then
+            awful.placement.centered(client.focus, { honor_workarea = true })
+        end
+    end, {description = "centralize window", group = "client"}),
+
 
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
