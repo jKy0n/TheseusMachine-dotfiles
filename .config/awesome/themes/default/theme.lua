@@ -14,27 +14,37 @@ local beautiful = require("beautiful")
 
 local theme = {}
 
+-- fonte do Awesome --
 theme.font              =   "MesloLGS Nerd Font Bold 8"
 
-theme.bg_normal         =   "#1E1E2E"
-theme.bg_focus          =   "#cba6f7"
-theme.bg_urgent         =   "#f38ba8"
-theme.bg_minimize       =   "#1E1E2E"
+-- Basicamente bg é fundo e fg é texto --
+-- Cor de fundo da Wibar --
+theme.bg_normal         =   "#1e2030"
+theme.bg_focus          =   "#8aadf4"
+theme.bg_urgent         =   "#ed8796"
+theme.bg_minimize       =   "#181926"
 theme.bg_systray        =   theme.bg_normal
 
-theme.fg_normal         =   "#cdd6f4"
-theme.fg_focus          =   "#1E1E2E"
-theme.fg_urgent         =   "#1E1E2E"
-theme.fg_minimize       =   "#aaaaaa"
+-- Cor do texto da Wibar --
+theme.fg_normal         =   "#cad3f5"
+theme.fg_focus          =   "#1e2030"
+theme.fg_urgent         =   "#1e2030"
+theme.fg_minimize       =   "#6e738d"
 
+-- Cor da borda das janelas/Clients --
+theme.border_normal     =   "#1e2030"
+theme.border_focus      =   "#8aadf4"
+theme.border_active     =   "#8aadf4"
+theme.border_marked     =   "#ed8796"
+
+-- Cor do texto dos Tags --
+theme.taglist_fg_empty  =   "#6e738d"
+
+-- Tamanho do gap entre as janelas --
 theme.useless_gap       =   dpi(2)
-theme.border_width      =   dpi(2)
-theme.border_normal     =   "#1E1E2E"
-theme.border_focus      =   "#cba6f7"
-theme.border_active     =   "#cba6f7"
-theme.border_marked     =   "#f38ba8"
 
-theme.taglist_fg_empty  =   "#444444"
+-- Tamanho da borda das janelas --
+theme.border_width      =   dpi(2)
 
 
 -- There are other variable sets
@@ -51,13 +61,13 @@ theme.taglist_fg_empty  =   "#444444"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
+-- local taglist_square_size = dpi(4)
+-- theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
+--     taglist_square_size, theme.fg_normal
+-- )
+-- theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+--     taglist_square_size, theme.fg_normal
+-- )
 
 -- Variables set for theming notifications:
 -- notification_font
