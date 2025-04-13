@@ -23,6 +23,9 @@ fi
 # Carrega o módulo de keybinds
 [ -r "$ZSHRC_D/keybinds.zsh" ] && source "$ZSHRC_D/keybinds.zsh"
 
+# Carrega o módulo de zsh-agent
+[ -r "$ZSHRC_D/ssh-agent.zsh" ] && source "$ZSHRC_D/ssh-agent.zsh"
+
 # Carrega o módulo do pay-respects
 [ -r "$ZSHRC_D/pay-respects.zsh" ] && source "$ZSHRC_D/pay-respects.zsh"
 
