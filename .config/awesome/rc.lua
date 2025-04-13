@@ -372,7 +372,7 @@ awful.tag.add(" Study (5) ", {
     selected = false
 })
 
-awful.tag.add(" Queen (6) ", {
+awful.tag.add(" Goddess (6) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
