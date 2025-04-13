@@ -360,19 +360,25 @@ awful.tag.add(" Notes (4) ", {
     selected = false
 })
 
-awful.tag.add(" etc (5) ", {
+-- awful.tag.add(" etc (5) ", {
+--     layout = awful.layout.suit.tile.left,
+--     screen = 1,
+--     selected = false
+-- })
+
+awful.tag.add(" Study (5) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Study (6) ", {
-    layout = awful.layout.suit.tile.left,
+awful.tag.add(" Queen (6) ", {
+    layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Queen (7) ", {
+awful.tag.add(" Finances (7) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
@@ -1494,7 +1500,7 @@ awful.rules.rules = {
         { rule = { name = "KDE Connect" },
         properties = { floating = true,
         placement = awful.placement.centered,
-        tag = screen[1].tags[5] },},    
+        tag = screen[3].tags[1] },},    
 -- L
 --
         { rule_any = { name = {"lm studio", "LM Studio" } },
