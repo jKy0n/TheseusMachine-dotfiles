@@ -1711,7 +1711,7 @@ gears.timer {
 -- Adjust screen layout
 awful.spawn.with_shell("sh /home/jkyon/.screenlayout/screenlayout.sh")
 -- Set wallpaper
-awful.spawn.with_shell("feh --no-xinerama --bg-fill ~/Pictures/Wallpapers/LinuxWallpapers/multi-monitor-wallpapers.jpg")
+awful.spawn.with_shell("feh --no-xinerama --bg-fill ~/Pictures/Wallpapers/LinuxWallpapers/BlueNebula8K.jpg")
 
 -- Start awesome target on systemd
 awful.spawn.easy_async_with_shell(
