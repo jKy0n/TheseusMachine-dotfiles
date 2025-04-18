@@ -360,12 +360,6 @@ awful.tag.add(" Notes (4) ", {
     selected = false
 })
 
--- awful.tag.add(" etc (5) ", {
---     layout = awful.layout.suit.tile.left,
---     screen = 1,
---     selected = false
--- })
-
 awful.tag.add(" Study (5) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
@@ -379,7 +373,7 @@ awful.tag.add(" Goddess (6) ", {
 })
 
 awful.tag.add(" Finances (7) ", {
-    layout = awful.layout.suit.tile.bottom,
+    layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = false
 })
@@ -1130,9 +1124,9 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative( 1) end,
+    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative(-1) end,
+    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
