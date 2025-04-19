@@ -1,15 +1,16 @@
-
-
-
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
+-- Importar o menu principal
+local menu = require("modules.menu")
+local tags_utils = require("modules.tags_utils")
+local variables = require("modules.variables")
 
 local modkey = "Mod4"
 local terminal = "alacritty"
 
 local keys = {}
-
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
@@ -21,6 +22,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 keys.globalkeys = gears.table.join(
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -30,13 +32,13 @@ keys.globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "j",
+    awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "k",
+    awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx(-1)
         end,
@@ -46,9 +48,9 @@ keys.globalkeys = gears.table.join(
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
@@ -72,6 +74,7 @@ keys.globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
+
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -116,9 +119,46 @@ keys.globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+    awful.key({ modkey, }, "p",
+        --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
+        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
+                                            -modes \"drun,run,file-browser-extended,window,emoji,calc\" -show drun \
+                                            -icon-theme \"Papirus\" -show-icons \
+                                            -theme /home/jkyon/.config/rofi.jkyon/theme.rasi") 
+            end),
+
+
+    -- alt + tab
+    awful.key({ "Mod1", }, "Tab",
+        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
+                                            -show window \
+                                            -window-format \"{t}\" \
+                                            -kb-row-down 'Alt+Tab,Alt+Down,Down' \
+                                            -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up' \
+                                            -kb-accept-entry '!Alt-Tab,!Alt+Down,!Alt+ISO_Left_Tab,!Alt+Up,Return' \
+                                            -me-select-entry 'MouseSecondary' \
+                                            -me-accept-entry 'MousePrimary' \
+                                            -modi combi -icon-theme \"Papirus\" \
+                                            -show-icons -theme /home/jkyon/.config/rofi.jkyon/theme-tab.rasi") 
+            end),
+
+
+---------------------  Tags Manipulation keybinds  ---------------------
+------------------------------------------------------------------------
+
+    awful.key({ modkey,           }, "a", tags_utils.add_tag,
+        {description = "add a tag", group = "tag"}),
+    awful.key({ modkey, "Shift"   }, "a", tags_utils.delete_tag,
+        {description = "delete the current tag", group = "tag"}),
+    awful.key({ modkey, "Shift"   }, "r", tags_utils.rename_tag,
+        {description = "rename the current tag", group = "tag"}),
+    awful.key({ modkey, "Control"   }, "a", tags_utils.move_to_new_tag,
+        {description = "add a tag with the focused client", group = "tag"})
+
+------------------------------------------------------------------------ 
+------------------------------------------------------------------------     
 )
 
 keys.clientkeys = gears.table.join(
@@ -128,6 +168,33 @@ keys.clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
+
+        -- Audio control
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end),
+    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end),
+
+    awful.key({}, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
+    awful.key({}, "XF86AudioNext", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
+    awful.key({}, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
+    awful.key({}, "XF86AudioStop", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause") end),
+
+        -- Screenshot / Printscreen
+    awful.key({}, "Print", function () awful.util.spawn("flameshot gui") end),
+    awful.key({ "Shift" }, "Print", function () awful.util.spawn("flameshot screen") end),
+    awful.key({ "Control" }, "Print", function () awful.util.spawn("flameshot full") end),
+
+        -- Lock screen
+    awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-locker-command --lock") end),
+    
+        -- Centralize window --
+    awful.key({ modkey, "Shift" }, "o", function()
+        if client.focus then
+            awful.placement.centered(client.focus, { honor_workarea = true })
+        end
+    end, {description = "centralize window", group = "client"}),
+
+
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
@@ -215,6 +282,8 @@ for i = 1, 9 do
     )
 end
 
+
+
 keys.clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
@@ -231,5 +300,6 @@ keys.clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
+-- }}}
 
 return keys

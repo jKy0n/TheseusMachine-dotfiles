@@ -95,7 +95,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/jkyon/.config/awesome/themes/default/theme.lua")
+beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
 
 -- beautiful.layout_machi = machi.get_icon()
 

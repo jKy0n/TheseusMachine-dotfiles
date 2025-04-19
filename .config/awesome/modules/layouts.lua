@@ -14,7 +14,6 @@ layouts.list = {
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
-    awful.layout.suit.floating,
 }
 -- }}}
 
