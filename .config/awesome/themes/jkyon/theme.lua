@@ -44,7 +44,7 @@ theme.taglist_fg_empty  =   "#6e738d"
 theme.useless_gap       =   dpi(2)
 
 -- Tamanho da borda das janelas --
-theme.border_width      =   dpi(2)
+theme.border_width      =   dpi(3)
 
 
 -- There are other variable sets
