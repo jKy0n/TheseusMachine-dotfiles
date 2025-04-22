@@ -31,7 +31,14 @@ TERM = "xterm-256color"
 
 [cursor]
     style = { shape = "Beam", blinking = "On" }
-    vi_mode_style  = { shape = "Block", blinking = "On" }
+    # vi_mode_style  = { shape = "Block", blinking = "On" }
+
+[bell]
+    animation = "EaseOutExpo"
+    duration = 0
+    color = "0x0000ff"
+    command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/bell.oga"] }
+
 
 # Seção de mapeamento de teclas
 [keyboard] 
