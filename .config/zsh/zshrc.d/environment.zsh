@@ -2,6 +2,7 @@
 
 export EDITOR=nvim
 export VISUAL=nvim
+export SYSTEMD_EDITOR=nvim
 
 export QT_QPA_PLATFORMTHEME="qt6ct"
 
