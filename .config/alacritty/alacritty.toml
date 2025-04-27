@@ -66,4 +66,6 @@ bindings = [
 { key = "Right", mods = "Control", chars = "\u001b[1;5C" },
 { key = "Home",  chars = "\u001b[H" },
 { key = "End",   chars = "\u001b[F" },
+#
+# { key = "Delete", mods = "Shift", chars = "\u001b[99~" }
 ]
