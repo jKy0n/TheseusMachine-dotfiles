@@ -1602,10 +1602,15 @@ awful.rules.rules = {
                 callback = function(c)
                     create_volatile_tag(c, " Teams ", 3, awful.layout.suit.tile.left)
         end,},},
+        
+        { rule_any = { class = {"telegram-desktop", "TelegramDesktop"} },
+            properties = { floating = true,
+                callback = function(c)
+                    create_volatile_tag(c, " telegram ", 3, awful.layout.suit.tile.left)
+            end,},},
 
         { rule = { class = "Thunar" },
         properties = { floating = true, placement = awful.placement.centered },},
-        
         { rule = { class = "thunderbird" },
         properties = { floating = false,
         placement = awful.placement.left,
