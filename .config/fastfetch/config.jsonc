@@ -41,7 +41,7 @@
         {
             "type": "command",
             "key": "│  ",
-            "text": "sh /home/jkyon/ShellScript/fastfetchCustomTerminal.sh"
+            "text": "sh /home/jkyon/ShellScript/fastfetch-zsh+tmux-version.sh"
         },
         {
             "type": "editor",
@@ -60,7 +60,7 @@
         {
             "type": "command",
             "key": "│  ",
-            "text": " btrfs --version | awk 'NR==1 {print \"BtrFS\", $2}' "
+            "text": "sh /home/jkyon/ShellScript/fastfetch-btrfs+bees-version.sh"  // << trocar isso aqui depois
         },
         // {
         //     "type": "command",
