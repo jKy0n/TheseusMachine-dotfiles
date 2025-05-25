@@ -41,7 +41,7 @@
         {
             "type": "command",
             "key": "│  ",
-            "text": "sh /home/jkyon/ShellScript/fastfetch-zsh+tmux-version.sh"
+            "text": "sh /home/jkyon/ShellScript/fastfetch-scripts/fastfetch-zsh+tmux-version.sh"
         },
         {
             "type": "editor",
@@ -60,7 +60,7 @@
         {
             "type": "command",
             "key": "│  ",
-            "text": "sh /home/jkyon/ShellScript/fastfetch-btrfs+bees-version.sh"  // << trocar isso aqui depois
+            "text": "sh /home/jkyon/ShellScript/fastfetch-scripts/fastfetch-btrfs+bees-version.sh"  // << trocar isso aqui depois
         },
         // {
         //     "type": "command",
