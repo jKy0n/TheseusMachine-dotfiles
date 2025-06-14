@@ -42,7 +42,7 @@ local internet_widget = require("jkyon-widgets.internet_widget")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local dnd_widget = require("jkyon-widgets/DoNotDisturb-Widget")
+local dnd_widget = require("jkyon-widgets/DoNotDisturb_widget")
 
 
 
@@ -360,7 +360,7 @@ awful.tag.add(" Notes (4) ", {
     selected = false
 })
 
-awful.tag.add(" Study (5) ", {
+awful.tag.add(" Finances (5) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = false
@@ -372,11 +372,6 @@ awful.tag.add(" Goddess (6) ", {
     selected = false
 })
 
-awful.tag.add(" Finances (7) ", {
-    layout = awful.layout.suit.tile.left,
-    screen = 1,
-    selected = false
-})
 
 
     ------------------ Second Monitor ------------------
@@ -889,14 +884,14 @@ awful.tag.add(" Media (3) ", {
     ------------------------------------------------------------------------------------------------
                         tbox_separator_space,
 
-                volume_widget({ 
-                    widget_type = 'arc',
-                    thickness   = 2 ,
-                    step        = 5 ,
-                    mixer_cmd   = 'pavucontrol',
-                    device      = '@DEFAULT_SINK@',
-                    tooltip     = false
-                    }),
+                -- volume_widget({ 
+                --     widget_type = 'arc',
+                --     thickness   = 2 ,
+                --     step        = 5 ,
+                --     mixer_cmd   = 'pavucontrol',
+                --     device      = '@DEFAULT_SINK@',
+                --     tooltip     = false
+                --     }),
                 
                 --         tbox_separator_space,
                 
@@ -1038,14 +1033,14 @@ awful.tag.add(" Media (3) ", {
     ------------------------------------------------------------------------------------------------
                         tbox_separator_space,
 
-                volume_widget({ 
-                    widget_type = 'arc',
-                    thickness   = 2 ,
-                    step        = 5 ,
-                    mixer_cmd   = 'pavucontrol',
-                    device      = '@DEFAULT_SINK@',
-                    tooltip     = false
-                    }),
+                -- volume_widget({ 
+                --     widget_type = 'arc',
+                --     thickness   = 2 ,
+                --     step        = 5 ,
+                --     mixer_cmd   = 'pavucontrol',
+                --     device      = '@DEFAULT_SINK@',
+                --     tooltip     = false
+                --     }),
                 
                 --         tbox_separator_space,
                 
@@ -1056,6 +1051,8 @@ awful.tag.add(" Media (3) ", {
                 
                 -- wibox.widget.systray(),
                 
+                        tbox_separator_space,
+                dnd_widget,
                         tbox_separator_space,
 
                 mytextclock,

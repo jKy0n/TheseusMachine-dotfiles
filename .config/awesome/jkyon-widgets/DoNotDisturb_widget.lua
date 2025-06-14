@@ -26,7 +26,7 @@ end
 -- Widget de botão
 local dnd_widget = wibox.widget {
     {
-        text   = " 󰂞  ", -- Ícone para DND
+        text   = "󰂞 ", -- Ícone para DND
         align  = "center",
         valign = "center",
         -- font   = beautiful.font,
