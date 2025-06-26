@@ -1189,17 +1189,29 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
 
-    -- Menubar
+    -- Super + p = Rofi Launcher
     awful.key({ modkey, }, "p",
         --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
                                             -modes \"drun,run,file-browser-extended,window,emoji,calc\" -show drun \
                                             -icon-theme \"Papirus\" -show-icons \
                                             -theme /home/jkyon/.config/rofi.jkyon/theme.rasi") 
-            end),
+            end,
+            {description = "show rofi launcher", group = "launcher"}),
 
 
-    -- alt + tab
+    -- Super + o = Rofi emojis
+    awful.key({ modkey, }, "o",
+        --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
+        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
+                                            -modes \"drun,emoji\" -show emoji \
+                                            -emoji-format \"<span font_family=\'NotoColorEmoji\' size=\'xx-large\'>{emoji}</span>  <span weight=\'bold\'>{name}</span>\" \
+                                            -theme /home/jkyon/.config/rofi.jkyon/theme-emoji.rasi") 
+            end,
+            {description = "show rofi emojis", group = "launcher"}),
+
+
+    -- alt + tab = Task Switcher
     awful.key({ "Mod1", }, "Tab",
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
                                             -show window \
@@ -1211,7 +1223,8 @@ globalkeys = gears.table.join(
                                             -me-accept-entry 'MousePrimary' \
                                             -modi combi -icon-theme \"Papirus\" \
                                             -show-icons -theme /home/jkyon/.config/rofi.jkyon/theme-tab.rasi") 
-            end),
+            end,
+            {description = "show rofi task switcher", group = "launcher"}),
 
 
 ---------------------  Tags Manipulation keybinds  ---------------------
@@ -1270,8 +1283,8 @@ clientkeys = gears.table.join(
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
+    -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+    --           {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",

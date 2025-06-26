@@ -15,4 +15,5 @@
 
 /* Import color-scheme from `colors` directory */
 
-@import "~/.dotfiles/.config/rofi.jkyon/colors/dracula.rasi"
+// @import "~/.dotfiles/.config/rofi.jkyon/colors/dracula.rasi"
+@import "~/.config/rofi.jkyon/colors/catppuccin.rasi"
