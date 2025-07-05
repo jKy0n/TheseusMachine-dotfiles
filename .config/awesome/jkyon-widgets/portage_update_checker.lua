@@ -37,7 +37,7 @@ local function update_widget()
     awful.spawn.easy_async_with_shell('LC_MESSAGES=C emerge -pvuND @world', function(stdout)
         local num_pkgs = stdout:match("Total: (%d+) packages")
         if num_pkgs then
-            portage_checker.text = "   " .. num_pkgs .. " Pkgs |"
+            portage_checker.text = "  " .. num_pkgs .. " Pkgs |"
         else
             portage_checker.text = ""
         end
