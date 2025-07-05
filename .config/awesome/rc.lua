@@ -24,6 +24,9 @@ local common = require("awful.widget.common")
 local free_focus = true
 local function custom_focus_filter(c) return free_focus and awful.client.focus.filter(c) end
 
+-- Themes define colours, icons, font and wallpapers.
+beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
+
 local lain = require("lain")
 local mycpu = lain.widget.cpu()
 local mymem = lain.widget.mem()
@@ -96,7 +99,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
+-- beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
 
 -- beautiful.layout_machi = machi.get_icon()
 
@@ -368,6 +371,12 @@ awful.tag.add(" Finances (5) ", {
 })
 
 awful.tag.add(" Goddess (6) ", {
+    layout = awful.layout.suit.tile.bottom,
+    screen = 1,
+    selected = false
+})
+
+awful.tag.add(" Telegram (7) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
