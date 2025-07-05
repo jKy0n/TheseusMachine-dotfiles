@@ -727,14 +727,13 @@ awful.tag.add(" Media (3) ", {
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------            
 
-                    psu_icon,   --      󰚥
+                psu_icon,  --    󰚥
                 wibox.widget.textbox(' PSU '),
-                awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-PSU-monitor.sh"', 1),
-                    tbox_separator_space,
+                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-usage-monitor.sh"', 1),
+                        tbox_separator_space,
 
-                    temp_icon,  --      
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/awesomeWidget-PSU-temp-monitor.sh"', 1),
-                    tbox_separator_space,
+                temp_icon, --    
+                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-temp-monitor.sh"', 1),
 
     ------------------------------------------------------------------------------------------------            
                 wibox.widget.textbox(' | '),
@@ -1024,11 +1023,11 @@ awful.tag.add(" Media (3) ", {
                 -- wibox.widget.textbox(' 󰚥 '),
                 psu_icon,
                 wibox.widget.textbox(' PSU '),
-                awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-PSU-monitor.sh"', 1),
+                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-usage-monitor.sh"', 1),
                         tbox_separator_space,
                 -- wibox.widget.textbox('  '),
                 temp_icon,
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/awesomeWidget-PSU-temp-monitor.sh"', 1),
+                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-temp-monitor.sh"', 1),
                         tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
                 wibox.widget.textbox(' | '),
