@@ -809,11 +809,6 @@ awful.tag.add(" Media (3) ", {
 
                 internet_widget,
 
-                --         tbox_separator_space,
-
-                -- awful.widget.watch('bash -c "nice -n 19 sh /home/jkyon/ShellScript/dwmBlocksUpdates"', 3600),
-
-                        -- tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
                 -- wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
@@ -821,28 +816,18 @@ awful.tag.add(" Media (3) ", {
                         tbox_separator_space,
                         tbox_separator_space,
             
-                -- wibox.widget.textbox('  '),
-                cpu_icon,
-                wibox.widget.textbox('CPU '),
-                -- cpu.widget,
+                cpu_icon,   --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
                 --         tbox_separator_space,
                 -- wibox.widget.textbox('  '),
                 -- awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/dwmBlocksCpuTemp"', 1),
-                --         tbox_separator_space,
-    ------------------------------------------------------------------------------------------------            
-    --             wibox.widget.textbox(' | '),
-    -- ------------------------------------------------------------------------------------------------
-    --                     tbox_separator_space,
-            
-    --             cpu_widget(),
             
                         tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                -- wibox.widget.textbox('   '),  --  
-                mem_icon,
+
+                mem_icon,   --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-usage-monitor.sh"', 1),
                 -- mem.widget,
                 -- ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
@@ -850,27 +835,14 @@ awful.tag.add(" Media (3) ", {
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
                 
-                -- wibox.widget.textbox(' 󰢮 '),  --  
-                gpu_icon,
-
-            wibox.widget.textbox(' GPU '),
+                gpu_icon,   --      󰢮
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
             --         tbox_separator_space,
             -- awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu0freq.sh"', 1),
             --         tbox_separator_space,
             -- wibox.widget.textbox('  '),
             -- awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu0temp.sh"', 1),
-                
-    --            tbox_separator_space,
-    --            wibox.widget.textbox(' | '),
-    --            tbox_separator_space,
-
-    --          wibox.widget.textbox('GPU1: '),
-    --          awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu1freq.sh"', 1),
-    --                  tbox_separator_space,
-    --          wibox.widget.textbox('  '),
-    --          awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu1temp.sh"', 1),
-                
+                           
                         -- tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
     --             wibox.widget.textbox(' | '),
@@ -961,17 +933,13 @@ awful.tag.add(" Media (3) ", {
     ------------------------------------------------------------------------------------------------
                         tbox_separator_space,
             
-                -- wibox.widget.textbox('  '),
-                cpu_icon,
-                wibox.widget.textbox('CPU '),
-                -- cpu.widget,
+                cpu_icon,   --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
                         tbox_separator_space,
                         tbox_separator_space,
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
                         tbox_separator_space,
-                -- wibox.widget.textbox('  '),
-                temp_icon,
+                temp_icon,  --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-temp-monitor.sh"', 1),
     --                     tbox_separator_space,
     -- ------------------------------------------------------------------------------------------------            
@@ -985,8 +953,8 @@ awful.tag.add(" Media (3) ", {
     ------------------------------------------------------------------------------------------------            
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                -- wibox.widget.textbox('   '),  --  
-                mem_icon,
+
+                mem_icon,   --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-usage-monitor.sh"', 1),
                 -- mem.widget,
                 -- ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
@@ -994,39 +962,23 @@ awful.tag.add(" Media (3) ", {
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
                 
-                -- wibox.widget.textbox(' 󰢮 '),  --  
-                gpu_icon,
-
-            wibox.widget.textbox(' GPU '),
-            awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
+                gpu_icon,  --      󰢮
+                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
                     tbox_separator_space,
-            awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-freq-monitor.sh"', 1),
+                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-freq-monitor.sh"', 1),
                     tbox_separator_space,
-            -- wibox.widget.textbox('  '),
-            temp_icon,
+                temp_icon,  --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-temp-monitor.sh"', 1),
-                
-    --            tbox_separator_space,
-    --            wibox.widget.textbox(' | '),
-    --            tbox_separator_space,
-
-    --          wibox.widget.textbox('GPU1: '),
-    --          awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu1freq.sh"', 1),
-    --                  tbox_separator_space,
-    --          wibox.widget.textbox('  '),
-    --          awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu1temp.sh"', 1),
                 
                         tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------            
-                -- wibox.widget.textbox(' 󰚥 '),
-                psu_icon,
-                wibox.widget.textbox(' PSU '),
+
+                psu_icon,   --    󰚥
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-usage-monitor.sh"', 1),
                         tbox_separator_space,
-                -- wibox.widget.textbox('  '),
-                temp_icon,
+                temp_icon,  --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-temp-monitor.sh"', 1),
                         tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
