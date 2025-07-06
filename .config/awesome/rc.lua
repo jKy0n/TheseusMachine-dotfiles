@@ -27,14 +27,15 @@ local function custom_focus_filter(c) return free_focus and awful.client.focus.f
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
 
-local lain = require("lain")
-local mycpu = lain.widget.cpu()
-local mymem = lain.widget.mem()
-local mytemp = lain.widget.temp()
+-- local lain = require("lain")
+-- local mycpu = lain.widget.cpu()
+-- local mymem = lain.widget.mem()
+-- local mytemp = lain.widget.temp()
 
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 
+-- local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
 local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
@@ -182,23 +183,23 @@ local temp_icon = styled_textbox('  ', 11, 1)
 local psu_icon = styled_textbox(' 󰚥 ', 11, 1)
 
 
-local cpu = lain.widget.cpu {
-    settings = function()
-        widget:set_markup("CPU " .. cpu_now.usage .. "%")
-    end
-}
+-- local cpu = lain.widget.cpu {
+--     settings = function()
+--         widget:set_markup("CPU " .. cpu_now.usage .. "%")
+--     end
+-- }
 
-local mem = lain.widget.mem {
-    settings = function()
-        widget:set_markup("RAM " .. mem_now.perc .. "%")
-    end
-}
+-- local mem = lain.widget.mem {
+--     settings = function()
+--         widget:set_markup("RAM " .. mem_now.perc .. "%")
+--     end
+-- }
 
-local temp = lain.widget.temp({
-    settings = function()
-        widget:set_markup("Temp " .. coretemp_now .. "°C ")
-    end
-})
+-- local temp = lain.widget.temp({
+--     settings = function()
+--         widget:set_markup("Temp " .. coretemp_now .. "°C ")
+--     end
+-- })
 
 
 -----------------------------------------------------------------------------
@@ -854,7 +855,7 @@ awful.tag.add(" Media (3) ", {
     ------------------------------------------------------------------------------------------------            
                 wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                        tbox_separator_space,
+                        -- tbox_separator_space,
 
                 -- volume_widget({ 
                 --     widget_type = 'arc',
@@ -874,7 +875,7 @@ awful.tag.add(" Media (3) ", {
                 
                 -- wibox.widget.systray(),
                 
-                        tbox_separator_space,
+                        -- tbox_separator_space,
 
                 mytextclock,
 
@@ -935,9 +936,6 @@ awful.tag.add(" Media (3) ", {
             
                 cpu_icon,   --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
-                        tbox_separator_space,
-                        tbox_separator_space,
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
                         tbox_separator_space,
                 temp_icon,  --    
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-temp-monitor.sh"', 1),
