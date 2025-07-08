@@ -130,29 +130,29 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
---   { "restart", awesome.restart },
---   { "quit", function() awesome.quit() end },
-}
+-- myawesomemenu = {
+--    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+--    { "manual", terminal .. " -e man awesome" },
+--    { "edit config", editor_cmd .. " " .. awesome.conffile },
+-- --   { "restart", awesome.restart },
+-- --   { "quit", function() awesome.quit() end },
+-- }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Apps" },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+-- mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+--                                     { "Apps" },
+--                                     { "open terminal", terminal }
+--                                   }
+--                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+-- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+--                                      menu = mymainmenu })
 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- -- Menubar configuration
+-- menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -176,7 +176,7 @@ local function styled_textbox(text, font_size, margins)
     }
 end
 
-local cpu_icon = styled_textbox('  ', 11, 2)
+local cpu_icon = styled_textbox('  ', 11, 2)
 local mem_icon = styled_textbox('   ', 11, 2)
 local gpu_icon = styled_textbox(' 󰢮 ', 16, 1)
 local temp_icon = styled_textbox('  ', 11, 1)
@@ -1034,7 +1034,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    -- awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
