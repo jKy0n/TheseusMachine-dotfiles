@@ -3,6 +3,7 @@
 
 local naughty = require("naughty")
 
+
 local error_handling = {}
 
 -- {{{ Error handling
@@ -26,8 +27,9 @@ do
                          title = "Oops, an error happened!",
                          text = tostring(err) })
         in_error = false
-    end)
+    end) 
 end
 -- }}}
+
 
 return error_handling

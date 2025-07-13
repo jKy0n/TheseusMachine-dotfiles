@@ -1,27 +1,17 @@
-local gears = require("gears")
+
+
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
-
--- Importar o menu principal
-local menu = require("modules.menu")
+local gears = require("gears")
 local tags_utils = require("modules.tags_utils")
-local variables = require("modules.variables")
 
-local modkey = "Mod4"
-local terminal = "alacritty"
-
-local keys = {}
-
--- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
--- }}}
+local keys = {
+    globalkeys = globalkeys,
+    clientkeys = clientkeys
+}
 
 -- {{{ Key bindings
-keys.globalkeys = gears.table.join(
+globalkeys = gears.table.join(
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -72,8 +62,8 @@ keys.globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
+    -- awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    --           {description = "quit awesome", group = "awesome"}),
 
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -120,17 +110,29 @@ keys.globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
 
-    -- Menubar
+    -- Super + p = Rofi Launcher
     awful.key({ modkey, }, "p",
         --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
                                             -modes \"drun,run,file-browser-extended,window,emoji,calc\" -show drun \
                                             -icon-theme \"Papirus\" -show-icons \
                                             -theme /home/jkyon/.config/rofi.jkyon/theme.rasi") 
-            end),
+            end,
+            {description = "show rofi launcher", group = "launcher"}),
 
 
-    -- alt + tab
+    -- Super + o = Rofi emojis
+    awful.key({ modkey, }, "o",
+        --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
+        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
+                                            -modes \"drun,emoji\" -show emoji \
+                                            -emoji-format \"<span font_family=\'NotoColorEmoji\' size=\'xx-large\'>{emoji}</span>  <span weight=\'bold\'>{name}</span>\" \
+                                            -theme /home/jkyon/.config/rofi.jkyon/theme-emoji.rasi") 
+            end,
+            {description = "show rofi emojis", group = "launcher"}),
+
+
+    -- alt + tab = Task Switcher
     awful.key({ "Mod1", }, "Tab",
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
                                             -show window \
@@ -142,7 +144,8 @@ keys.globalkeys = gears.table.join(
                                             -me-accept-entry 'MousePrimary' \
                                             -modi combi -icon-theme \"Papirus\" \
                                             -show-icons -theme /home/jkyon/.config/rofi.jkyon/theme-tab.rasi") 
-            end),
+            end,
+            {description = "show rofi task switcher", group = "launcher"}),
 
 
 ---------------------  Tags Manipulation keybinds  ---------------------
@@ -161,7 +164,7 @@ keys.globalkeys = gears.table.join(
 ------------------------------------------------------------------------     
 )
 
-keys.clientkeys = gears.table.join(
+clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
@@ -201,8 +204,8 @@ keys.clientkeys = gears.table.join(
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
+    -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+    --           {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
@@ -281,25 +284,5 @@ for i = 1, 9 do
                   {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
 end
-
-
-
-keys.clientbuttons = gears.table.join(
-    awful.button({ }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-    end),
-    awful.button({ modkey }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.move(c)
-    end),
-    awful.button({ modkey }, 3, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.resize(c)
-    end)
-)
-
--- Set keys
-root.keys(globalkeys)
--- }}}
 
 return keys
