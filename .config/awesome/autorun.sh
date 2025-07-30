@@ -9,6 +9,7 @@ declare -A STARTUP_APPS=(
     ["xfce4-clipman"]="xfce4-clipman &"
     ["openrgb"]="openrgb --startminimized &"
     ["polkit-gnome"]="sleep 1 && /usr/libexec/polkit-gnome-authentication-agent-1 &"
+    ["power.conf"]="sh $HOME/.config/X11/power.conf &"
 )
 
 start_services() {

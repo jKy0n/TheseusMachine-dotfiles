@@ -44,10 +44,10 @@ awful.spawn.with_shell("sh /home/jkyon/.screenlayout/screenlayout.sh")
 awful.spawn.with_shell("feh --no-xinerama --bg-fill ~/Pictures/Wallpapers/LinuxWallpapers/BlueNebula8K.jpg")
 
 -- Start awesome target on systemd
-awful.spawn.easy_async_with_shell(
-    "systemctl --user --no-block start lockScreen.service",
-    function(stdout, stderr, exit_reason, exit_code) end
-)
+-- awful.spawn.easy_async_with_shell(
+--     "systemctl --user --no-block start lockScreen.service",
+--     function(stdout, stderr, exit_reason, exit_code) end
+-- )
 
 -- Start some programs at startup
 awful.spawn.with_shell("sh /home/jkyon/.config/awesome/autorun.sh")
