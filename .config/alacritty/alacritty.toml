@@ -2,14 +2,9 @@
 
 [general]
 import = [
-  # uncomment the flavour you want below:
-  # "~/.config/alacritty/catppuccin-latte.toml"
-  # "~/.config/alacritty/catppuccin-frappe.toml"
     "~/.config/alacritty/catppuccin-macchiato.toml"
-  # "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
-#teste
 # Configuração do Shell
 [terminal]
 shell = { program = "/bin/zsh", args = ["-l"] }
@@ -19,9 +14,6 @@ TERM = "xterm-256color"
 
 # Configurações gerais
 [font]
-#    normal = { family = "JetBrainsMonoNerdFontPropo" }
-#    normal = { family = "JetBrainsMonoNerdFontPropo" }
-#    normal = { family = "MesloLGMDZNerdFont" }
     normal = { family = "MesloLGS Nerd Font" }
     size = 9.0
 
@@ -66,6 +58,4 @@ bindings = [
 { key = "Right", mods = "Control", chars = "\u001b[1;5C" },
 { key = "Home",  chars = "\u001b[H" },
 { key = "End",   chars = "\u001b[F" },
-#
-# { key = "Delete", mods = "Shift", chars = "\u001b[99~" }
 ]

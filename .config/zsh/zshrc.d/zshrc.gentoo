@@ -30,7 +30,7 @@ fi
 [ -r "$ZSHRC_D/pay-respects.zsh" ] && source "$ZSHRC_D/pay-respects.zsh"
 
 # Carrega o módulo de assistente de linha de comando Assis
-[ -r "$ZSHRC_D/assis.zsh" ] && source "$ZSHRC_D/assis.zsh"
+# [ -r "$ZSHRC_D/assis.zsh" ] && source "$ZSHRC_D/assis.zsh"
 
 # Carrega a lista de aliases
 [ -r "$ZSHRC_D/aliases.zsh" ] && source "$ZSHRC_D/aliases.zsh"

@@ -1,6 +1,17 @@
 # ~/.zshrc.d/keybinds.zsh
 
-bindkey -e
+# Apagar segmento de path com Ctrl+Backspace
+delete-path-segment-backward() {
+  local WORDCHARS_SAVE=$WORDCHARS
+  WORDCHARS=${WORDCHARS_SAVE//\//}
+  zle backward-kill-word
+  WORDCHARS=$WORDCHARS_SAVE
+}
+zle -N delete-path-segment-backward delete-path-segment-backward
+
+
+# Modo de edição (emacs ou vi)
+bindkey -e  # Usando modo emacs
 
 # Configuração para a tecla Delete
 bindkey '^[[3~' delete-char
@@ -18,7 +29,7 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
 # Configuração para Alt + Backspace para apagar uma palavra
-bindkey '\e^H' backward-kill-word
+bindkey '^[[' backward-kill-word
 
 # 
 bindkey '^[[1;3B' menu-complete
@@ -28,3 +39,6 @@ bindkey '^[^[[C' autosuggest-accept
 
 # Corrige seta para esquerda para navegação normal
 bindkey '^[[D' backward-char
+
+# Ctrl+Backspace — ajuste o código se necessário
+bindkey "^H" delete-path-segment-backward
