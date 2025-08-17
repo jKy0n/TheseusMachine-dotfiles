@@ -7,7 +7,7 @@ source /usr/share/zsh/site-functions/zsh-autocomplete/zsh-autocomplete.plugin.zs
 source /usr/share/zsh/site-functions/zsh-autosuggestions.zsh
 
 # Histórico baseado em substring
-source /usr/share/zsh/site-functions/zsh-history-substring-search.zsh
+# source /usr/share/zsh/site-functions/zsh-history-substring-search.zsh
 
 # Syntax highlighting deve ser carregado por último
 source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
