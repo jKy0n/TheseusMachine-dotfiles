@@ -121,6 +121,16 @@ globalkeys = gears.table.join(
             {description = "show rofi launcher", group = "launcher"}),
 
 
+    -- Super + i = rofi recoll
+    awful.key({ modkey, }, "i",
+        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
+                                            -modes \"recoll\" -show recoll \
+                                            -icon-theme \"Papirus\" -show-icons \
+                                            -theme /home/jkyon/.config/rofi/theme-recoll.rasi")
+            end,
+            {description = "show rofi recoll", group = "launcher"}),
+
+
     -- Super + o = Rofi emojis
     awful.key({ modkey, }, "o",
         --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),

@@ -30,7 +30,7 @@ local tags_utils = require("modules.tags_utils")
 local tags = require("modules.tags")
     wibar_manager.setup(buttons.taglist_buttons, buttons.tasklist_buttons)
 local keys = require("modules.keys")
-root.keys(globalkeys)
+    root.keys(globalkeys)
 local rules = require("modules.rules")
 local signals = require("modules.signals")
 
