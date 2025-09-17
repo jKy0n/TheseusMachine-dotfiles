@@ -103,7 +103,7 @@ function  wibar.setup(s)
                         tbox_separator_space,
             
                     cpu_icon,   --     
-                wibox.widget.textbox('CPU '),
+                -- wibox.widget.textbox('CPU '),
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
                         tbox_separator_space,
                         tbox_separator_space,
@@ -126,8 +126,8 @@ function  wibar.setup(s)
     ------------------------------------------------------------------------------------------------
 
                     mem_icon,   --    
-                wibox.widget.textbox('RAM '),
-                        tbox_separator_space,
+                -- wibox.widget.textbox('RAM '),
+                        -- tbox_separator_space,
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-usage-monitor.sh"', 1),
                         tbox_separator_space,
                 ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
@@ -136,7 +136,7 @@ function  wibar.setup(s)
     ------------------------------------------------------------------------------------------------
                 
                     gpu_icon,   --      󰢮
-                wibox.widget.textbox('GPU '),
+                -- wibox.widget.textbox('GPU '),
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
                     tbox_separator_space,
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-freq-monitor.sh"', 1),
@@ -151,7 +151,7 @@ function  wibar.setup(s)
     ------------------------------------------------------------------------------------------------            
 
                 psu_icon,  --    󰚥
-                wibox.widget.textbox(' PSU '),
+                -- wibox.widget.textbox(' PSU '),
                 awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-usage-monitor.sh"', 1),
                         tbox_separator_space,
 
