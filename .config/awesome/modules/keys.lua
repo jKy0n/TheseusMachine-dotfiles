@@ -1,5 +1,3 @@
-
-
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local gears = require("gears")
@@ -116,28 +114,28 @@ globalkeys = gears.table.join(
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
                                             -modes \"drun,run,file-browser-extended,window,emoji,calc\" -show drun \
                                             -icon-theme \"Papirus\" -show-icons \
-                                            -theme /home/jkyon/.config/rofi.jkyon/theme.rasi") 
+                                            -theme /home/jkyon/.config/rofi.jkyon/theme.rasi")
             end,
             {description = "show rofi launcher", group = "launcher"}),
 
 
     -- Super + i = rofi recoll
     awful.key({ modkey, }, "i",
-        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
-                                            -modes \"recoll\" -show recoll \
-                                            -icon-theme \"Papirus\" -show-icons \
-                                            -theme /home/jkyon/.config/rofi/theme-recoll.rasi")
-            end,
-            {description = "show rofi recoll", group = "launcher"}),
+        function () awful.util.spawn("rofi -config /home/jkyon/.config/rofi.jkyon/config.rasi \
+                                        -modi \"recoll:/home/jkyon/.config/rofi.jkyon/scripts/recoll\" -show recoll \
+                                        -icon-theme \"Papirus\" -show-icons \
+                                        -theme /home/jkyon/.config/rofi.jkyon/theme-recoll.rasi")
+        end,
+        {description = "show rofi recoll", group = "launcher"}),
 
 
     -- Super + o = Rofi emojis
     awful.key({ modkey, }, "o",
         --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
-        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
+        function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi.jkyon/config.rasi \
                                             -modes \"drun,emoji\" -show emoji \
                                             -emoji-format \"<span font_family=\'NotoColorEmoji\' size=\'xx-large\'>{emoji}</span>  <span weight=\'bold\'>{name}</span>\" \
-                                            -theme /home/jkyon/.config/rofi.jkyon/theme-emoji.rasi") 
+                                            -theme /home/jkyon/.config/rofi.jkyon/theme-emoji.rasi")
             end,
             {description = "show rofi emojis", group = "launcher"}),
 
@@ -153,7 +151,7 @@ globalkeys = gears.table.join(
                                             -me-select-entry 'MouseSecondary' \
                                             -me-accept-entry 'MousePrimary' \
                                             -modi combi -icon-theme \"Papirus\" \
-                                            -show-icons -theme /home/jkyon/.config/rofi.jkyon/theme-tab.rasi") 
+                                            -show-icons -theme /home/jkyon/.config/rofi.jkyon/theme-tab.rasi")
             end,
             {description = "show rofi task switcher", group = "launcher"}),
 

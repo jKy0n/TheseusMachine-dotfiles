@@ -18,26 +18,18 @@ local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout
 local internet_widget = require("jkyon-widgets.internet_widget")
 local dnd_widget = require("jkyon-widgets.DoNotDisturb_widget")
 local portage_checker = require("jkyon-widgets.portage_update_checker")
+-- load jkyon monitors
+local cpu_monitor = require("jkyon-widgets.cpu_monitor")
+local ram_monitor = require("jkyon-widgets.ram_monitor")
+local gpu_monitor = require("jkyon-widgets.gpu_monitor")
+local psu_monitor = require("jkyon-widgets.psu_monitor")
+
 
 -------------------- Widgets Handler --------------------
+
 tbox_separator_space = wibox.widget.textbox (" ")
 -- tbox_separator_pipe = wibox.widget.textbox (" | ")
 -- tbox_separator_dash = wibox.widget.textbox (" - ")
-
-local function styled_textbox(text, font_size, margins)
-    return wibox.widget {
-        text = text,
-        font = 'MesloLGS Nerd Font ' .. font_size,
-        widget = wibox.widget.textbox,
-        margins = margins
-    }
-end
-
-local cpu_icon = styled_textbox('  ', 11, 2)
-local mem_icon = styled_textbox('   ', 11, 2)
-local gpu_icon = styled_textbox(' 󰢮 ', 16, 1)
-local temp_icon = styled_textbox('  ', 11, 1)
-local psu_icon = styled_textbox(' 󰚥 ', 11, 1)
 
 
 -- Create a textclock widget
@@ -97,72 +89,46 @@ function  wibar.setup(s)
 
                 portage_checker,
                         tbox_separator_space,
+
     ------------------------------------------------------------------------------------------------            
-                -- wibox.widget.textbox(' | '),
+                        -- wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                        tbox_separator_space,
             
-                    cpu_icon,   --     
-                -- wibox.widget.textbox('CPU '),
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
-                        tbox_separator_space,
-                        tbox_separator_space,
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-freq-monitor.sh"', 1),
-                        tbox_separator_space,
+                cpu_monitor({ "usage", "freq", "temp" }),   --   CPU monitor
 
-                    temp_icon,  --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-temp-monitor.sh"', 1),
-                        tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                        tbox_separator_space,
             
-                cpu_widget(),
+                cpu_widget(),   --   CPU usage bars widget
             
-                        tbox_separator_space,
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                    mem_icon,   --    
-                -- wibox.widget.textbox('RAM '),
-                        -- tbox_separator_space,
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-usage-monitor.sh"', 1),
-                        tbox_separator_space,
-                ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
-    ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
-    ------------------------------------------------------------------------------------------------
-                
-                    gpu_icon,   --      󰢮
-                -- wibox.widget.textbox('GPU '),
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
-                    tbox_separator_space,
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-freq-monitor.sh"', 1),
-                    tbox_separator_space,
+                ram_monitor({ "usage" }),   --   RAM monitor
 
-                    temp_icon,      --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-temp-monitor.sh"', 1),
-                    tbox_separator_space,
-                    
-    ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
-    ------------------------------------------------------------------------------------------------            
-
-                psu_icon,  --    󰚥
-                -- wibox.widget.textbox(' PSU '),
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-usage-monitor.sh"', 1),
-                        tbox_separator_space,
-
-                temp_icon, --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-temp-monitor.sh"', 1),
+                ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }), --   RAM usage disc widget
 
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                    tbox_separator_space,
+                gpu_monitor({ "usage", "freq", "temp" }),   -- 󰢮  GPU monitor
+
+    ------------------------------------------------------------------------------------------------
+                        wibox.widget.textbox(' | '),
+    ------------------------------------------------------------------------------------------------            
+
+                psu_monitor({ "power", "usage", "temp" }),  -- 󰚥  PSU monitor
+
+    ------------------------------------------------------------------------------------------------            
+                        wibox.widget.textbox(' | '),
+    ------------------------------------------------------------------------------------------------
+
+                        tbox_separator_space,
+
+
                 volume_widget({ 
                     widget_type = 'arc',
                     thickness   = 2 ,
@@ -207,7 +173,7 @@ function  wibar.setup(s)
 
 
     elseif s.index == 2 then
-        -- Segundo monitor
+        -- Segundo monitor (monitor à esquerda)
         s.mywibox:setup {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
@@ -233,51 +199,32 @@ function  wibar.setup(s)
                 internet_widget,
 
     ------------------------------------------------------------------------------------------------            
-                -- wibox.widget.textbox(' | '),
-    ------------------------------------------------------------------------------------------------
-                        tbox_separator_space,
-                        tbox_separator_space,
-                        tbox_separator_space,
-            
-                cpu_icon,   --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
-                --         tbox_separator_space,
-                -- wibox.widget.textbox('  '),
-                -- awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/dwmBlocksCpuTemp"', 1),
-            
-                        tbox_separator_space,
-    ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        -- wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                mem_icon,   --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-usage-monitor.sh"', 1),
-                -- mem.widget,
-                -- ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
+                cpu_monitor({ "usage" }),  --   CPU monitor
+           
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                
-                gpu_icon,   --      󰢮
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
-            --         tbox_separator_space,
-            -- awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu0freq.sh"', 1),
-            --         tbox_separator_space,
-            -- wibox.widget.textbox('  '),
-            -- awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-gpu0temp.sh"', 1),
-                           
-                        -- tbox_separator_space,
+
+                ram_monitor({ "usage" }),  --   RAM monitor
+
     ------------------------------------------------------------------------------------------------            
-    --             wibox.widget.textbox(' | '),
-    -- ------------------------------------------------------------------------------------------------            
-    --             wibox.widget.textbox(' 󰚥 '),
-    --             wibox.widget.textbox(' PSU '),
-    --             awful.widget.watch('bash -c "sh ~/ShellScript/awesomeWidget-PSU-monitor.sh"', 1),
-                        tbox_separator_space,
-    ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                        -- tbox_separator_space,
+               
+                gpu_monitor({ "usage" }),   -- 󰢮  GPU monitor
+
+    ------------------------------------------------------------------------------------------------            
+                        wibox.widget.textbox(' | '),
+    ------------------------------------------------------------------------------------------------
+
+                psu_monitor({ "power", "usage" }),  -- 󰚥  PSU monitor
+                        
+    ------------------------------------------------------------------------------------------------            
+                        wibox.widget.textbox(' | '),
+    ------------------------------------------------------------------------------------------------
 
                 mytextclock,
 
@@ -300,7 +247,7 @@ function  wibar.setup(s)
 -------------------------------------------------------------------------------------        
 
     elseif s.index == 3 then
-        -- Segundo monitor
+        -- Terceiro monitor (monitor à direita)
         s.mywibox:setup {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
@@ -317,65 +264,40 @@ function  wibar.setup(s)
 
             },
 
-            s.mytasklist, -- Middle widget
+        s.mytasklist, -- Middle widget
 
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
-    --            mykeyboardlayout,
+
 
                 internet_widget,
-                -- dnd_widget,
-
-                        tbox_separator_space,
-
-                awful.widget.watch('bash -c "nice -n 19 sh /home/jkyon/ShellScript/dwmBlocksUpdates"', 3600),
-
-                        -- tbox_separator_space,
+                          
     ------------------------------------------------------------------------------------------------            
-                -- wibox.widget.textbox(' | '),
+                        -- wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                        tbox_separator_space,
-            
-                cpu_icon,   --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-usage-monitor.sh"', 1),
-                        tbox_separator_space,
-                temp_icon,  --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-temp-monitor.sh"', 1),
-            
-                        tbox_separator_space,
+                        
+                cpu_monitor({ "usage", "temp" }),  --   CPU monitor
+
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                mem_icon,   --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-usage-monitor.sh"', 1),
-                -- mem.widget,
-                -- ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
+                ram_monitor({ "usage" }),   --   RAM monitor
+
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
-                
-                gpu_icon,  --      󰢮
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-usage-monitor.sh"', 1),
-                    tbox_separator_space,
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-freq-monitor.sh"', 1),
-                    tbox_separator_space,
-                temp_icon,  --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-temp-monitor.sh"', 1),
-                
-                        tbox_separator_space,
+
+                gpu_monitor({ "usage", "temp" }),   -- 󰢮  GPU monitor
+
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------            
 
-                psu_icon,   --    󰚥
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-usage-monitor.sh"', 1),
-                        tbox_separator_space,
-                temp_icon,  --    
-                awful.widget.watch('bash -c "sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-temp-monitor.sh"', 1),
-                        tbox_separator_space,
+                psu_monitor({ "power", "usage", "temp" }),  -- 󰚥  PSU monitor
+
     ------------------------------------------------------------------------------------------------            
-                wibox.widget.textbox(' | '),
+                        wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
                 
                         tbox_separator_space,

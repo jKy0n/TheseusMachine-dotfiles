@@ -47,6 +47,7 @@ awful.tag.add(" Telegram (7) ", {
 })
 
 
+
     ------------------ Second Monitor ------------------
 
 
@@ -69,6 +70,7 @@ selected = false
 })
 
 
+
     ------------------ Third Monitor ------------------
 
 
@@ -89,6 +91,7 @@ awful.tag.add(" Media (3) ", {
     screen = 3,
     selected = false
 })
+
 
 
 return tags

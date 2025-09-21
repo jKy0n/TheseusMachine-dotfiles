@@ -8,8 +8,8 @@
 
 configuration {
 	/*---------- General setting ----------*/
-	combi-modi: "drun,run,file-browser-extended,window,emoji,calc";
-	modi: "combi";
+	combi-modi: "drun,run,recoll,file-browser-extended,window,emoji,calc";
+	modi: "combi,recoll:/home/jkyon/.config/rofi.jkyon/scripts/recoll";
 	case-sensitive: false;
 	cycle: true;
 	filter: "";
