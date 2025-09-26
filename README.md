@@ -2,13 +2,13 @@
 
 ### It's all about my loved PC ❤️
 
-![Festfetch](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/main/Pictures/TheseusMachine-dotfiles-media/fastfetch_-_2025-09-25.png?)
+![Festfetch](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/52cf3dc2feb5e9bfa25f231d634f21691b42c649/Pictures/TheseusMachine-dotfiles-media/fastfetch_-_2025-09-25.png)
 
 ---
 
 ## 🖼️ Desktop
 
-![Desktop](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/desktop_-_2024-11-14.jpg)
+![Desktop](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/52cf3dc2feb5e9bfa25f231d634f21691b42c649/Pictures/TheseusMachine-dotfiles-media/desktop_-_2024-11-14.jpg)
 
 ---
 
@@ -75,7 +75,7 @@
 
 ---
 
-![Theseus Machine](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/TheseusMachine_-_2024-08-09.jpg)
+![Theseus Machine](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/52cf3dc2feb5e9bfa25f231d634f21691b42c649/Pictures/TheseusMachine-dotfiles-media/TheseusMachine_-_2024-08-09.jpg)
 
 ---
 
@@ -103,9 +103,9 @@
 | HDD1   |  /dev/sdd  | Toshiba P300         | 2 TB     |
 
 
-![Devices](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/devices_-_2024-11-14.png)
+![Devices](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/52cf3dc2feb5e9bfa25f231d634f21691b42c649/Pictures/TheseusMachine-dotfiles-media/devices_-_2024-11-14.png)
 
-![Peripherals](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/peripherals_-_2024-11-14.jpg)
+![Peripherals](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/52cf3dc2feb5e9bfa25f231d634f21691b42c649/Pictures/TheseusMachine-dotfiles-media/peripherals_-_2024-11-14.jpg)
 
 ---
 
