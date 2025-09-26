@@ -26,22 +26,22 @@
     "modules": [
         {
             "type": "custom", // Software
-            "format": "╭────────────────────────── \u001b[1m Software \u001b[0m ─────────────────────────╮", // `\u001b` is `\033`, or `\e`
+            "format": "────────────────────────── \u001b[1m Software \u001b[0m ─────────────────────────", // `\u001b` is `\033`, or `\e`
             "key": " "
         },
         {
             "type": "os",
-            "key": "│  " // Just get your distro's logo off nerdfonts.com,
+            "key": "  " // Just get your distro's logo off nerdfonts.com,
         },
         {
             "type": "kernel",
-            "key": "│  ",
+            "key": "  ",
             "format": "{1} {2}"
         },
         {
-            "type": "command",
+            "type": "command",  // Shell and Tmux version
             "key": "  ",
-            "text": "sh /home/jkyon/ShellScript/fastfetchCustomTerminal.sh"
+            "text": "sh /home/jkyon/ShellScript/fastfetch-scripts/fastfetch-zsh+tmux-version.sh"
         },
         {
             "type": "editor",
@@ -58,9 +58,9 @@
             "text": " pipewire --version | awk 'NR==1 {printf \"%s \", $1} NR==2 {print $4}' "
         },
         {
-            "type": "command",
+            "type": "command",      // Filesystem (Btrfs) and Bees version
             "key": "  ",
-            "text": " btrfs --version | awk 'NR==1 {print \"BtrFS\", $2}' "
+            "text": "sh /home/jkyon/ShellScript/fastfetch-scripts/fastfetch-btrfs+bees-version.sh"  // << trocar isso aqui depois
         },
         // {
         //     "type": "command",
@@ -83,7 +83,7 @@
         },
         {
             "type": "custom", // Theme
-            "format": "├─────────────────────────── \u001b[1m Theme \u001b[0m ───────────────────────────┤",
+            "format": "─────────────────────────── \u001b[1m Theme \u001b[0m ───────────────────────────",
             "key": " "
         },
         {
@@ -107,7 +107,7 @@
         },
         {
             "type": "custom", // Hardware
-            "format": "├────────────────────────── \u001b[1m Hardware \u001b[0m ─────────────────────────┤",
+            "format": "────────────────────────── \u001b[1m Hardware \u001b[0m ─────────────────────────",
             "key": " "
         },
         {
@@ -141,7 +141,7 @@
         },
         {
             "type": "custom", // Peripheral
-            "format": "├───────────────────────── \u001b[1m Peripheral \u001b[0m ────────────────────────┤",
+            "format": "───────────────────────── \u001b[1m Peripheral \u001b[0m ────────────────────────",
             "key": " "
         },
         {
@@ -192,7 +192,7 @@
         },
         {
             "type": "custom", // Uptime
-            "format": "|─────────────────────────── \u001b[1m Uptime \u001b[0m ──────────────────────────|",
+            "format": "─────────────────────────── \u001b[1m Uptime \u001b[0m ──────────────────────────",
             "key": " "
         },
         {
@@ -221,18 +221,18 @@
         {
             "type": "uptime",
             "key": "  "
-            //"keyColor": "magenta"
+            //"keyColo│r": "magenta"
         },
         {
             "type": "localip",
             "key": "  󰌗",
             "format": "{1}"
         },
-        {
-            "type": "custom", // InformationEnd
-            "format": "╰───────────────────────────────────────────────────────────────╯",
-            "key": " "
-        },
+        // {
+        //     "type": "custom", // InformationEnd
+        //     "format": "╰───────────────────────────────────────────────────────────────╯",
+        //     "key": " "
+        // },
         {
             "type": "colors",
             "paddingLeft": 2,
