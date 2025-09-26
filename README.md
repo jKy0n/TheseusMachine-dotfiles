@@ -2,7 +2,7 @@
 
 ### It's all about my loved PC ❤️
 
-![Festfetch](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/main/Pictures/TheseusMachine-dotfiles-media/fastfetch-02-Apr-2025.png?)
+![Festfetch](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/main/Pictures/TheseusMachine-dotfiles-media/fastfetch_-_2025-09-25.png?)
 
 ---
 
@@ -15,7 +15,7 @@
 ## ⚙️ Operating System
 
 - **OS:** `Gentoo Linux 2.17 x86_64`
-- **Kernel:** `6.12.X-gentoo-dist (bin)`
+- **Kernel:** `6.12.41` (custom kernel)
 - **Shell:** `zsh` (`bash` for sh)
 - **Graphics Server:** `XOrg (X11)`
 - **Login Manager:** `lightDM` + `light-locker`
@@ -32,8 +32,8 @@
 
 ### 🎨 Theming
 
-- **Theme:** `Colloid-Dark-Compact-Catppuccin` (accent blue)
-- **Icons:** `ePapirus-Dark`
+- **Theme:** `Catppuccin-Dark-Macchiato` (accent blue)
+- **Icons:** `Papirus-Dark`
 - **Font:** `MesloLGLDZ Nerd Font (10) / Noto Sans Nerd Font (10)`
 - **Cursor:** `Future-black-cursors (24)`
 
@@ -48,7 +48,7 @@
 - **Audio Control:** `pavucontrol`  
 - **IDE:** `VSCode` (for complex coding)  
 - **Notes:** `Obsidian`
-- **Chat / Messaging:** `Rambox`
+- **Chat / Messaging:** `Rambox` + `Telegram` + `Discord`
 - **Password Manager:** `Bitwarden`
 - **RGB Control:** `OpenRGB`
 
