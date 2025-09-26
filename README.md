@@ -41,12 +41,12 @@
 
 ## 🧠 Core Software
 
-- **Launcher:** `Rofi`  
-- **Browser:** `Firefox`  
+- **Launcher:** `Rofi`
+- **Browser:** `Firefox`
 - **File Explorer:** `Dolphin` + `Ark`
-- **Music Player:** `Spotify` + `Spicetify`  
-- **Audio Control:** `pavucontrol`  
-- **IDE:** `VSCode` (for complex coding)  
+- **Music Player:** `Spotify` + `Spicetify`
+- **Audio Control:** `pavucontrol`
+- **IDE:** `VSCode` (for complex coding)
 - **Notes:** `Obsidian`
 - **Chat / Messaging:** `Rambox` + `Telegram` + `Discord`
 - **Password Manager:** `Bitwarden`
@@ -56,15 +56,15 @@
 
 ## 🤖 AI Servers
 
-- `Ollama` *(Terminal / CLI)*  
-- `LM Studio` *(Performance-focused GUI)*  
-- `GPT4All` *(GUI with RAG support)*  
+- `Ollama` *(Terminal / CLI)*
+- `LM Studio` *(Performance-focused GUI)*
+- `GPT4All` *(GUI with RAG support)*
 
 ---
 
 ## 🖥️ Virtualization
 
-- **Manager:** `virt-manager`  
+- **Manager:** `virt-manager`
 - **Backend:** `QEMU (KVM)`
 
 ---
