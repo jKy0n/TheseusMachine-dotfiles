@@ -15,7 +15,7 @@ local function cpu_monitor(args)
         if v == "temp"  then show_temp  = true end
     end
 
-    local icon = '<span font="MesloLGS Nerd Font 11"> </span> '
+    local icon = '<span font="MesloLGS Nerd Font 11">  </span> '
     local widget = wibox.widget {
         markup = icon .. " Loading... ",
         widget = wibox.widget.textbox
