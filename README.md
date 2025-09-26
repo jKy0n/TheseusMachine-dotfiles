@@ -8,7 +8,7 @@
 
 ## 🖼️ Desktop
 
-![Desktop](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/Desktop-14-Nov-2024.jpg)
+![Desktop](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/desktop_-_2024-11-14.jpg)
 
 ---
 
@@ -75,7 +75,7 @@
 
 ---
 
-![Theseus Machine](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/TheseusMachine-09-Aug-2024.jpg)
+![Theseus Machine](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/TheseusMachine_-_2024-08-09.jpg)
 
 ---
 
@@ -103,9 +103,9 @@
 | HDD1   |  /dev/sdd  | Toshiba P300         | 2 TB     |
 
 
-![Devices](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/devicesTab-14-Nov-2024.png)
+![Devices](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/devices_-_2024-11-14.png)
 
-![Peripherals](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/Peripherals-14-Nov-2024.jpg)
+![Peripherals](https://github.com/jKy0n/TheseusMachineDotFiles/blob/main/media/peripherals_-_2024-11-14.jpg)
 
 ---
 
