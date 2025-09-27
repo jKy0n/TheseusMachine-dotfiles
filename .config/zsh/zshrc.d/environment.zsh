@@ -8,8 +8,11 @@ export QT_QPA_PLATFORMTHEME="qt6ct"
 
 setopt autocd
 setopt beep
-setopt extendedglob
 setopt notify
+
+# setopt extendedglob
+setopt EXTENDED_GLOB NO_BANG_HIST
+unsetopt HIST_SUBST_PATTERN
 
 # Configurações adicionais, se aplicável
 export PATH="/usr/local/bin:$PATH"
