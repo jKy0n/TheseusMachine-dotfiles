@@ -1,4 +1,4 @@
-# kernel/TheseusMachine
+# ⚙️ kernel/TheseusMachine 🎛
 
 Its is all about my kernel config for TheseusMachine
 

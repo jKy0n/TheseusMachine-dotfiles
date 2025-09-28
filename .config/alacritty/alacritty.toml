@@ -33,25 +33,25 @@ TERM = "xterm-256color"
 
 
 # Seção de mapeamento de teclas
-[keyboard] 
+[keyboard]
 
 bindings = [
-# Enter vi mode with Ctrl+Space 
+# Enter vi mode with Ctrl+Space
 { key = "Space", mods = "Shift|Control",  mode = "~Search", action = "ToggleViMode" },
-# Vi mode bindings 
+# Vi mode bindings
 { key = "h", mode = "Vi", action = "Left" },
 { key = "j", mode = "Vi", action = "Down" },
 { key = "k", mode = "Vi", action = "Up" },
 { key = "l", mode = "Vi", action = "Right" },
-# Exit vi mode with Escape 
+# Exit vi mode with Escape
 { key = "Escape", mode = "Vi", action = "ToggleViMode" },
-# Move to the start of the line 
+# Move to the start of the line
 { key = "0", mode = "Vi", action = "First" },
-# Move to the end of the line 
+# Move to the end of the line
 { key = "$", mode = "Vi", action = "Last" },
-# Delete a character 
+# Delete a character
 #{ key = "x", mode = "Vi", action = "ViMotionDeleteChar" },
-# Enter insert mode with 'i' 
+# Enter insert mode with 'i'
 #{ key = "i", mode = "Vi", action = "ViMotionInsert" } ]
 # Mapeamento de teclas para Control+Setas
 { key = "Left",  mods = "Control", chars = "\u001b[1;5D" },

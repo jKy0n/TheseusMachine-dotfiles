@@ -1,4 +1,3 @@
-
 # awesome (Window Manager)
 
 The awesome window manager is an awesome window manager!
