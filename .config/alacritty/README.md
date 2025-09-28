@@ -19,9 +19,9 @@
 
 My choice for Alacritty is based on four key aspects:
 
-1 - GPU acceleration
-2 - Simplicity
-3 - Configurability
-4 - Consolidation
+1. GPU acceleration
+2. Simplicity
+3. Configurability
+4. Consolidation
 
 I am aware of other similar terminals like Kitty and Foot, but Alacritty ultimately meets all my requirements.
