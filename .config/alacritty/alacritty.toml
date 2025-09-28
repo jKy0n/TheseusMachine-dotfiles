@@ -28,7 +28,7 @@ TERM = "xterm-256color"
 [bell]
     animation = "EaseOutExpo"
     duration = 0
-    color = "0x0000ff"
+    color = "0x8aadf4"
     command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/bell.oga"] }
 
 
