@@ -15,14 +15,14 @@
 ## ⚙️ Operating System
 
 - **OS:** `Gentoo Linux 2.17 x86_64`
-- **Kernel:** `6.12.41` (custom kernel)
-- **Shell:** `zsh` (`bash` for sh)
+- **Kernel:** `6.12.41` (![config here](https://github.com/jKy0n/TheseusMachine-dotfiles/tree/ff894deb994adb7d3b20c56f69385fc7025af2b5/.config/kernel/TheseusMachine))
+- **Shell:** `zsh` (`bash` for sh - ![config here](https://github.com/jKy0n/TheseusMachine-dotfiles/tree/ff894deb994adb7d3b20c56f69385fc7025af2b5/.config/zsh))
 - **Graphics Server:** `XOrg (X11)`
 - **Login Manager:** `lightDM` + `light-locker`
-- **Window Manager:** `awesome`
+- **Window Manager:** `awesome` (![config here](https://github.com/jKy0n/TheseusMachine-dotfiles/tree/ff894deb994adb7d3b20c56f69385fc7025af2b5/.config/awesome))
 - **Audio System:** `pipewire`
-- **Terminal Emulator:** `Alacritty` + `tmux`
-- **Editor:** `AstroNvim (nvim)`
+- **Terminal Emulator:** `Alacritty` + `tmux` (Configs: ![Alacritty](https://github.com/jKy0n/TheseusMachine-dotfiles/tree/ff894deb994adb7d3b20c56f69385fc7025af2b5/.config/alacritty) ![tmux](https://github.com/jKy0n/TheseusMachine-dotfiles/tree/ff894deb994adb7d3b20c56f69385fc7025af2b5/.config/tmux))
+- **Editor:** `AstroNvim (nvim)` (![config here](https://github.com/jKy0n/AstroNvim.config))
 - **Filesystem:** `BtrFS (system + JBOD for data)`
 - **Init System:** `systemd`
 - **Authentication:** `sudo` + `Polkit-gnome`
