@@ -2,7 +2,7 @@
 
 Its is all about my kernel config for TheseusMachine
 
-![kernel]()
+![kernel](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/9821aec107609a3507b27caebdbb3353ad6c18ab/Pictures/TheseusMachine-dotfiles-media/kernel_-_2025-09-27.png)
 
 <details>
     <summary>linux-6.16.9</summary>
