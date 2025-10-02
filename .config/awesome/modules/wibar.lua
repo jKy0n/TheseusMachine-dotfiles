@@ -106,7 +106,7 @@ function  wibar.setup(s)
                         wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                ram_monitor({ "usage_available" }),   --   RAM monitor
+                ram_monitor({ "usage" }),   --   RAM monitor
 
                 ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }), --   RAM usage disc widget
 
@@ -208,7 +208,7 @@ function  wibar.setup(s)
                         wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                ram_monitor({ "usage_available" }),  --   RAM monitor
+                ram_monitor({ "usage" }),  --   RAM monitor
 
     ------------------------------------------------------------------------------------------------
                         wibox.widget.textbox(' | '),
@@ -282,7 +282,7 @@ function  wibar.setup(s)
                         wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                ram_monitor({ "usage_available" }),   --   RAM monitor
+                ram_monitor({ "usage" }),   --   RAM monitor
 
     ------------------------------------------------------------------------------------------------
                         wibox.widget.textbox(' | '),
