@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Primeiro chamado — inicializa prompt
+if [[ $# -eq 0 ]]; then
+  echo -en "\0prompt\x1frecoll:\n"
+  exit 0
+fi
+
+# Extrai o valor de retorno e o argumento
+retv=${ROFI_RETV:-0}
+arg="$1"
+
+# Se o usuário pressionou Enter em um resultado — evite travar o rofi
+if [[ "$retv" -eq 1 ]] && [[ -n "$arg" ]]; then
+  # Abre o arquivo em background e termina
+  xdg-open "$arg" >/dev/null 2>&1 &
+  exit 0
+fi
+
+# Senão, estamos gerando resultados a partir do texto digitado
+recollq -b -t "$arg" | sed 's|^file://||'
