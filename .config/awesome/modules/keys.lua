@@ -168,8 +168,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control"   }, "a", tags_utils.move_to_new_tag,
         {description = "add a tag with the focused client", group = "tag"})
 
------------------------------------------------------------------------- 
-------------------------------------------------------------------------     
+------------------------------------------------------------------------
+------------------------------------------------------------------------
 )
 
 clientkeys = gears.table.join(
@@ -197,7 +197,7 @@ clientkeys = gears.table.join(
 
         -- Lock screen
     awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-locker-command --lock") end),
-    
+
         -- Centralize window --
     awful.key({ modkey, "Shift" }, "o", function()
         if client.focus then

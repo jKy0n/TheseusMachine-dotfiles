@@ -28,25 +28,19 @@ awful.tag.add(" Notes (4) ", {
     selected = false
 })
 
-awful.tag.add(" Organization (5) ", {
+awful.tag.add(" Finance (5) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Finance (6) ", {
-    layout = awful.layout.suit.tile.left,
-    screen = 1,
-    selected = false
-})
-
-awful.tag.add(" Goddess (7) ", {
+awful.tag.add(" Goddess (6) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Telegram (8) ", {
+awful.tag.add(" Telegram (7) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
