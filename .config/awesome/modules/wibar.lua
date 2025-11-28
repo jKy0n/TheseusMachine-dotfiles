@@ -11,6 +11,7 @@ local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 
 -- local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
 local volume_widget = require('awesome-wm-widgets.wpctl-widget.volume')
+-- local weather_api_widget = require("awesome-wm-widgets.weather-api-widget.weather")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 
@@ -28,8 +29,8 @@ local psu_monitor = require("jkyon-widgets.psu_monitor")
 -------------------- Widgets Handler --------------------
 
 tbox_separator_space = wibox.widget.textbox (" ")
--- tbox_separator_pipe = wibox.widget.textbox (" | ")
--- tbox_separator_dash = wibox.widget.textbox (" - ")
+tbox_separator_pipe = wibox.widget.textbox (" | ")
+tbox_separator_dash = wibox.widget.textbox (" - ")
 
 
 -- Create a textclock widget
@@ -149,6 +150,13 @@ function  wibar.setup(s)
                 wibox.widget.systray(),
 
                         tbox_separator_space,
+
+                -- weather_api_widget({
+                --     api_key='b08df374f2a4412d887190759250711',
+                --     coordinates = {-24.0058, -46.4028},
+                -- }),
+
+                        tbox_separator_dash,
 
                 mytextclock,
 

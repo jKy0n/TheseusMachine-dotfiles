@@ -1,7 +1,9 @@
-
-
 -- If LuaRocks is installed, make sure that packages installed through it are
 pcall(require, "luarocks.loader")
+
+-- Load JSON library
+-- package.path = package.path .. "/home/jkyon/.config/awesome/lib/json.lua/json.lua"
+-- local json = require("json")
 
 -- Standard awesome library
 local awful = require("awful")

@@ -6,6 +6,7 @@
 # Lista de aplicativos para iniciar (formato: "Nome do Processo|Comando")
 declare -A STARTUP_APPS=(
     ["gammastep"]="gammastep &"
+    ["nm-applet"]="nm-applet &"
     ["xfce4-clipman"]="xfce4-clipman &"
     ["openrgb"]="openrgb --startminimized &"
     ["polkit-gnome"]="sleep 1 && /usr/libexec/polkit-gnome-authentication-agent-1 &"
