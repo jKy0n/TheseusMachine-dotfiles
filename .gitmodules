@@ -7,3 +7,6 @@
 [submodule "/home/jkyon/.config/awesome/lib/rubato"]
 	path = /home/jkyon/.config/awesome/lib/rubato
 	url = git@github.com:andOrlando/rubato.git
+[submodule "/home/jkyon/.config/awesome/lib/json.lua"]
+	path = /home/jkyon/.config/awesome/lib/json.lua
+	url = git@github.com:rxi/json.lua.git
