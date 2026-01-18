@@ -10,37 +10,43 @@ awful.tag.add(" emerge (1) ", {
     selected = false
 })
 
-awful.tag.add(" Code (2) ", {
+awful.tag.add(" SSH (2) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = true
 })
 
-awful.tag.add(" Mail (3) ", {
+awful.tag.add(" Code (3) ", {
+    layout = awful.layout.suit.tile.left,
+    screen = 1,
+    selected = true
+})
+
+awful.tag.add(" Mail (4) ", {
     layout = awful.layout.suit.tile,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Notes (4) ", {
+awful.tag.add(" Notes (5) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Finance (5) ", {
+awful.tag.add(" Finance (6) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Goddess (6) ", {
+awful.tag.add(" Goddess (7) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
 })
 
-awful.tag.add(" Telegram (7) ", {
+awful.tag.add(" Telegram (8) ", {
     layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
