@@ -13,7 +13,7 @@ awful.tag.add(" emerge (1) ", {
 awful.tag.add(" SSH (2) ", {
     layout = awful.layout.suit.tile.left,
     screen = 1,
-    selected = true
+    selected = false
 })
 
 awful.tag.add(" Code (3) ", {

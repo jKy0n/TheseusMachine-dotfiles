@@ -30,7 +30,7 @@ awful.rules.rules = {
     },
 
         ---------------------------------------------
-        -----------------  My Rules ----------------- 
+        -----------------  My Rules -----------------
         ---------------------------------------------
 -- A
 --
@@ -59,9 +59,9 @@ awful.rules.rules = {
         { rule = { class = "discord" },
         properties = { floating = false,
         placement = awful.placement.centered,
-        tag = screen[2].tags[2], 
+        tag = screen[2].tags[2],
         },},
-       
+
         { rule = { class = "dolphin" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -82,23 +82,29 @@ awful.rules.rules = {
         properties = { floating = true,
         placement = awful.placement.centered },},
 
+        { rule_any = { class = {"gimp", "Gimp"} },
+            properties = { floating = false,
+                callback = function(c)
+                    create_volatile_tag(c, " GIMP ", 1, awful.layout.suit.tile)
+                end,},},
+
         { rule = { class = "Google-chrome" },
         properties = { floating = false,
         placement = awful.placement.centered,
         tag = screen[3].tags[3] },},
-        
+
         { rule = { class = "gnome-calculator" },
         properties = { floating = true,
         placement = awful.placement.centered },},
-        
+
         { rule_any = { class = {"Gnome-disks", "gnome-disks"} },
         properties = { floating = true,
         placement = awful.placement.centered },},
-        
+
         { rule = { class = "gpartedbin" },
         properties = { floating = true,
         placement = awful.placement.centered },},
-        
+
         { rule = { name = "GPT4All" },
             properties = { floating = false,
                 callback = function(c)
@@ -107,7 +113,7 @@ awful.rules.rules = {
 
         { rule = { class = "Gnome-screenshot" },
         properties = { floating = true,
-        placement = awful.placement.centered },},        
+        placement = awful.placement.centered },},
 -- H
 --
         { rule_any = { class = {"Heroic Games Launcher", "heroic"} },
@@ -121,12 +127,12 @@ awful.rules.rules = {
 --
         { rule = { name = "kclock" },
         properties = { floating = true,
-        placement = awful.placement.centered },},    
+        placement = awful.placement.centered },},
 
         { rule = { name = "KDE Connect" },
         properties = { floating = true,
         placement = awful.placement.centered,
-        tag = screen[3].tags[1] },},    
+        tag = screen[3].tags[1] },},
 -- L
 --
         { rule_any = { name = {"lm studio", "LM Studio" } },
@@ -138,7 +144,7 @@ awful.rules.rules = {
         { rule = { name = "Lutris" },
         properties = { floating = true,
         placement = awful.placement.centered },},
-    
+
         { rule = { class = "Lxappearance" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -152,7 +158,7 @@ awful.rules.rules = {
         properties = { floating = true,
         placement = awful.placement.centered },},
 -- N
---      
+--
         { rule_any = { class = {"nemo", "Nemo"} },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -166,22 +172,22 @@ awful.rules.rules = {
 
         { rule_any = { class = {"obsidian", "obsidian"} },
         properties = { floating = false,
-        tag = screen[1].tags[4]       },},
+        tag = screen[1].tags[5]       },},
 
         { rule = { class = "openrgb" },
         properties = { floating = true,
         placement = awful.placement.centered },},
 -- P
---        
+--
         { rule_any = { class = {"pavucontrol", "Pavucontrol"} },
         properties = { floating = false,
         tag = screen[2].tags[3],
         },},
-        
+
         { rule = { class = "plasma-emojier" },
         properties = { floating = true,
         placement = awful.placement.centered },},
-        
+
         { rule = { class = "PrismLauncher" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -195,7 +201,7 @@ awful.rules.rules = {
         tag = screen[2].tags[3]
         },},
 -- Q
--- 
+--
         { rule = { class = "qt5ct" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -204,7 +210,7 @@ awful.rules.rules = {
         properties = { floating = true,
         placement = awful.placement.centered },},
 -- R
---      
+--
         { rule = { class = "rambox" },
         properties = { floating = false,
         placement = awful.placement.centered,
@@ -228,17 +234,17 @@ awful.rules.rules = {
                     create_volatile_tag(c, " Steam ", 1, awful.layout.suit.tile.left)
             end,},},
 -- T
---  
+--
         { rule = { class = "teams-for-linux" },
             properties = { floating = false,
                 callback = function(c)
                     create_volatile_tag(c, " Teams ", 3, awful.layout.suit.tile.left)
         end,},},
-        
+
         { rule_any = { class = {"telegram-desktop", "TelegramDesktop"} },
-            properties = { floating = true,
+            properties = { floating = false,
                 callback = function(c)
-                    create_volatile_tag(c, " telegram ", 3, awful.layout.suit.tile.left)
+                    create_volatile_tag(c, " telegram ", 3, awful.layout.suit.max)
             end,},},
 
         { rule = { class = "Thunar" },
@@ -246,8 +252,8 @@ awful.rules.rules = {
         { rule = { class = "thunderbird" },
         properties = { floating = false,
         placement = awful.placement.left,
-        tag = screen[1].tags[3] },},
-        
+        tag = screen[1].tags[4] },},
+
         { rule = { class = "Timeshift" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -278,8 +284,8 @@ awful.rules.rules = {
            c:connect_signal("unmanage", function() free_focus = true end)
        end },
 -- Z
--- 
-                
+--
+
 }
 
 -- }}}

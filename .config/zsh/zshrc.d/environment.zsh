@@ -19,7 +19,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Configurações distcc
-export DISTCC_HOSTS="100.107.226.4/12,lzo 100.71.253.28/12,lzo localhost/4"
+export DISTCC_HOSTS="100.107.226.4/12,lzo 100.71.253.28/12,lzo localhost/12"
 
 # Configurações específicas para o LLMs (ex: Ollama)
 export OMP_NUM_THREADS=28  # Usa todas as 28 threads do Ryzen
