@@ -134,4 +134,3 @@
 - **Interface:** `M-Audio FastTrack Pro @ 24bit - 48kHz`
 - **Microphone:** `Behringer B2 (Cardioid & Low Cut)`
 - **Headset:** `Kuba Audio Uni`
-
