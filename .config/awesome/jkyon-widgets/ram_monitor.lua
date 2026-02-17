@@ -1,6 +1,7 @@
 local awful = require("awful")
-local wibox = require("wibox")
+local beautiful = require("beautiful")
 local gears = require("gears")
+local wibox = require("wibox")
 
 local function ram_monitor(args)
     args = args or {}
@@ -74,6 +75,7 @@ local function ram_monitor(args)
                     widget = wibox.container.background
                 },
                 border_width = 2,
+                border_color = beautiful.border_focus,
                 ontop = true,
                 visible = false,
             }

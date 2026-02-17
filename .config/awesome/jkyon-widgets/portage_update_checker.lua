@@ -1,4 +1,5 @@
 local awful = require("awful")
+local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
 
@@ -10,7 +11,7 @@ local tooltip = awful.tooltip({
     border_width = 2,
     opacity = 1,
     font = "MesloLGS Nerd Font Bold 10", -- Dobre o tamanho aqui (ajuste conforme sua fonte)
-
+    border_color = beautiful.border_focus,\
 }) -- Customizado manualmente
 
 -- Função para mostrar/ocultar o tooltip manualmente

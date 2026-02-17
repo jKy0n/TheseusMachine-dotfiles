@@ -1,6 +1,7 @@
 local awful = require("awful")
-local wibox = require("wibox")
+local beautiful = require("beautiful")
 local gears = require("gears")
+local wibox = require("wibox")
 
 -- Função para criar o widget configurável
 local function cpu_monitor(args)
@@ -58,6 +59,7 @@ local function cpu_monitor(args)
                 },
                 shape = gears.shape.rounded_rect,
                 border_width = 2,
+                border_color = beautiful.border_focus,
                 ontop = true,
                 visible = false,
             }
