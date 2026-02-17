@@ -24,6 +24,7 @@ modkey = "Mod4"
 
 --- Load modules ---
 local notification_manager = require("modules.notification_manager")
+local notification_panel = require("modules.notification_panel")
 local error_handling = require("modules.error_handling")
 local layouts = require("modules.layouts")
 local buttons = require("modules.buttons")

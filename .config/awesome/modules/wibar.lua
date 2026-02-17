@@ -19,6 +19,7 @@ local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout
 local internet_widget = require("jkyon-widgets.internet_widget")
 local dnd_widget = require("jkyon-widgets.DoNotDisturb_widget")
 local portage_checker = require("jkyon-widgets.portage_update_checker")
+local notification_widget = require("jkyon-widgets.notification_center_widget")
 -- load jkyon monitors
 local cpu_monitor = require("jkyon-widgets.cpu_monitor")
 local ram_monitor = require("jkyon-widgets.ram_monitor")
@@ -101,15 +102,15 @@ function  wibar.setup(s)
                         wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                cpu_widget(),   --   CPU usage bars widget
+                cpu_widget(),                               --   CPU usage bars widget
 
     ------------------------------------------------------------------------------------------------
                         wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                ram_monitor({ "usage_available" }),   --   RAM monitor
-
-                ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }), --   RAM usage disc widget
+                ram_monitor({ "usage_available" }),         --   RAM monitor
+                                                            --   RAM usage disc widget
+                ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
 
     ------------------------------------------------------------------------------------------------
                         wibox.widget.textbox(' | '),
@@ -144,7 +145,9 @@ function  wibar.setup(s)
                 -- todo_widget(),
 
                         tbox_separator_space,
+
                 dnd_widget,
+
                         tbox_separator_space,
 
                 wibox.widget.systray(),
@@ -152,18 +155,22 @@ function  wibar.setup(s)
                         tbox_separator_space,
 
                 -- weather_api_widget({
-                --     api_key='b08df374f2a4412d887190759250711',
-                --     coordinates = {-24.0058, -46.4028},
-                -- }),
+                    --     api_key='b08df374f2a4412d887190759250711',
+                    --     coordinates = {-24.0058, -46.4028},
+                    -- }),
 
                         tbox_separator_dash,
+
+                notification_widget.create(),
+
+                        tbox_separator_space,
 
                 mytextclock,
 
                         tbox_separator_space,
 
                 logout_menu_widget{
-                    font = 'MesloLGS Nerd Font Bold 10',
+                        font   = 'MesloLGS Nerd Font Bold 10',
                     onlogout   =  function() awful.spawn.with_shell("loginctl terminate-user $USER") end,
                     onlock     =  function() awful.spawn.with_shell('dm-tool lock') end,
                     onsuspend  =  function() awful.spawn.with_shell("systemctl suspend") end,

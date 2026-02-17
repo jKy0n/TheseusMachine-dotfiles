@@ -10,7 +10,7 @@ local function add_tag()
         layout = awful.layout.suit.tile,
         volatile = true
     }):view_only()
-end 
+end
 
 local function delete_tag()
     local t = awful.screen.focused().selected_tag
