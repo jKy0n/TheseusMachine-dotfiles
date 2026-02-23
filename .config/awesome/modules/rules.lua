@@ -125,17 +125,21 @@ awful.rules.rules = {
 --
 -- K
 --
-        { rule = { name = "kclock" },
+        { rule = { name = "kclock"},
         properties = { floating = true,
         placement = awful.placement.centered },},
 
-        { rule = { name = "KDE Connect" },
+        { rule = { name = "KDE Connect"},
         properties = { floating = true,
         placement = awful.placement.centered,
         tag = screen[3].tags[1] },},
+
+        { rule_any = { name = {"xdg-desktop-portal-kde", "xdg-desktop-portal-kde"}},
+        properties = { floating = true,
+        placement = awful.placement.centered },},
 -- L
 --
-        { rule_any = { name = {"lm studio", "LM Studio" } },
+        { rule_any = { name = {"lm studio", "LM Studio"}},
             properties = { floating = false,
                 callback = function(c)
                     create_volatile_tag(c, " LLMs ", 1, awful.layout.suit.tile)
@@ -164,6 +168,15 @@ awful.rules.rules = {
         placement = awful.placement.centered },},
 -- O
 --
+        { rule_any = { class = { "okular", "okular" } },
+        properties = { floating = true, name = "Okular",
+                        width = 1536,     -- Defina o tamanho que deseja
+                        height = 864,     -- Defina o tamanho que deseja
+                        screen = 1 },
+        callback = function(c)
+                awful.placement.centered(c, { honor_workarea = true })
+        end },
+
         { rule = { name = "OBS *" }, -- Altere o class conforme necessário
             properties = { floating = false,
                 callback = function(c)

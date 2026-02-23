@@ -17,21 +17,21 @@ end
 
 local notification_panel = {
     visible = false,
-    width = 400,
-    panel = nil,
-    screen = nil
+    width   = 400,
+    panel   = nil,
+    screen  = nil
 }
 
 -- Cores padrão
 local colors = {
-    bg = beautiful.bg_normal or "#1e1e2e",
-    fg = beautiful.fg_normal or "#cdd6f4",
-    bg_focus = beautiful.bg_focus or "#313244",
-    fg_focus = beautiful.fg_focus or "#89b4fa",
-    border = beautiful.border_focus or "#89b4fa",
-    urgent = "#f38ba8",
-    success = "#a6e3a1",
-    warning = "#f9e2af"
+    bg       = beautiful.bg_normal    or "#1e2030",
+    fg       = beautiful.fg_normal    or "#cad3f5",
+    bg_focus = beautiful.bg_focus     or "#313244",
+    fg_focus = beautiful.fg_focus     or "#8aadf4",
+    border   = beautiful.border_focus or "#8aadf4",
+    urgent   =                           "#ed8796",
+    warning  =                           "#eed49f",
+    success  =                           "#a6da95"
 }
 
 -- Criar entrada de notificação
@@ -69,16 +69,16 @@ local function create_notification_item(notif)
                     fg = notif.read and colors.fg or urgency_color,
                     widget = wibox.widget.textbox
                 },
-                left = 8,
-                right = 8,
+                left   = 8,
+                right  = 8,
                 widget = wibox.container.margin
             },
             {
                 {
                     {
-                        text = notif.title,
-                        font = "MesloLGS Nerd Font Bold 11",
-                        fg = colors.fg,
+                        text   = notif.title,
+                        font   = "MesloLGS Nerd Font Bold 11",
+                        fg     = colors.fg,
                         widget = wibox.widget.textbox
                     },
                     {
@@ -105,18 +105,18 @@ local function create_notification_item(notif)
                     fg = colors.fg,
                     widget = wibox.widget.textbox
                 },
-                left = 8,
-                right = 8,
-                top = 4,
+                left   = 8,
+                right  = 8,
+                top    = 4,
                 bottom = 4,
                 widget = wibox.container.margin
             },
             spacing = 4,
-            layout = wibox.layout.fixed.vertical
+            layout  = wibox.layout.fixed.vertical
         },
-        left = 8,
-        right = 8,
-        top = 6,
+        left   = 8,
+        right  = 8,
+        top    = 6,
         bottom = 6,
         widget = wibox.container.margin
     }

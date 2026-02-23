@@ -46,30 +46,15 @@ theme.useless_gap       =   dpi(2)
 -- Tamanho da borda das janelas --
 theme.border_width      =   dpi(3)
 
+-- Ícones dos layouts --
+theme.layout_floating   =   themes_path.."default/layouts/floatingw.png"
+theme.layout_max        =   themes_path.."default/layouts/maxw.png"
+theme.layout_tile       =   themes_path.."default/layouts/tilew.png"
+theme.layout_tileleft   =   themes_path.."default/layouts/tileleftw.png"
+theme.layout_tiletop    =   themes_path.."default/layouts/tiletopw.png"
+theme.layout_tilebottom =   themes_path.."default/layouts/tilebottomw.png"
 
--- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
-
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
-
-
--- You can use your own layout icons like this:
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
-
-
+-- Cantos arredondados para a taglist e notificações --
 theme.taglist_shape = gears.shape.rounded_rect
 theme.notification_shape = gears.shape.rounded_rect
 

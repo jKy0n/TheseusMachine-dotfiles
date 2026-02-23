@@ -159,7 +159,7 @@ function  wibar.setup(s)
                     --     coordinates = {-24.0058, -46.4028},
                     -- }),
 
-                        tbox_separator_dash,
+                        tbox_separator_space,
 
                 notification_widget.create(),
 
