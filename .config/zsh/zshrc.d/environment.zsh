@@ -14,12 +14,22 @@ setopt notify
 setopt EXTENDED_GLOB NO_BANG_HIST
 unsetopt HIST_SUBST_PATTERN
 
+# Permite comentários em comandos interativos
+setopt INTERACTIVE_COMMENTS
+
 # Configurações adicionais, se aplicável
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Configurações distcc
-export DISTCC_HOSTS="100.107.226.4/12,lzo 100.71.253.28/12,lzo localhost/12"
+export DISTCC_HOSTS=" \
+                    192.168.15.10/28,lzo \
+                    192.168.5.20/10,lzo \
+                    192.168.15.30/8,lzo \
+                    100.100.10.10/28,lzo \
+                    100.100.10.20/10,lzo \
+                    100.100.10.30/8,lzo \
+                    localhost/12"
 
 # Configurações específicas para o LLMs (ex: Ollama)
 export OMP_NUM_THREADS=28  # Usa todas as 28 threads do Ryzen

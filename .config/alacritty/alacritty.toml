@@ -1,16 +1,16 @@
 # Arquivos de configuração do Alacritty em formato TOML
 
 [general]
-import = [
-    "~/.config/alacritty/catppuccin-macchiato.toml"
+    import = [
+        "~/.config/alacritty/catppuccin-macchiato.toml"
 ]
 
 # Configuração do Shell
 [terminal]
-shell = { program = "/bin/zsh", args = ["-l"] }
+    shell = { program = "/bin/zsh", args = ["-l"] }
 
 [env]
-TERM = "xterm-256color"
+    TERM = "xterm-256color"
 
 # Configurações gerais
 [font]
@@ -25,37 +25,49 @@ TERM = "xterm-256color"
     style = { shape = "Beam", blinking = "On" }
     # vi_mode_style  = { shape = "Block", blinking = "On" }
 
-[bell]
-    animation = "EaseOutExpo"
-    duration = 0
-    color = "0x8aadf4"
-    command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/bell.oga"] }
+[mouse]
+    hide_when_typing = true
+
+# [bell]
+#     animation = "EaseOutExpo"
+#     duration = 0
+#     color = "0x8aadf4"
+#     command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/bell.oga"] }
 
 
 # Seção de mapeamento de teclas
 [keyboard]
+    bindings = [
+        # Enter vi mode with Ctrl+Space
+        { key = "Space", mods = "Shift|Control",  mode = "~Search", action = "ToggleViMode" },
+        # Vi mode bindings
+        { key = "h", mode = "Vi", action = "Left" },
+        { key = "j", mode = "Vi", action = "Down" },
+        { key = "k", mode = "Vi", action = "Up" },
+        { key = "l", mode = "Vi", action = "Right" },
+        # Exit vi mode with Escape
+        { key = "Escape", mode = "Vi", action = "ToggleViMode" },
+        # Move to the start of the line
+        { key = "0", mode = "Vi", action = "First" },
+        # Move to the end of the line
+        { key = "$", mode = "Vi", action = "Last" },
+        # Delete a character
+        #{ key = "x", mode = "Vi", action = "ViMotionDeleteChar" },
+        # Enter insert mode with 'i'
+        #{ key = "i", mode = "Vi", action = "ViMotionInsert" } ]
+        # Mapeamento de teclas para Control+Setas
+        { key = "Left",  mods = "Control", chars = "\u001b[1;5D" },
+        { key = "Right", mods = "Control", chars = "\u001b[1;5C" },
+        { key = "Home",  chars = "\u001b[H" },
+        { key = "End",   chars = "\u001b[F" },
+    ]
 
-bindings = [
-# Enter vi mode with Ctrl+Space
-{ key = "Space", mods = "Shift|Control",  mode = "~Search", action = "ToggleViMode" },
-# Vi mode bindings
-{ key = "h", mode = "Vi", action = "Left" },
-{ key = "j", mode = "Vi", action = "Down" },
-{ key = "k", mode = "Vi", action = "Up" },
-{ key = "l", mode = "Vi", action = "Right" },
-# Exit vi mode with Escape
-{ key = "Escape", mode = "Vi", action = "ToggleViMode" },
-# Move to the start of the line
-{ key = "0", mode = "Vi", action = "First" },
-# Move to the end of the line
-{ key = "$", mode = "Vi", action = "Last" },
-# Delete a character
-#{ key = "x", mode = "Vi", action = "ViMotionDeleteChar" },
-# Enter insert mode with 'i'
-#{ key = "i", mode = "Vi", action = "ViMotionInsert" } ]
-# Mapeamento de teclas para Control+Setas
-{ key = "Left",  mods = "Control", chars = "\u001b[1;5D" },
-{ key = "Right", mods = "Control", chars = "\u001b[1;5C" },
-{ key = "Home",  chars = "\u001b[H" },
-{ key = "End",   chars = "\u001b[F" },
-]
+# ✨ New: Configuração de Hints para abrir URLs com Firefox
+[[hints.enabled]]
+    hyperlinks = true
+    # Força abrir no Firefox (em vez de xdg-open)
+    persist = true
+    post_processing = true
+    mouse.enabled = true
+    regex = "(https?://)[^\\s]+"
+    command = { program = "firefox", args = ["--new-tab"] }
