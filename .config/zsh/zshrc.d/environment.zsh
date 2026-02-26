@@ -4,7 +4,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SYSTEMD_EDITOR=nvim
 
-export QT_QPA_PLATFORMTHEME="qt6ct"
+# export QT_QPA_PLATFORMTHEME="qt6ct"
+export XDG_CURRENT_DESKTOP=KDE
 
 setopt autocd
 setopt beep
