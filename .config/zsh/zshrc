@@ -21,9 +21,20 @@ is_vscode_terminal() {
 # Iniciar o Tmux automaticamente, se não estiver dentro de uma sessão e não for VS Code
 if [[ -t 1 ]]; then
     if command -v tmux >/dev/null 2>&1; then
-        if [[ -z "$TMUX" ]] && ! is_vscode_terminal && [[ -z "$DISPLAY" ]]; then
+        if [[ -z "$TMUX" ]] && ! is_vscode_terminal ; then
             # Cria uma nova sessão numerada sempre
             tmux new-session
         fi
     fi
 fi
+
+
+
+
+
+
+
+
+
+
+
