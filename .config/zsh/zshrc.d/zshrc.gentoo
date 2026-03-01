@@ -32,6 +32,9 @@ fi
 # Carrega o módulo do pay-respects
 [ -r "$ZSHRC_D/pay-respects.zsh" ] && source "$ZSHRC_D/pay-respects.zsh"
 
+# Carrega o módulo de integração do VSCode
+[ -r "$ZSHRC_D/vscode.zsh" ] && source "$ZSHRC_D/vscode.zsh"
+
 # Carrega o módulo de assistente de linha de comando Assis
 # [ -r "$ZSHRC_D/assis.zsh" ] && source "$ZSHRC_D/assis.zsh"
 
