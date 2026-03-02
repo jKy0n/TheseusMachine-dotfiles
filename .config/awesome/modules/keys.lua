@@ -140,8 +140,8 @@ globalkeys = gears.table.join(
             {description = "show rofi emojis", group = "launcher"}),
 
 
-    -- alt + tab = Task Switcher
-    awful.key({ "Mod1", }, "Tab",
+    -- Super + tab = Task Switcher
+    awful.key({ modkey, }, "Tab",
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
                                             -show window \
                                             -window-format \"{t}\" \

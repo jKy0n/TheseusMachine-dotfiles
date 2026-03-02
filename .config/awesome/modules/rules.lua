@@ -158,9 +158,15 @@ awful.rules.rules = {
         properties = { floating = true,
         placement = awful.placement.centered },},
 
-        { rule = { name = "MuPDF" },
-        properties = { floating = true,
-        placement = awful.placement.centered },},
+        { rule_any = {  class = { "mupdf" , "MuPDF" } },
+        properties = {  floating = true,
+                        name = "muPDF",
+                        width = 2752,     -- Defina o tamanho que deseja
+                        height = 864,    -- Defina o tamanho que deseja = 864
+                        screen = 1 },
+        callback = function(c)
+                awful.placement.centered(c, { honor_workarea = true })
+        end },
 -- N
 --
         { rule_any = { class = {"nemo", "Nemo"} },
@@ -185,7 +191,8 @@ awful.rules.rules = {
 
         { rule_any = { class = {"obsidian", "obsidian"} },
         properties = { floating = false,
-        tag = screen[1].tags[5]       },},
+        -- tag = screen[1].tags[5]
+        },},
 
         { rule = { class = "openrgb" },
         properties = { floating = true,
@@ -281,7 +288,7 @@ awful.rules.rules = {
                     create_volatile_tag(c, " VirtManager ", 1, awful.layout.suit.tile.left)
             end,},},
 
-        { rule_any = { class = {"code", "Code"} },     -- vsCode
+        { rule_any = { class = {"code", "Code"} },  --  vsCode
         properties = { floating = true,
         placement = awful.placement.centered },},
 -- W
