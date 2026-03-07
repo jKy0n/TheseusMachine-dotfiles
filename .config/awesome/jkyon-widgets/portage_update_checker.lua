@@ -12,6 +12,7 @@ local tooltip = awful.tooltip({
     opacity = 1,
     font = "MesloLGS Nerd Font Bold 10", -- Dobre o tamanho aqui (ajuste conforme sua fonte)
     border_color = beautiful.border_focus,
+    shape = gears.shape.rounded_rect,
 }) -- Customizado manualmente
 
 -- Função para mostrar/ocultar o tooltip manualmente

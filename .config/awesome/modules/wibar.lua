@@ -146,10 +146,6 @@ function  wibar.setup(s)
 
                         tbox_separator_space,
 
-                dnd_widget,
-
-                        tbox_separator_space,
-
                 wibox.widget.systray(),
 
                         tbox_separator_space,
@@ -166,6 +162,10 @@ function  wibar.setup(s)
                         tbox_separator_space,
 
                 mytextclock,
+
+                        tbox_separator_space,
+
+                dnd_widget,
 
                         tbox_separator_space,
 
@@ -245,6 +245,10 @@ function  wibar.setup(s)
 
                         tbox_separator_space,
 
+                dnd_widget,
+
+                        tbox_separator_space,
+
                 logout_menu_widget{
                     font = 'MesloLGS Nerd Font Bold 10',
                     onlogout   =  function() awful.spawn.with_shell("loginctl terminate-user $USER") end,
@@ -315,13 +319,15 @@ function  wibar.setup(s)
                         wibox.widget.textbox(' | '),
     ------------------------------------------------------------------------------------------------
 
-                        tbox_separator_space,
-                dnd_widget,
-                        tbox_separator_space,
+                            tbox_separator_space,
 
-                mytextclock,
+                    mytextclock,
 
-                        tbox_separator_space,
+                            tbox_separator_space,
+
+                    dnd_widget,
+
+                            tbox_separator_space,
 
                 logout_menu_widget{
                     font = 'MesloLGS Nerd Font Bold 10',
