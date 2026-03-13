@@ -1,0 +1,9 @@
+program_options:
+  automount: false
+  notify: true
+  tray: true
+
+device_config:
+  # Exemplo: não automontar CD/DVD
+  - id_type: optical
+    ignore: true
