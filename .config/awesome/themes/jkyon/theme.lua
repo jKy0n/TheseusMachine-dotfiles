@@ -58,4 +58,7 @@ theme.layout_tilebottom =   themes_path.."default/layouts/tilebottomw.png"
 theme.taglist_shape = gears.shape.rounded_rect
 theme.notification_shape = gears.shape.rounded_rect
 
+-- Wallpaper --
+theme.wallpaper = "/home/jkyon/Pictures/Wallpapers/LinuxWallpapers/BlueNebula8K.jpg"
+
 return theme

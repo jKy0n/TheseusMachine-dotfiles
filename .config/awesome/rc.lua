@@ -36,20 +36,10 @@ local keys = require("modules.keys")
     root.keys(globalkeys)
 local rules = require("modules.rules")
 local signals = require("modules.signals")
+local wallpaper = require("modules.wallpaper")
 
 
 -- jKyon Adds --
 
+-- Garbage collector settings --
 local garbage_collector = require("modules.garbage_collector")
--- Adjust screen layout
-awful.spawn.with_shell("sh /home/jkyon/.screenlayout/screenlayout.sh")
--- Set wallpaper
-awful.spawn.with_shell("feh --no-xinerama --bg-fill ~/Pictures/Wallpapers/LinuxWallpapers/BlueNebula8K.jpg")
-
---- Start awesome target on systemd (screensaver dependency??)
--- awful.spawn.easy_async_with_shell(
---     "systemctl --user start awesomewm.target",
---     function() end
--- )
--- Start some programs at startup
-awful.spawn.with_shell("sh /home/jkyon/.config/awesome/autorun.sh")
