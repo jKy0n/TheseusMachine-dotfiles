@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
+#
+#        Title:      autorun.sh
+#        Brief:      Autorun script para iniciar aplicativos no login
+#        Path:       /home/jkyon/.config/awesome/autorun.sh
+#        Author:     John Kennedy a.k.a. jKyon
+#        Created:    2025-03-04
+#        Updated:    2026-03-13
+#        Notes:      Este script deve ser chamado no arquivo rc.lua do awesomewm
+#
 
-# Autorun script para iniciar aplicativos no login
-# Este script deve ser chamado no arquivo rc.lua do awesomewm
 
 # Lista de aplicativos para iniciar (formato: "Nome do Processo|Comando")
 declare -A STARTUP_APPS=(
     # Gammastep é um aplicativo de ajuste de temperatura de cor para reduzir a fadiga ocular
     ["gammastep"]="gammastep &"
+    # Xbindkeys é um daemon para configurar atalhos de teclado personalizados
+    ["xbindkeys"]="xbindkeys &"
     # snixembed é um aplicativo para integrar aplicativos do SnixOS com o ambiente de desktop
     ["snixembed"]="snixembed --fork &"
     # kdeconnectd é o daemon do KDE Connect, que permite a integração entre dispositivos móveis e o desktop

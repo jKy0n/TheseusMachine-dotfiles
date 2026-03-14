@@ -1,3 +1,14 @@
+--[[
+--       Title:      keys.lua
+--       Brief:      Confiiguration of keybindings for AwesomeWM
+--       Path:       /home/jkyon/.config/awesome/modules/keys.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2025-07-13
+--       Updated:    2026-03-14
+--       Notes:
+--]]
+
+
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local gears = require("gears")
@@ -32,8 +43,8 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
+    -- awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    --           {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx(  1)    end,
@@ -154,6 +165,16 @@ globalkeys = gears.table.join(
                                             -show-icons -theme /home/jkyon/.config/rofi/theme-tab.rasi")
             end,
             {description = "show rofi task switcher", group = "launcher"}),
+
+
+    awful.key({ modkey, }, "e", function () awful.util.spawn("dolphin") end,
+        {description = "open file manager", group = "launcher"}),
+
+    awful.key({ modkey, }, "w", function () awful.util.spawn("firefox") end,
+        {description = "open web browser", group = "launcher"}),
+
+    awful.key({ modkey, }, "v", function () awful.util.spawn("code")    end,
+        {description = "open code editor", group = "launcher"}),
 
 
 ---------------------  Tags Manipulation keybinds  ---------------------
