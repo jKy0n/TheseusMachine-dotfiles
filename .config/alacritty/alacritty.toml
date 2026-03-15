@@ -1,4 +1,13 @@
-# Arquivos de configuração do Alacritty em formato TOML
+#
+#       Title:      alacritty.toml
+#       Brief:      Arquivos de configuração do Alacritty em formato TOML
+#       Path:       /home/jkyon/.config/alacritty/alacritty.toml
+#       Author:     John Kennedy a.k.a. jKyon
+#       Created:    2025-03-14
+#       Updated:    2026-03-15
+#       Notes:
+#
+
 
 [general]
     import = [
@@ -60,6 +69,8 @@
         { key = "Right", mods = "Control", chars = "\u001b[1;5C" },
         { key = "Home",  chars = "\u001b[H" },
         { key = "End",   chars = "\u001b[F" },
+        { key = "Home",  mods = "Control", chars = "\u001b[1;5H" },
+        { key = "End",   mods = "Control", chars = "\u001b[1;5F" },
     ]
 
 # ✨ New: Configuração de Hints para abrir URLs com Firefox
