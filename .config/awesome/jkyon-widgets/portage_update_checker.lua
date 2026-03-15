@@ -1,3 +1,14 @@
+--[[
+--       Title:      portage_update_checker.lua
+--       Brief:      Widget para verificar atualizações do Portage e mostrar detalhes em um tooltip
+--       Path:       /home/jkyon/.config/awesome/jkyon-widgets/portage_update_checker.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2024-12-31
+--       Updated:    2026-03-14
+--       Notes:      Ainda não finalizado.
+--]]
+
+
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
@@ -5,14 +16,14 @@ local wibox = require("wibox")
 
 local portage_checker = wibox.widget.textbox()
 local tooltip = awful.tooltip({
-    text = "Verificando...",
     bg = "#1e2030",
-    fg = "#cad3f5",
-    border_width = 2,
-    opacity = 1,
-    font = "MesloLGS Nerd Font Bold 10", -- Dobre o tamanho aqui (ajuste conforme sua fonte)
     border_color = beautiful.border_focus,
+    border_width = 2,
+    fg = "#cad3f5",
+    font = "MesloLGS Nerd Font Bold 10", -- Dobre o tamanho aqui (ajuste conforme sua fonte)
+    opacity = 1,
     shape = gears.shape.rounded_rect,
+    text = "Verificando...",
 }) -- Customizado manualmente
 
 -- Função para mostrar/ocultar o tooltip manualmente
@@ -62,10 +73,10 @@ end
 
 -- Timer para atualizar a cada hora
 local timer = gears.timer {
-    timeout = 3600,
     autostart = true,
     call_now = true,
     callback = update_widget,
+    timeout = 3600,
 }
 
 return portage_checker
