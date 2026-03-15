@@ -22,7 +22,7 @@ function notification_widget.create()
     local widget = wibox.widget {
         {
             id = "icon",
-            text = "",
+            text = " ",
             font = "MesloLGS Nerd Font Bold 14",
             widget = wibox.widget.textbox
         },

@@ -1,3 +1,14 @@
+--[[
+--       Title:      rc.lua
+--       Brief:      Arquivo de configuração modular do Awesome WM
+--       Path:       /home/jkyon/.config/awesome/rc.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2025-03-14
+--       Updated:    2026-03-15
+--       Notes:
+--]]
+
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 pcall(require, "luarocks.loader")
 

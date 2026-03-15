@@ -1,10 +1,10 @@
 --[[
 --       Title:      keys.lua
---       Brief:      Confiiguration of keybindings for AwesomeWM
+--       Brief:      Configuration of keybindings for AwesomeWM
 --       Path:       /home/jkyon/.config/awesome/modules/keys.lua
 --       Author:     John Kennedy a.k.a. jKyon
 --       Created:    2025-07-13
---       Updated:    2026-03-14
+--       Updated:    2026-03-15
 --       Notes:
 --]]
 
@@ -167,14 +167,21 @@ globalkeys = gears.table.join(
             {description = "show rofi task switcher", group = "launcher"}),
 
 
+    -- super + e = File Manager (Dolphin)
     awful.key({ modkey, }, "e", function () awful.util.spawn("dolphin") end,
         {description = "open file manager", group = "launcher"}),
 
+    -- super + w = Web Browser (Firefox)
     awful.key({ modkey, }, "w", function () awful.util.spawn("firefox") end,
         {description = "open web browser", group = "launcher"}),
 
+    -- super + v = Code Editor (Visual Studio Code)
     awful.key({ modkey, }, "v", function () awful.util.spawn("code")    end,
         {description = "open code editor", group = "launcher"}),
+
+    -- super + c = Calculator (Gnome Calculator)
+    awful.key({ modkey, }, "c", function () awful.util.spawn("gnome-calculator")    end,
+        {description = "open calculator", group = "launcher"}),
 
 
 ---------------------  Tags Manipulation keybinds  ---------------------

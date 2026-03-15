@@ -19,13 +19,13 @@ local awful = require("awful")
 awful.spawn("alacritty -e htop", {tag = screen[2].tags[1]})
 
 -- -- Abre btop e tmux no monitor 1, tag 1
-awful.spawn("alacritty -e tmux", {tag = screen[1].tags[1]})
 awful.spawn("alacritty -e btop", {tag = screen[1].tags[1]})
+awful.spawn("alacritty -e tmux", {tag = screen[1].tags[1]})
 
 -- -- Abre radeontop e sensors-watch no monitor 2, tag 1
-awful.spawn("alacritty -e nice --adjustment=19 watch --color --interval 1 sensors", {tag = screen[3].tags[1]})
 awful.spawn("alacritty -e radeontop --color --transparency", {tag = screen[3].tags[1]})
+awful.spawn("alacritty -e nice --adjustment=19 watch --color --interval 1 sensors", {tag = screen[3].tags[1]})
 
 -- Abre ssh para viamar-pc e crisnote no monitor 1, tag 2
-awful.spawn("alacritty -e ssh viamar-pc", {tag = screen[1].tags[2]})
 awful.spawn("alacritty -e ssh crisnote", {tag = screen[1].tags[2]})
+awful.spawn("alacritty -e ssh viamar-pc", {tag = screen[1].tags[2]})
