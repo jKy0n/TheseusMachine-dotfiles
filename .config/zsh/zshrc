@@ -1,3 +1,14 @@
+#
+#        Title:      zshrc
+#        Brief:      Arquivo .zshrc principal (modularizado)
+#        Path:       /home/jkyon/.config/zsh/zshrc
+#        Author:     John Kennedy a.k.a. jKyon
+#        Created:    2024-12-31
+#        Updated:    2026-03-16
+#        Notes:      Este arquivo chama os módulos específicos para cada função.
+#
+
+
 # Define o diretório onde os módulos estão localizados
 ZSHRC_D="$HOME/.config/zsh/zshrc.d"
 
@@ -21,20 +32,9 @@ is_vscode_terminal() {
 # Iniciar o Tmux automaticamente, se não estiver dentro de uma sessão e não for VS Code
 if [[ -t 1 ]]; then
     if command -v tmux >/dev/null 2>&1; then
-        if [[ -z "$TMUX" ]] && ! is_vscode_terminal ; then
+        if [[ -z "$TMUX" ]] && ! is_vscode_terminal && [[ -z "$NO_TMUX" ]]; then
             # Cria uma nova sessão numerada sempre
             tmux new-session
         fi
     fi
 fi
-
-
-
-
-
-
-
-
-
-
-

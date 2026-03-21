@@ -11,7 +11,7 @@
 
 [general]
     import = [
-        "~/.config/alacritty/catppuccin-macchiato.toml"
+        "~/.config/alacritty/catppuccin-frappe.toml"
 ]
 
 # Configuração do Shell

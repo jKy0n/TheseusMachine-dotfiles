@@ -1,3 +1,13 @@
+--[[
+--       Title:      tags.lua
+--       Brief:      Módulo de gerenciamento de tags para AwesomeWM, com configuração de layouts e seleção de telas
+--       Path:       /home/jkyon/.config/awesome/modules/tags.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2025-07-13
+--       Updated:    2026-03-17
+--       Notes:      
+--]]
+
 
 local awful = require("awful")
 

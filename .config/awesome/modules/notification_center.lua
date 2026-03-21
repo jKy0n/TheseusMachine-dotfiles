@@ -1,3 +1,14 @@
+--[[
+--       Title:      notification_center.lua
+--       Brief:      Módulo de gerenciamento de notificações para AwesomeWM, com armazenamento, histórico e painel lateral
+--       Path:       /home/jkyon/.config/awesome/modules/notification_center.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2026-02-17
+--       Updated:    2026-03-17
+--       Notes:      
+--]]
+
+
 -- Notification Center Module for AwesomeWM
 -- Gerencia notificações com armazenamento, histórico e painel lateral
 

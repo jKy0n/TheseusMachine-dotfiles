@@ -1,11 +1,11 @@
 --[[
---       Title:      keys.lua
---       Brief:      Configuration of keybindings for AwesomeWM
---       Path:       /home/jkyon/.config/awesome/modules/keys.lua
---       Author:     John Kennedy a.k.a. jKyon
---       Created:    2025-07-13
---       Updated:    2026-03-15
---       Notes:
+        Title:      keys.lua
+        Brief:      Configuration of keybindings for AwesomeWM
+        Path:       /home/jkyon/.config/awesome/modules/keys.lua
+        Author:     John Kennedy a.k.a. jKyon
+        Created:    2025-07-13
+        Updated:    2026-03-15
+        Notes:
 --]]
 
 
@@ -67,8 +67,21 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
+
+    -- Super + Enter = Terminal
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
+
+    -- Terminal quick floating
+    awful.key({ modkey, "Control" }, "Return", function ()
+                awful.spawn.with_shell( "NO_TMUX=1 alacritty --class floating-terminal" ) end,
+              {description = "open a quick floating terminal", group = "launcher"}),
+
+    -- Super + Shift + Enter = Terminal without tmux
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn.with_shell("NO_TMUX=1 alacritty") end,
+              {description = "open a terminal without tmux", group = "launcher"}),
+
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     -- awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -166,7 +179,7 @@ globalkeys = gears.table.join(
             end,
             {description = "show rofi task switcher", group = "launcher"}),
 
-
+    -- Shortcuts for launching common applications
     -- super + e = File Manager (Dolphin)
     awful.key({ modkey, }, "e", function () awful.util.spawn("dolphin") end,
         {description = "open file manager", group = "launcher"}),
@@ -183,6 +196,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "c", function () awful.util.spawn("gnome-calculator")    end,
         {description = "open calculator", group = "launcher"}),
 
+    -- Shortcut for quick start apps on Viamar PC --
+    -- Super + Shift + Pause = Open Viamar PC startup apps
+    awful.key({ modkey, "Shift" }, "Pause", function () require("scripts.autostart").run() end,
+        {description = "open viamar pc startup apps", group = "launcher"}),
 
 ---------------------  Tags Manipulation keybinds  ---------------------
 ------------------------------------------------------------------------

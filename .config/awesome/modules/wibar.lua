@@ -26,6 +26,8 @@ local ram_monitor = require("jkyon-widgets.ram_monitor")
 local gpu_monitor = require("jkyon-widgets.gpu_monitor")
 local psu_monitor = require("jkyon-widgets.psu_monitor")
 
+local color_palette = require("themes.jkyon.color_palette")
+
 
 -------------------- Widgets Handler --------------------
 
@@ -110,7 +112,7 @@ function  wibar.setup(s)
 
                 ram_monitor({ "usage_available" }),         --   RAM monitor
                                                             --   RAM usage disc widget
-                ram_widget({ color_used = '#8aadf4', color_buf = '#1e2030' }),
+                ram_widget({ color_used = color_palette.blue, color_buf = color_palette.mantle }),
 
     ------------------------------------------------------------------------------------------------
                         wibox.widget.textbox(' | '),

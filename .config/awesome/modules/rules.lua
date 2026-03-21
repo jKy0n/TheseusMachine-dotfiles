@@ -76,6 +76,15 @@ awful.rules.rules = {
         x = 1424,          -- Posição x
         y = 144,          -- Posição y
         screen = 1  }},
+
+        { rule_any = { instance = { "floating-terminal" }, class = { "FloatingTerminal" } },
+        properties = { floating = true,
+        width = 2752,     -- Defina o tamanho que deseja
+        height = 1152,    -- Defina o tamanho que deseja
+        x = 1424,          -- Posição x
+        y = 144,          -- Posição y
+        placement = awful.placement.centered },},
+
 -- G
 --
         { rule_any = { class = {"gedit", "Gedit"} },

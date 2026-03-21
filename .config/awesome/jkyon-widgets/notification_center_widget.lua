@@ -1,3 +1,14 @@
+--[[
+--       Title:      notification_center_widget.lua
+--       Brief:      
+--       Path:       /home/jkyon/.config/awesome/jkyon-widgets/notification_center_widget.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2026-02-17
+--       Updated:    2026-03-17
+--       Notes:      
+--]]
+
+
 -- Notification Center Widget for AwesomeWM
 -- Widget para wibar que mostra contador de notificações não lidas
 

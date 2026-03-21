@@ -1,3 +1,12 @@
+--[[
+--       Title:      notification_manager.lua
+--       Brief:      
+--       Path:       /home/jkyon/.config/awesome/modules/notification_manager.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2025-07-13
+--       Updated:    2026-03-17
+--       Notes:      
+--]]
 
 
 local beautiful = require("beautiful")
