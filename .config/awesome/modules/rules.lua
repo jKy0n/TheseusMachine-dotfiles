@@ -1,9 +1,17 @@
-
-
+--[[
+--       Title:      rules.lua
+--       Brief:      Regras para clientes (janelas) no Awesome WM
+--       Path:       /home/jkyon/.config/awesome/modules/rules.lua
+--       Author:     John Kennedy a.k.a. jKyon
+--       Created:    2025-07-13
+--       Updated:    2026-03-22
+--       Notes:      MANTER ORDEM ALFABÉTICA!!!
+--]]
 
 
 local awful = require("awful")
 local beautiful = require("beautiful")
+
 local create_volatile_tag = require("modules.tags_utils").create_volatile_tag
 
 local rules = {}
@@ -16,17 +24,15 @@ awful.rules.rules = rules
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = custom_focus_filter,
-             --      focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-             --      placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-                     placement = awful.placement.centered,
-     }
+        properties = { border_width = beautiful.border_width,
+                       border_color = beautiful.border_normal,
+                       focus = custom_focus_filter,
+                       raise = true,
+                       keys = clientkeys,
+                       buttons = clientbuttons,
+                       screen = awful.screen.preferred,
+                       placement = awful.placement.centered,
+        }
     },
 
         ---------------------------------------------
@@ -134,9 +140,10 @@ awful.rules.rules = {
 --
 -- K
 --
-        { rule = { name = "kclock"},
+        { rule_any = { class = { "kclock", "kclock" } },
         properties = { floating = true,
-        placement = awful.placement.centered },},
+        placement = awful.placement.centered,
+        tag = screen[3].tags[1] },},
 
         { rule = { name = "KDE Connect"},
         properties = { floating = true,
@@ -186,7 +193,7 @@ awful.rules.rules = {
         { rule_any = { class = { "okular", "okular" } },
         properties = { floating = true, name = "Okular",
                         width = 1536,     -- Defina o tamanho que deseja
-                        height = 864,     -- Defina o tamanho que deseja
+                        height = 1200,     -- Defina o tamanho que deseja
                         screen = 1 },
         callback = function(c)
                 awful.placement.centered(c, { honor_workarea = true })
@@ -200,7 +207,7 @@ awful.rules.rules = {
 
         { rule_any = { class = {"obsidian", "obsidian"} },
         properties = { floating = false,
-        -- tag = screen[1].tags[5]
+        tag = screen[1].tags[5]
         },},
 
         { rule = { class = "openrgb" },
@@ -231,6 +238,10 @@ awful.rules.rules = {
         },},
 -- Q
 --
+        { rule_any = { class = { "qconf" , "qconf" } },
+        properties = { floating = true,
+        placement = awful.placement.centered },},
+
         { rule = { class = "qt5ct" },
         properties = { floating = true,
         placement = awful.placement.centered },},
@@ -262,6 +273,10 @@ awful.rules.rules = {
                 callback = function(c)
                     create_volatile_tag(c, " Steam ", 1, awful.layout.suit.tile.left)
             end,},},
+
+        { rule_any = { class = { "systemsettings", "systemsettings" } },
+        properties = { floating = true,
+        placement = awful.placement.centered },},
 -- T
 --
         { rule = { class = "teams-for-linux" },
@@ -278,6 +293,7 @@ awful.rules.rules = {
 
         { rule = { class = "Thunar" },
         properties = { floating = true, placement = awful.placement.centered },},
+
         { rule = { class = "thunderbird" },
         properties = { floating = false,
         placement = awful.placement.left,

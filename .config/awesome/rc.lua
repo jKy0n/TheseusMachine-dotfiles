@@ -20,6 +20,13 @@ pcall(require, "luarocks.loader")
 local awful = require("awful")
 require("awful.autofocus")
 local free_focus = true
+
+--- Logger and debug loader ---
+local logger = require("modules.logger")
+local debug_loader = require("modules.debug_loader")
+
+logger.info("===== Awesome session started =====")
+
 -- Theme handling library
 local beautiful = require("beautiful")
 beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
@@ -27,30 +34,42 @@ beautiful.init("/home/jkyon/.config/awesome/themes/jkyon/theme.lua")
 
 --- Variable definitions ---
 
+logger.info("===== Load variables =====")
+
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 
+logger.info("===== Load modules =====")
+
 --- Load modules ---
-local notification_manager = require("modules.notification_manager")
-local notification_panel = require("modules.notification_panel")
-local error_handling = require("modules.error_handling")
-local layouts = require("modules.layouts")
-local buttons = require("modules.buttons")
-local wibar_manager = require("modules.wibar_manager")
-local tags_utils = require("modules.tags_utils")
-local tags = require("modules.tags")
-    wibar_manager.setup(buttons.taglist_buttons, buttons.tasklist_buttons)
-local keys = require("modules.keys")
-    root.keys(globalkeys)
-local rules = require("modules.rules")
-local signals = require("modules.signals")
-local wallpaper = require("modules.wallpaper")
+local notification_manager = debug_loader.safe_require("modules.notification_manager")
+local notification_panel = debug_loader.safe_require("modules.notification_panel")
+local error_handling = debug_loader.safe_require("modules.error_handling")
+local layouts = debug_loader.safe_require("modules.layouts")
+local buttons = debug_loader.safe_require("modules.buttons")
+local wibar_manager = debug_loader.safe_require("modules.wibar_manager")
+local tags_utils = debug_loader.safe_require("modules.tags_utils")
+local tags = debug_loader.safe_require("modules.tags")
+    if wibar_manager and buttons then
+        debug_loader.safe_call("wibar_manager.setup", function()
+            wibar_manager.setup(buttons.taglist_buttons, buttons.tasklist_buttons)
+        end)
+    end
+local keys = debug_loader.safe_require("modules.keys")
+    if globalkeys then
+        debug_loader.safe_call("root.keys(globalkeys)", function()
+            root.keys(globalkeys)
+        end)
+    end
+local rules = debug_loader.safe_require("modules.rules")
+local signals = debug_loader.safe_require("modules.signals")
+local wallpaper = debug_loader.safe_require("modules.wallpaper")
 
 
 -- jKyon Adds --
 
 -- Garbage collector settings --
-local garbage_collector = require("modules.garbage_collector")
+local garbage_collector = debug_loader.safe_require("modules.garbage_collector")

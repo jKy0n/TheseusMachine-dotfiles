@@ -134,10 +134,8 @@ globalkeys = gears.table.join(
 
     -- Super + p = Rofi Launcher
     awful.key({ modkey, }, "p",
-        --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
                                             -modes \"drun,run,file-browser-extended,window,emoji,calc\" -show drun \
-                                            -icon-theme \"Papirus\" -show-icons \
                                             -theme /home/jkyon/.config/rofi/theme.rasi")
             end,
             {description = "show rofi launcher", group = "launcher"}),
@@ -147,7 +145,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "i",
         function () awful.util.spawn("rofi -config /home/jkyon/.config/rofi/config.rasi \
                                         -modi \"recoll:/home/jkyon/.config/rofi/scripts/recoll\" -show recoll \
-                                        -icon-theme \"Papirus\" -show-icons \
                                         -theme /home/jkyon/.config/rofi/theme-recoll.rasi")
         end,
         {description = "show rofi recoll", group = "launcher"}),
@@ -155,7 +152,6 @@ globalkeys = gears.table.join(
 
     -- Super + o = Rofi emojis
     awful.key({ modkey, }, "o",
-        --   function () awful.util.spawn("rofi -config ~/.config/rofi/config -show combi -combi-modi \"window,run\" -modi combi -icon-theme \"Papirus\" -show-icons -theme ~/.config/rofi/config.rasi") end),
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
                                             -modes \"drun,emoji\" -show emoji \
                                             -emoji-format \"<span font_family=\'NotoColorEmoji\' size=\'xx-large\'>{emoji}</span>  <span weight=\'bold\'>{name}</span>\" \
@@ -174,7 +170,6 @@ globalkeys = gears.table.join(
                                             -kb-accept-entry '!Alt-Tab,!Alt+Down,!Alt+ISO_Left_Tab,!Alt+Up,Return' \
                                             -me-select-entry 'MouseSecondary' \
                                             -me-accept-entry 'MousePrimary' \
-                                            -modi combi -icon-theme \"Papirus\" \
                                             -show-icons -theme /home/jkyon/.config/rofi/theme-tab.rasi")
             end,
             {description = "show rofi task switcher", group = "launcher"}),

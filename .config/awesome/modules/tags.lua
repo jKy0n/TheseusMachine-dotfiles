@@ -4,8 +4,8 @@
 --       Path:       /home/jkyon/.config/awesome/modules/tags.lua
 --       Author:     John Kennedy a.k.a. jKyon
 --       Created:    2025-07-13
---       Updated:    2026-03-17
---       Notes:      
+--       Updated:    2026-06-03
+--       Notes:
 --]]
 
 
@@ -56,11 +56,11 @@ awful.tag.add(" Goddess (7) ", {
     selected = false
 })
 
-awful.tag.add(" Telegram (8) ", {
-    layout = awful.layout.suit.tile.bottom,
-    screen = 1,
-    selected = false
-})
+-- awful.tag.add(" Telegram (8) ", {
+--     layout = awful.layout.suit.tile.bottom,
+--     screen = 1,
+--     selected = false
+-- })
 
 
 
