@@ -2,6 +2,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
+local system_monitor = require("jkyon-widgets.status-bar.system_monitor")
 
 local function ram_monitor(args)
     args = args or {}
@@ -94,69 +95,61 @@ local function ram_monitor(args)
         if popup then popup.visible = false end
     end
 
-    -- Atualiza o widget periodicamente
-    awful.widget.watch(
-        "nice --adjustment=10 sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/RAM-monitor.sh",
-        1, -- intervalo em segundos
-        function(w, stdout)
-            local usage_available = stdout:match("usage_available:%s*(%d+)")
-            local usage           = stdout:match("\nusage:%s*(%d+)")
-            local total           = stdout:match("\ntotal:%s*([%d%.]+)")
-            local used            = stdout:match("\nused:%s*([%d%.]+)")
-            local free            = stdout:match("\nfree:%s*([%d%.]+)")
-            local available       = stdout:match("\navailable:%s*([%d%.]+)")
-            local swap_usage      = stdout:match("\nswap_usage:%s*(%d+)")
-            local swap_total      = stdout:match("\nswap_total:%s*([%d%.]+)")
-            local swap_used       = stdout:match("\nswap_used:%s*([%d%.]+)")
-            local swap_free       = stdout:match("\nswap_free:%s*([%d%.]+)")
+    local function format_gb(value)
+        if not value then
+            return "--"
+        end
+        return string.format("%.1f", value)
+    end
 
-            -- Salva para o popup
-            last_values.usage_available = usage_available or "--"
-            last_values.usage           = usage or "--"
-            last_values.available       = available or "--"
-            last_values.total           = total or "--"
-            last_values.used            = used or "--"
-            last_values.free            = free or "--"
-            last_values.swap_usage      = swap_usage or "--"
-            last_values.swap_total      = swap_total or "--"
-            last_values.swap_used       = swap_used or "--"
-            last_values.swap_free       = swap_free or "--"
+    local function update_widget()
+        local ram = system_monitor.stats.ram
+        last_values.usage_available = ram.usage_available and tostring(ram.usage_available) or "--"
+        last_values.usage = ram.usage and tostring(ram.usage) or "--"
+        last_values.available = ram.available and format_gb(ram.available) or "--"
+        last_values.total = ram.total and format_gb(ram.total) or "--"
+        last_values.used = ram.used and format_gb(ram.used) or "--"
+        last_values.free = ram.free and format_gb(ram.free) or "--"
+        last_values.swap_usage = ram.swap_usage and tostring(ram.swap_usage) or "--"
+        last_values.swap_total = ram.swap_total and format_gb(ram.swap_total) or "--"
+        last_values.swap_used = ram.swap_used and format_gb(ram.swap_used) or "--"
+        last_values.swap_free = ram.swap_free and format_gb(ram.swap_free) or "--"
 
-            local items = {}
-            if show_usage_available and usage_available then table.insert(items, string.format("%3s%%", usage_available)) end
-            if show_usage           and usage           then table.insert(items, string.format("%3s%%", usage))           end
-            if show_total           and total           then table.insert(items, string.format("%5s GB", total))          end
-            if show_used            and used            then table.insert(items, string.format("%5s GB", used))           end
-            if show_free            and free            then table.insert(items, string.format("%5s GB", free))           end
-            if show_available       and available       then table.insert(items, string.format("%5s GB", available))      end
-            if show_swap_usage      and swap_usage      then table.insert(items, string.format("%3s%%", swap_usage))      end
-            if show_swap_total      and swap_total      then table.insert(items, string.format("%5s GB", swap_total))     end
-            if show_swap_used       and swap_used       then table.insert(items, string.format("%5s GB", swap_used))      end
-            if show_swap_free       and swap_free       then table.insert(items, string.format("%5s GB", swap_free))      end
+        local items = {}
+        if show_usage_available and ram.usage_available then table.insert(items, string.format("%3s%%", ram.usage_available)) end
+        if show_usage           and ram.usage           then table.insert(items, string.format("%3s%%", ram.usage))           end
+        if show_total           and ram.total           then table.insert(items, string.format("%5s GB", format_gb(ram.total)))          end
+        if show_used            and ram.used            then table.insert(items, string.format("%5s GB", format_gb(ram.used)))           end
+        if show_free            and ram.free            then table.insert(items, string.format("%5s GB", format_gb(ram.free)))           end
+        if show_available       and ram.available       then table.insert(items, string.format("%5s GB", format_gb(ram.available)))      end
+        if show_swap_usage      and ram.swap_usage      then table.insert(items, string.format("%3s%%", ram.swap_usage))      end
+        if show_swap_total      and ram.swap_total      then table.insert(items, string.format("%5s GB", format_gb(ram.swap_total)))     end
+        if show_swap_used       and ram.swap_used       then table.insert(items, string.format("%5s GB", format_gb(ram.swap_used)))      end
+        if show_swap_free       and ram.swap_free       then table.insert(items, string.format("%5s GB", format_gb(ram.swap_free)))      end
 
-            local padding = " "
-            w.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
+        local padding = " "
+        widget.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
 
-            -- Atualiza o popup se estiver visível
-            if popup and popup.visible then
-                local valuebox = popup.widget:get_children_by_id("valuebox")[1]
-                valuebox.markup = string.format(
-                    " %s%%\n %s%%\n %s GB\n %s GB\n %s GB\n %s GB\n\n %s%%\n %s GB\n %s GB\n %s GB",
-                    last_values.usage_available,
-                    last_values.usage,
-                    last_values.available,
-                    last_values.total,
-                    last_values.used,
-                    last_values.free,
-                    last_values.swap_usage,
-                    last_values.swap_total,
-                    last_values.swap_used,
-                    last_values.swap_free
-                )
-            end
-        end,
-        widget
-    )
+        if popup and popup.visible then
+            local valuebox = popup.widget:get_children_by_id("valuebox")[1]
+            valuebox.markup = string.format(
+                " %s%%\n %s%%\n %s GB\n %s GB\n %s GB\n %s GB\n\n %s%%\n %s GB\n %s GB\n %s GB",
+                last_values.usage_available,
+                last_values.usage,
+                last_values.available,
+                last_values.total,
+                last_values.used,
+                last_values.free,
+                last_values.swap_usage,
+                last_values.swap_total,
+                last_values.swap_used,
+                last_values.swap_free
+            )
+        end
+    end
+
+    system_monitor.connect_signal(update_widget)
+    gears.timer.delayed_call(update_widget)
 
     -- Eventos de mouse para mostrar/esconder popup
     widget:connect_signal("button::press", function(_, _, _, button)

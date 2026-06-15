@@ -100,6 +100,7 @@ polyval_generic
 r8169
 rapl
 realtek
+rfcomm
 rfkill
 sha1_ssse3
 sha256_ssse3

@@ -14,6 +14,16 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local gears = require("gears")
 local tags_utils = require("modules.tags_utils")
 
+local volume_widget_module = require('awesome-wm-widgets.wpctl-widget.volume')
+local volume_widget = volume_widget_module({
+    widget_type = 'arc',
+    thickness = 2,
+    step = 5,
+    mixer_cmd = 'pavucontrol',
+    device = '@DEFAULT_SINK@',
+    tooltip = false,
+})
+
 local keys = {
     globalkeys = globalkeys,
     clientkeys = clientkeys
@@ -221,9 +231,9 @@ clientkeys = gears.table.join(
         {description = "toggle fullscreen", group = "client"}),
 
         -- Audio control
-    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end),
-    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end),
-    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end),
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget_module:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget_module:dec(5) end),
+    awful.key({}, "XF86AudioMute", function() volume_widget_module:toggle() end),
 
     awful.key({}, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
     awful.key({}, "XF86AudioNext", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),

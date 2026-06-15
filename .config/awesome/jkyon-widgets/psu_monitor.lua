@@ -2,6 +2,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
+local system_monitor = require("jkyon-widgets.status-bar.system_monitor")
 
 -- Função para criar o widget configurável
 local function psu_monitor(args)
@@ -79,42 +80,33 @@ local function psu_monitor(args)
         if popup then popup.visible = false end
     end
 
-    -- Atualiza o widget periodicamente
-    awful.widget.watch(
-        "nice --adjustment=10 sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/PSU-monitor.sh",
-        1, -- intervalo em segundos
-        function(w, stdout)
-            -- Processa a saída formatada
-            local usage = stdout:match("usage_percent:%s*([%d%.]+)")
-            local power = stdout:match("power_W:%s*([%d%.]+)")
-            local temp  = stdout:match("temperature_Celsius:%s*([%d%.]+)")
+    local function update_widget()
+        local psu = system_monitor.stats.psu
+        last_values.usage = psu.usage and tostring(psu.usage) or "--"
+        last_values.power = psu.power and tostring(psu.power) or "--"
+        last_values.temp = psu.temp and tostring(psu.temp) or "--"
 
-            -- Salva para o popup
-            last_values.usage = usage or "--"
-            last_values.power = power and string.format("%d", math.floor(tonumber(power))) or "--"
-            last_values.temp  = temp or "--"
+        local items = {}
+        if show_usage and psu.usage then table.insert(items, string.format("%3s%%", psu.usage)) end
+        if show_power and psu.power then table.insert(items, string.format("%4s W", psu.power)) end
+        if show_temp and psu.temp then table.insert(items, string.format("%3s°C ", psu.temp)) end
 
-            local items = {}
-            if show_usage and usage and usage ~= "N/A" then table.insert(items, string.format("%3s%%", usage)) end
-            if show_power and power and power ~= "N/A" then table.insert(items, string.format("%4d W", math.floor(tonumber(power) or 0))) end
-            if show_temp  and temp  and temp ~= "N/A"  then table.insert(items, string.format("%3s°C ", temp)) end
+        local padding = " "
+        widget.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
 
-            local padding = " "
-            w.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
+        if popup and popup.visible then
+            local valuebox = popup.widget:get_children_by_id("valuebox")[1]
+            valuebox.markup = string.format(
+                " %s%%\n %s W\n %s°C",
+                last_values.usage,
+                last_values.power,
+                last_values.temp
+            )
+        end
+    end
 
-            -- Atualiza o popup se estiver visível
-            if popup and popup.visible then
-                local valuebox = popup.widget:get_children_by_id("valuebox")[1]
-                valuebox.markup = string.format(
-                    " %s%%\n %s W\n %s°C",
-                    last_values.usage,
-                    last_values.power,
-                    last_values.temp
-                )
-            end
-        end,
-        widget
-    )
+    system_monitor.connect_signal(update_widget)
+    gears.timer.delayed_call(update_widget)
 
     -- Eventos de mouse para mostrar/esconder popup
     widget:connect_signal("button::press", function(_, _, _, button)

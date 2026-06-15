@@ -2,6 +2,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
+local system_monitor = require("jkyon-widgets.status-bar.system_monitor")
 
 -- Função para criar o widget configurável
 local function cpu_monitor(args)
@@ -77,40 +78,33 @@ local function cpu_monitor(args)
         if popup then popup.visible = false end
     end
 
-    -- Atualiza o widget periodicamente
-    awful.widget.watch(
-        "nice --adjustment=10 sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/CPU-monitor.sh",
-        1,
-        function(w, stdout)
-            local usage = stdout:match("usage_percent:%s*(%d+)")
-            local freq = stdout:match("frequency_GHz:%s*([%d%.]+)")
-            local temp = stdout:match("temperature_Celsius:%s*(%d+)")
+    local function update_widget()
+        local cpu = system_monitor.stats.cpu
+        last_values.usage = cpu.usage and tostring(cpu.usage) or "--"
+        last_values.freq = cpu.freq and tostring(cpu.freq) or "--"
+        last_values.temp = cpu.temp and tostring(cpu.temp) or "--"
 
-            last_values.usage = usage or "--"
-            last_values.freq  = freq or "--"
-            last_values.temp  = temp or "--"
+        local items = {}
+        if show_usage and cpu.usage then table.insert(items, string.format("%3s%%", cpu.usage)) end
+        if show_freq and cpu.freq then table.insert(items, string.format("%4s MHz", cpu.freq)) end
+        if show_temp and cpu.temp then table.insert(items, string.format("%3s°C ", cpu.temp)) end
 
-            local items = {}
-            if show_usage and usage then table.insert(items, string.format("%3s%%", usage)) end
-            if show_freq  and freq  then table.insert(items, string.format("%4s GHz", freq)) end
-            if show_temp  and temp  then table.insert(items, string.format("%3s°C ", temp)) end
+        local padding = " "
+        widget.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
 
-            local padding = " "
-            w.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
+        if popup and popup.visible then
+            local valuebox = popup.widget:get_children_by_id("valuebox")[1]
+            valuebox.markup = string.format(
+                " %s%%\n %s GHz\n %s°C",
+                last_values.usage,
+                last_values.freq,
+                last_values.temp
+            )
+        end
+    end
 
-            -- Atualiza o popup se estiver visível
-            if popup and popup.visible then
-                local valuebox = popup.widget:get_children_by_id("valuebox")[1]
-                valuebox.markup = string.format(
-                    " %s%%\n %s GHz\n %s°C",
-                    last_values.usage,
-                    last_values.freq,
-                    last_values.temp
-                )
-            end
-        end,
-        widget
-    )
+    system_monitor.connect_signal(update_widget)
+    gears.timer.delayed_call(update_widget)
 
     -- Eventos de mouse para mostrar/esconder popup
     widget:connect_signal("button::press", function(_, _, _, button)

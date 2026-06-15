@@ -2,6 +2,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
+local system_monitor = require("jkyon-widgets.status-bar.system_monitor")
 
 -- Função para criar o widget configurável
 local function gpu_monitor(args)
@@ -79,43 +80,33 @@ local function gpu_monitor(args)
         if popup then popup.visible = false end
     end
 
-    -- Atualiza o widget periodicamente
-    awful.widget.watch(
-        "nice --adjustment=10 sh /home/jkyon/ShellScript/TheseusMachine/StatusBar-Scripts/GPU-monitor.sh",
-        1, -- intervalo em segundos
-        function(w, stdout)
-            -- Processa a saída formatada
-            local usage = stdout:match("usage_percent:%s*(%d+)")
-            local freq = stdout:match("frequency_MHz:%s*(%d+)")
-            local temp = stdout:match("temperature_Celsius:%s*(%d+)")
+    local function update_widget()
+        local gpu = system_monitor.stats.gpu
+        last_values.usage = gpu.usage and tostring(gpu.usage) or "--"
+        last_values.freq = gpu.freq and tostring(gpu.freq) or "--"
+        last_values.temp = gpu.temp and tostring(gpu.temp) or "--"
 
-            -- Salva para o popup
-            last_values.usage = usage or "--"
-            last_values.freq  = freq or "--"
-            last_values.temp  = temp or "--"
+        local items = {}
+        if show_usage and gpu.usage then table.insert(items, string.format("%3s%%", gpu.usage)) end
+        if show_freq and gpu.freq then table.insert(items, string.format("%4s MHz", gpu.freq)) end
+        if show_temp and gpu.temp then table.insert(items, string.format("%3s°C ", gpu.temp)) end
 
-            local items = {}
-            if show_usage and usage then table.insert(items, string.format("%3s%%", usage)) end
-            if show_freq  and freq  then table.insert(items, string.format("%4s MHz", freq)) end
-            if show_temp  and temp  then table.insert(items, string.format("%3s°C ", temp)) end
+        local padding = " "
+        widget.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
 
-            -- Adiciona espaço extra no início e fim para acabamento
-            local padding = " "
-            w.markup = padding .. icon .. "<span font='MesloLGS Nerd Font Bold 8'>" .. table.concat(items, sep) .. "</span>" .. padding
+        if popup and popup.visible then
+            local valuebox = popup.widget:get_children_by_id("valuebox")[1]
+            valuebox.markup = string.format(
+                " %s%%\n %s MHz\n %s°C",
+                last_values.usage,
+                last_values.freq,
+                last_values.temp
+            )
+        end
+    end
 
-            -- Atualiza o popup se estiver visível
-            if popup and popup.visible then
-                local valuebox = popup.widget:get_children_by_id("valuebox")[1]
-                valuebox.markup = string.format(
-                    " %s%%\n %s MHz\n %s°C",
-                    last_values.usage,
-                    last_values.freq,
-                    last_values.temp
-                )
-            end
-        end,
-        widget
-    )
+    system_monitor.connect_signal(update_widget)
+    gears.timer.delayed_call(update_widget)
 
     -- Eventos de mouse para mostrar/esconder popup
     widget:connect_signal("button::press", function(_, _, _, button)
