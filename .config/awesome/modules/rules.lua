@@ -340,7 +340,7 @@ awful.rules.rules = {
 		rule = { class = "satty" },
 		properties = {
 			floating = true,
-			name = "satty",
+			-- name = "satty",
 			width = 3200, 	-- Defina o tamanho que deseja
 			height = 1350, 	-- Defina o tamanho que deseja
 			placement = awful.placement.centered,

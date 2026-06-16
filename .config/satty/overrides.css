@@ -1,6 +1,13 @@
 .outer_box,
-.toolbar {
-    color: #8caaee;
-    background-color: #303446aa;
-    border-radius: 10px;
+
+/* Toolbar de cima */
+.toolbar-top {
+    background-color: #303446ee;
+    border-radius: 0px 0px 10px 10px;
+}
+
+/* Toolbar de baixo */
+.toolbar-bottom {
+    background-color: #303446ee;
+    border-radius: 10px 10px 0px 0px;
 }

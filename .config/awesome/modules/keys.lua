@@ -247,12 +247,14 @@ clientkeys = gears.table.join(
     awful.key({}, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
     awful.key({}, "XF86AudioStop", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause") end),
 
-        -- Screenshot / Printscreen
-    -- awful.key({}, "Print", function () awful.util.spawn("flameshot gui") end),
-    -- awful.key({ "Shift" }, "Print", function () awful.util.spawn("flameshot screen") end),
-    -- awful.key({ "Control" }, "Print", function () awful.util.spawn("flameshot full") end),
+    -- Screenshot Seccion --
+    -- Screenshot selected region --
     awful.key({}, "Print", function()
-        awful.spawn.with_shell("maim | satty --filename -")
+        awful.spawn.with_shell("maim -s | satty --filename - --copy-command 'xclip -selection clipboard -t image/png'")
+    end),
+    -- Open satty GUI (all screen) --
+    awful.key({ modkey }, "Print", function()
+        awful.spawn.with_shell("maim | satty --filename - --copy-command 'xclip -selection clipboard -t image/png'")
     end),
 
         -- Lock screen
