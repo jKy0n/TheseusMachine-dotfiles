@@ -69,7 +69,5 @@ local signals = debug_loader.safe_require("modules.signals")
 local wallpaper = debug_loader.safe_require("modules.wallpaper")
 
 
--- jKyon Adds --
-
 -- Garbage collector settings --
 local garbage_collector = debug_loader.safe_require("modules.garbage_collector")
