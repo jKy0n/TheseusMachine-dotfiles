@@ -21,7 +21,7 @@ awful.tag.add(" emerge (1) ", {
 })
 
 awful.tag.add(" SSH (2) ", {
-    layout = awful.layout.suit.tile.left,
+    layout = awful.layout.suit.tile.bottom,
     screen = 1,
     selected = false
 })
