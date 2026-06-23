@@ -252,6 +252,10 @@ clientkeys = gears.table.join(
     awful.key({}, "Print", function()
         awful.spawn.with_shell("maim -s | satty --filename - --copy-command 'xclip -selection clipboard -t image/png'")
     end),
+    -- Screenshot selected region and save to clipboard --
+    awful.key({ "Control", "Shift" }, "Print", function()
+        awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png")
+    end),
     -- Open satty GUI (all screen) --
     awful.key({ modkey }, "Print", function()
         awful.spawn.with_shell("maim | satty --filename - --copy-command 'xclip -selection clipboard -t image/png'")
