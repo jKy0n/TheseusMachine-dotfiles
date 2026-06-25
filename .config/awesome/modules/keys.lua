@@ -29,7 +29,9 @@ local keys = {
     clientkeys = clientkeys
 }
 
--- {{{ Key bindings
+------------------------------------------------------------------------
+---------------------------  Key Bindings  -----------------------------
+
 globalkeys = gears.table.join(
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -76,27 +78,28 @@ globalkeys = gears.table.join(
         end,
         {description = "go back", group = "client"}),
 
-    -- Standard program
+------------------------------------------------------------------------
+-----------------------  Terminal Key Bindings  ------------------------
 
-    -- Super + Enter = Terminal
+    -- Terminal = Super + Enter
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
 
-    -- Terminal quick floating
-    awful.key({ modkey, "Control" }, "Return", function ()
+    -- Terminal Floating = Super + Shift + Enter
+    awful.key({ modkey, "Shift"   }, "Return", function ()
                 awful.spawn.with_shell( "NO_TMUX=1 alacritty --class floating-terminal" ) end,
               {description = "open a quick floating terminal", group = "launcher"}),
 
-    -- Super + Shift + Enter = Terminal without tmux
-    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn.with_shell("NO_TMUX=1 alacritty") end,
+    -- Terminal without tmux = Super + Control + Enter
+    awful.key({ modkey, "Control" }, "Return", function () awful.spawn.with_shell("NO_TMUX=1 alacritty") end,
               {description = "open a terminal without tmux", group = "launcher"}),
 
 
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    -- awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-    --           {description = "quit awesome", group = "awesome"}),
 
+------------------------------------------------------------------------
+------------------------  Tiles Manipulation  --------------------------
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -115,6 +118,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
+    -- ??
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
@@ -127,7 +131,9 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
+------------------------------------------------------------------------
+-----------------------------  Prompts   -------------------------------
+
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
@@ -142,7 +148,10 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
 
-    -- Super + p = Rofi Launcher
+------------------------------------------------------------------------
+--------------------------  Rofi Launcher   ----------------------------
+
+    -- Rofi Launcher = Super + p
     awful.key({ modkey, }, "p",
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
                                             -modes \"drun,run,file-browser-extended,window,emoji,calc\" -show drun \
@@ -151,7 +160,7 @@ globalkeys = gears.table.join(
             {description = "show rofi launcher", group = "launcher"}),
 
 
-    -- Super + i = rofi recoll
+    -- Rofi Recoll = Super + i
     awful.key({ modkey, }, "i",
         function () awful.util.spawn("rofi -config /home/jkyon/.config/rofi/config.rasi \
                                         -modi \"recoll:/home/jkyon/.config/rofi/scripts/recoll\" -show recoll \
@@ -160,7 +169,7 @@ globalkeys = gears.table.join(
         {description = "show rofi recoll", group = "launcher"}),
 
 
-    -- Super + o = Rofi emojis
+    -- Rofi Emojis = Super + o
     awful.key({ modkey, }, "o",
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
                                             -modes \"drun,emoji\" -show emoji \
@@ -170,7 +179,7 @@ globalkeys = gears.table.join(
             {description = "show rofi emojis", group = "launcher"}),
 
 
-    -- Super + tab = Task Switcher
+    -- Task Switcher = Super + tab
     awful.key({ modkey, }, "Tab",
         function () awful.util.spawn("rofi  -config /home/jkyon/.config/rofi/config.rasi \
                                             -show window \
@@ -184,60 +193,60 @@ globalkeys = gears.table.join(
             end,
             {description = "show rofi task switcher", group = "launcher"}),
 
-    -- Shortcuts for launching common applications
-    -- super + e = File Manager (Dolphin)
+------------------------------------------------------------------------
+------------  Shortcuts for Launching Common Applications  -------------
+
+    -- File Manager (Dolphin) = super + e
     awful.key({ modkey, }, "e", function () awful.util.spawn("dolphin") end,
         {description = "open file manager", group = "launcher"}),
 
-    -- super + w = Web Browser (Firefox)
+    -- Web Browser (Firefox) = super + w
     awful.key({ modkey, }, "w", function () awful.util.spawn("firefox") end,
         {description = "open web browser", group = "launcher"}),
 
-    -- super + v = Code Editor (Visual Studio Code)
+    -- Code Editor (Visual Studio Code) = super + v
     awful.key({ modkey, }, "v", function () awful.util.spawn("code")    end,
         {description = "open code editor", group = "launcher"}),
 
-    -- super + c = Calculator (Gnome Calculator)
+    -- Calculator (Gnome Calculator) = super + c
     awful.key({ modkey, }, "c", function () awful.util.spawn("gnome-calculator")    end,
         {description = "open calculator", group = "launcher"}),
 
-    -- Shortcut for quick start apps on Viamar PC --
-    -- Super + Shift + Pause = Open Viamar PC startup apps
+------------------------------------------------------------------------
+----------  Shortcut for quick start apps on TheseusMachine  -----------
+
+    -- Startup All Applications = Super + Shift + Pause
     awful.key({ modkey, "Shift" }, "Pause", function () require("scripts.autostart").run() end,
         {description = "open viamar pc startup apps", group = "launcher"}),
 
----------------------  Tags Manipulation keybinds  ---------------------
 ------------------------------------------------------------------------
+---------------------  Tags Manipulation keybinds  ---------------------
 
-    -- super + a = create new tag
+    -- Create new tag = Super + a
     awful.key({ modkey,           }, "a", tags_utils.add_tag,
         {description = "add a tag", group = "tag"}),
 
-    -- super + shift + a = delete the current tag
+    -- Delete the current tag = Super + Shift + a
     awful.key({ modkey, "Shift"   }, "a", tags_utils.delete_tag,
         {description = "delete the current tag", group = "tag"}),
 
-    -- super + shift + r = rename the current tag
+    -- Rename the current tag = Super + Shift + r
     awful.key({ modkey, "Shift"   }, "r", tags_utils.rename_tag,
         {description = "rename the current tag", group = "tag"}),
 
-    -- super + alt + a = create new tag with current window
+    -- Create new tag with current window = Super + Alt + a
     awful.key({ modkey, "Mod1"   }, "a", tags_utils.move_to_new_tag,
         {description = "add a tag with the focused client", group = "tag"})
-
-------------------------------------------------------------------------
-------------------------------------------------------------------------
 )
 
-clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
+------------------------------------------------------------------------
+------------------------  Client Key Bindings  -------------------------
 
-        -- Audio control
+clientkeys = gears.table.join(
+
+------------------------------------------------------------------------
+---------------------------  Audio Control   ---------------------------
+
     awful.key({}, "XF86AudioRaiseVolume", function() volume_widget_module:inc(5) end),
     awful.key({}, "XF86AudioLowerVolume", function() volume_widget_module:dec(5) end),
     awful.key({}, "XF86AudioMute", function() volume_widget_module:toggle() end),
@@ -247,22 +256,27 @@ clientkeys = gears.table.join(
     awful.key({}, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
     awful.key({}, "XF86AudioStop", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause") end),
 
-    -- Screenshot Seccion --
-    -- Screenshot selected region --
+------------------------------------------------------------------------
+------------------------  Screenshot Section   -------------------------
+
+    -- Screenshot selected region = Print Screen
     awful.key({}, "Print", function()
         awful.spawn.with_shell("maim -s | satty --filename - --copy-command 'xclip -selection clipboard -t image/png'")
     end),
-    -- Screenshot selected region and save to clipboard --
+    -- Screenshot selected region and save to clipboard = Ctrl + Shift + Print Screen
     awful.key({ "Control", "Shift" }, "Print", function()
         awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png")
     end),
-    -- Open satty GUI (all screen) --
+    -- Open satty GUI (all screen) = Super + Print Screen
     awful.key({ modkey }, "Print", function()
         awful.spawn.with_shell("maim | satty --filename - --copy-command 'xclip -selection clipboard -t image/png'")
     end),
 
-        -- Lock screen
-    awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-locker-command --lock") end),
+------------------------------------------------------------------------
+--------------------------------  ???  ---------------------------------
+
+        -- Lock Screen --
+    -- awful.key({ modkey, "Control" }, "Escape", function () awful.util.spawn("light-locker-command --lock") end),
 
         -- Centralize window --
     awful.key({ modkey, "Shift" }, "o", function()
@@ -271,17 +285,30 @@ clientkeys = gears.table.join(
         end
     end, {description = "centralize window", group = "client"}),
 
+        -- Fullscreen Toggle --
+    awful.key({ modkey,           }, "f",
+        function (c)
+            c.fullscreen = not c.fullscreen
+            c:raise()
+        end,
+        {description = "toggle fullscreen", group = "client"}),
+
 
     awful.key({ modkey, "Mod1"   }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
+
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
+
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-    --           {description = "move to screen", group = "client"}),
+
+   -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+   --         {description = "move to screen", group = "client"}),
+
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
+
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -289,18 +316,21 @@ clientkeys = gears.table.join(
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
+
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized = not c.maximized
             c:raise()
         end ,
         {description = "(un)maximize", group = "client"}),
+
     awful.key({ modkey, "Control" }, "m",
         function (c)
             c.maximized_vertical = not c.maximized_vertical
             c:raise()
         end ,
         {description = "(un)maximize vertically", group = "client"}),
+
     awful.key({ modkey, "Shift"   }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
