@@ -24,14 +24,14 @@ awful.rules.rules = {
 	{
 		rule = {},
 		properties = {
-			border_width = beautiful.border_width,
 			border_color = beautiful.border_normal,
-			focus = custom_focus_filter,
-			raise = true,
-			keys = clientkeys,
+			border_width = beautiful.border_width,
 			buttons = clientbuttons,
-			screen = awful.screen.preferred,
+			focus = custom_focus_filter,
+			keys = clientkeys,
 			placement = awful.placement.centered,
+			raise = true,
+			screen = awful.screen.preferred,
 		},
 	},
 
@@ -92,7 +92,6 @@ awful.rules.rules = {
 		rule = { class = "feh" },
 		properties = {
 			floating = true,
-			name = "feh",
 			width = 2752, -- Defina o tamanho que deseja
 			height = 1152, -- Defina o tamanho que deseja
 			x = 1424, -- Posição x
@@ -137,17 +136,27 @@ awful.rules.rules = {
 
 	{
 		rule = { class = "gnome-calculator" },
-		properties = { floating = true, placement = awful.placement.centered },
+		properties = {
+			floating = true,
+			ontop = true,
+			placement = awful.placement.centered
+		},
 	},
 
 	{
 		rule_any = { class = { "Gnome-disks", "gnome-disks" } },
-		properties = { floating = true, placement = awful.placement.centered },
+		properties = {
+			floating = true,
+			placement = awful.placement.centered
+		},
 	},
 
 	{
 		rule = { class = "gpartedbin" },
-		properties = { floating = true, placement = awful.placement.centered },
+		properties = {
+			floating = true,
+			placement = awful.placement.centered
+		},
 	},
 
 	{
@@ -162,7 +171,10 @@ awful.rules.rules = {
 
 	{
 		rule = { class = "Gnome-screenshot" },
-		properties = { floating = true, placement = awful.placement.centered },
+		properties = {
+			floating = true,
+			placement = awful.placement.centered
+		},
 	},
 
 -- H
@@ -226,7 +238,6 @@ awful.rules.rules = {
 		rule_any = { class = { "mupdf", "MuPDF" } },
 		properties = {
 			floating = true,
-			name = "muPDF",
 			width = 2752, -- Defina o tamanho que deseja
 			height = 864, -- Defina o tamanho que deseja = 864
 			screen = 1,
@@ -249,7 +260,6 @@ awful.rules.rules = {
 		rule_any = { class = { "okular", "okular" } },
 		properties = {
 			floating = true,
-			name = "Okular",
 			width = 1536, -- Defina o tamanho que deseja
 			height = 1200, -- Defina o tamanho que deseja
 			screen = 1,
@@ -340,7 +350,6 @@ awful.rules.rules = {
 		rule = { class = "satty" },
 		properties = {
 			floating = true,
-			-- name = "satty",
 			width = 3200, 	-- Defina o tamanho que deseja
 			height = 1350, 	-- Defina o tamanho que deseja
 			placement = awful.placement.centered,
