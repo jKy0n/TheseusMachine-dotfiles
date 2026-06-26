@@ -47,7 +47,7 @@ portage_checker:buttons(gears.table.join(
 ))
 
 local function update_widget()
-    awful.spawn.easy_async_with_shell('LC_MESSAGES=C emerge -pvuND @world', function(stdout)
+    awful.spawn.easy_async_with_shell('LC_MESSAGES=C emerge -puND --quiet @world', function(stdout)
         local num_pkgs = stdout:match("Total: (%d+) packages")
         if num_pkgs and num_pkgs ~= "0" then
             portage_checker.text = "  " .. num_pkgs .. " Pkgs |"
