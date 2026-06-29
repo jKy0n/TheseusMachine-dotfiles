@@ -316,6 +316,11 @@ awful.rules.rules = {
 		properties = { floating = false, tag = screen[2].tags[3] },
 	},
 
+	{
+		rule_any = { class = { "pwvucontrol", "Pwvucontrol" } },
+		properties = { floating = false, tag = screen[2].tags[3] },
+	},
+
 -- Q
 --
 	{

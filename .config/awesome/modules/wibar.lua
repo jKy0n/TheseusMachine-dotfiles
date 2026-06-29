@@ -18,8 +18,9 @@ local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout
 -- load jkyon-widgets
 local internet_widget = require("jkyon-widgets.internet_widget")
 local dnd_widget = require("jkyon-widgets.DoNotDisturb_widget")
-local portage_checker = require("jkyon-widgets.portage_update_checker")
-local notification_widget = require("jkyon-widgets.notification_center_widget")
+local ephedrine = require("jkyon-widgets.ephedrine.ephedrine")
+local portage_checker = require("jkyon-widgets.portage-update-checker.portage-update-checker")
+-- local notification_widget = require("jkyon-widgets.notification_center_widget")
 -- load jkyon monitors
 local cpu_monitor = require("jkyon-widgets.cpu_monitor")
 local ram_monitor = require("jkyon-widgets.ram_monitor")
@@ -150,16 +151,16 @@ function  wibar.setup(s)
 
                 wibox.widget.systray(),
 
-                        tbox_separator_space,
+                        -- tbox_separator_space,
 
                 -- weather_api_widget({
                     --     api_key='b08df374f2a4412d887190759250711',
                     --     coordinates = {-24.0058, -46.4028},
                     -- }),
 
-                        tbox_separator_space,
+                        -- tbox_separator_space,
 
-                notification_widget.create(),
+                -- notification_widget.create(),
 
                         tbox_separator_space,
 
@@ -168,6 +169,10 @@ function  wibar.setup(s)
                         tbox_separator_space,
 
                 dnd_widget,
+
+                        tbox_separator_space,
+
+                ephedrine,
 
                         tbox_separator_space,
 

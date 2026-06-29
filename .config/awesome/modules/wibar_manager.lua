@@ -43,18 +43,18 @@ function wibar_manager.setup(taglist_buttons, tasklist_buttons)
         },
    }
 
-   
+
 
 -- ------------------------------------------------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------
 
 
     -- Create the wibox monitor 1
-    s.mywibox = awful.wibar({   position = "top", 
-                                screen = s, 
-                                opacity = 0.8, 
-                                border_width = 3, 
-                                shape = gears.shape.rounded_rect 
+    s.mywibox = awful.wibar({   position = "top",
+                                screen = s,
+                                opacity = 0.8,
+                                border_width = 3,
+                                shape = gears.shape.rounded_rect
     })
 
 -------------------------------------------------------------------------------------

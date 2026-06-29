@@ -1,11 +1,11 @@
 --[[
 --       Title:      notification_manager.lua
---       Brief:      
+--       Brief:
 --       Path:       /home/jkyon/.config/awesome/modules/notification_manager.lua
 --       Author:     John Kennedy a.k.a. jKyon
 --       Created:    2025-07-13
 --       Updated:    2026-03-17
---       Notes:      
+--       Notes:
 --]]
 
 
@@ -23,8 +23,8 @@ naughty.config.defaults = {
     margin = 10,
     ontop = true,
     font = "MesloLGS Nerd Font Bold 12", -- Fonte
-    icon_size = 300,
-    border_width = 2,
+    icon_size = 100,
+    border_width = 3,
     border_color = beautiful.border_focus,
 }
 

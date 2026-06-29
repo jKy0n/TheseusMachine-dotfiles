@@ -97,7 +97,7 @@ local function cpu_monitor(args)
             valuebox.markup = string.format(
                 " %s%%\n %s GHz\n %s°C",
                 last_values.usage,
-                last_values.freq,
+                last_values.freq, 
                 last_values.temp
             )
         end

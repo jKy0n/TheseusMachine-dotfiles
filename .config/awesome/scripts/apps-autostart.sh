@@ -20,7 +20,7 @@ start_app() {
 }
 
 # --- Audio ---
-start_app "pavucontrol"              # Mixer de áudio
+start_app "pwvucontrol"              # Mixer de áudio
 start_app "spotify"                  # Player de música
 
 # --- Produtividade ---
