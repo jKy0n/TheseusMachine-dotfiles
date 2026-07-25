@@ -26,7 +26,7 @@ local color_palette = require("themes.jkyon.color_palette")
 
 local font = "MesloLGS Nerd Font Bold 8"
 
-local wallpaper = "/home/jkyon/Pictures/Wallpapers/LinuxWallpapers/BlueNebula8K.jpg"
+local wallpaper = "/home/jkyon/Pictures/Wallpapers/LinuxWallpapers/multi-monitor-wallpapers.jpg"
 
 -------------------------------------------------------
 ------------------------ Theme ------------------------

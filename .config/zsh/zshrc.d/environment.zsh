@@ -24,7 +24,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Configurações distcc
 export DISTCC_HOSTS=" \
-                    192.168.15.30/8,lzo \
                     100.100.10.20/10,lzo \
                     100.100.10.50/10,lzo \
                     localhost/24"

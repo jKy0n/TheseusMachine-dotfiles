@@ -1,13 +1,12 @@
---[[
+--
 --       Title:      wallpaper.lua
 --       Brief:      Configuração do wallpaper
 --       Path:       /home/jkyon/.config/awesome/modules/wallpaper.lua
 --       Author:     John Kennedy a.k.a. jKyon
 --       Created:    2026-03-14
---       Updated:    2026-03-14
+--       Updated:    2026-07-23
 --       Notes:      Reduzir isso depois
---]]
-
+--
 
 local awful = require("awful")
 local beautiful = require("beautiful")

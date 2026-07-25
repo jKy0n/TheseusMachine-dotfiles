@@ -50,11 +50,11 @@ awful.tag.add(" Finance (6) ", {
     selected = false
 })
 
-awful.tag.add(" Goddess (7) ", {
-    layout = awful.layout.suit.tile.bottom,
-    screen = 1,
-    selected = false
-})
+-- awful.tag.add(" Goddess (7) ", {
+--     layout = awful.layout.suit.tile.bottom,
+--     screen = 1,
+--     selected = false
+-- })
 
 -- awful.tag.add(" Telegram (8) ", {
 --     layout = awful.layout.suit.tile.bottom,

@@ -138,7 +138,7 @@ function  wibar.setup(s)
                     widget_type = 'arc',
                     thickness   = 2 ,
                     step        = 5 ,
-                    mixer_cmd   = 'pavucontrol',
+                    mixer_cmd   = 'pwvucontrol',
                     device      = '@DEFAULT_SINK@',
                     tooltip     = false
                     }),
