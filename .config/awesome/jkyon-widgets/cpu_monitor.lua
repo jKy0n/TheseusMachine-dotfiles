@@ -81,12 +81,12 @@ local function cpu_monitor(args)
     local function update_widget()
         local cpu = system_monitor.stats.cpu
         last_values.usage = cpu.usage and tostring(cpu.usage) or "--"
-        last_values.freq = cpu.freq and tostring(cpu.freq) or "--"
+        last_values.freq = cpu.freq and string.format("%.2f", cpu.freq) or "--"
         last_values.temp = cpu.temp and tostring(cpu.temp) or "--"
 
         local items = {}
-        if show_usage and cpu.usage then table.insert(items, string.format("%3s%%", cpu.usage)) end
-        if show_freq and cpu.freq then table.insert(items, string.format("%4s MHz", cpu.freq)) end
+        if show_usage and cpu.usage then table.insert(items, string.format("%3s%% ", cpu.usage)) end
+        if show_freq and cpu.freq then table.insert(items, string.format("%.2f GHz", cpu.freq)) end
         if show_temp and cpu.temp then table.insert(items, string.format("%3s°C ", cpu.temp)) end
 
         local padding = " "
@@ -97,7 +97,7 @@ local function cpu_monitor(args)
             valuebox.markup = string.format(
                 " %s%%\n %s GHz\n %s°C",
                 last_values.usage,
-                last_values.freq, 
+                last_values.freq,
                 last_values.temp
             )
         end

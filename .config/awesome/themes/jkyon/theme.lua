@@ -1,4 +1,4 @@
---[[
+--
 --       Title:      theme.lua
 --       Brief:      Tema personalizado para AwesomeWM, baseado na paleta de cores do tema Catppuccinno Frappé
 --       Path:       /home/jkyon/.config/awesome/themes/jkyon/theme.lua
@@ -6,11 +6,8 @@
 --       Created:    2025-03-04
 --       Updated:    2026-03-19
 --       Notes:
---]]
+--
 
-
--- local beautiful = require("beautiful")
--- local theme_assets = require("beautiful.theme_assets")
 
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -33,10 +30,6 @@ local wallpaper = "/home/jkyon/Pictures/Wallpapers/LinuxWallpapers/multi-monitor
 
 local theme = {}
 
--- fonte do Awesome --
-theme.font              =   font
-
--- Basicamente bg é fundo e fg é texto --
 -- Cor de fundo da Wibar --
 theme.bg_normal         =   color_palette.base
 theme.bg_focus          =   color_palette.blue
@@ -66,8 +59,8 @@ theme.useless_gap       =   dpi(2)
 theme.border_width      =   dpi(3)
 
 -- Cantos arredondados para a taglist e notificações --
-theme.taglist_shape = gears.shape.rounded_rect
-theme.notification_shape = gears.shape.rounded_rect
+theme.taglist_shape     =   gears.shape.rounded_rect
+theme.notification_shape =  gears.shape.rounded_rect
 
 -- Ícones dos layouts --
 theme.layout_floating   =   themes_path.."default/layouts/floatingw.png"
@@ -77,7 +70,10 @@ theme.layout_tileleft   =   themes_path.."default/layouts/tileleftw.png"
 theme.layout_tiletop    =   themes_path.."default/layouts/tiletopw.png"
 theme.layout_tilebottom =   themes_path.."default/layouts/tilebottomw.png"
 
+-- fonte do Awesome --
+theme.font              =   font
+
 -- Wallpaper --
-theme.wallpaper = wallpaper
+theme.wallpaper         =   wallpaper
 
 return theme
