@@ -1,18 +1,17 @@
---[[
-        Title:      keys.lua
-        Brief:      Configuration of keybindings for AwesomeWM
-        Path:       /home/jkyon/.config/awesome/modules/keys.lua
-        Author:     John Kennedy a.k.a. jKyon
-        Created:    2025-07-13
-        Updated:    2026-06-29
-        Notes:
-                Custom keybindings for AwesomeWM.
-                Provides a set of global and client-specific keybindings to enhance user interaction and workflow.
-                Atalhos personalizados para o AwesomeWM.
-                Fornece um conjunto de atalhos globais e específicos do cliente para melhorar a interação do usuário
-                e o fluxo de trabalho.
---]]
-
+--
+--        Title:      keys.lua
+--        Brief:      Configuration of keybindings for AwesomeWM
+--        Path:       /home/jkyon/.config/awesome/modules/keys.lua
+--        Author:     John Kennedy a.k.a. jKyon
+--        Created:    2025-07-13
+--        Updated:    2026-06-29
+--        Notes:
+--                Custom keybindings for AwesomeWM.
+--                Provides a set of global and client-specific keybindings to enhance user interaction and workflow.
+--                Atalhos personalizados para o AwesomeWM.
+--                Fornece um conjunto de atalhos globais e específicos do cliente para melhorar a interação do usuário
+--                e o fluxo de trabalho.
+--
 
 ------------------------------------------------------------------------------------
 ---------------------------------  Load Libraries  ---------------------------------
