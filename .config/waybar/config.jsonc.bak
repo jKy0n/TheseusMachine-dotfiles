@@ -1,0 +1,40 @@
+[
+  {
+    "output": "DP-1",
+    "layer": "top",
+    "position": "top",
+    "height": 16,
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-right": ["cpu", "temperature", "memory", "pulseaudio", "tray", "clock"],
+
+    "niri/workspaces": {},
+    "niri/window": { "max-length": 60 },
+    "tray": { "spacing": 8 },
+    "wireplumber#sink": {
+        "format": " {icon} {volume}% ",
+        "format-muted": "󰅶",
+        "format-icons": ["", "", ""],
+        "on-click": "pwvucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5
+    },
+    "cpu": { "format": "{usage}% | {avg_frequency}GHz"},
+    "temperature": {
+      "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+      "format": " | {temperatureC}°C"
+    },
+    "memory": { "format": "  {}%" },
+    "clock": { "format": "{:%d/%m %H:%M}" }
+  },
+  {
+    "output": ["HDMI-A-1", "HDMI-A-2"],
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "modules-left": ["niri/workspaces"],
+    "modules-right": ["clock"],
+
+    "niri/workspaces": {},
+    "clock": { "format": "%H:%M" }
+  }
+]

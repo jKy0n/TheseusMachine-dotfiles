@@ -1,0 +1,92 @@
+@import "frappe.css";
+
+* {
+    font-family: mesloLGS Nerd Font mono;
+    font-weight: bold;
+    font-size: 10px;
+    min-height: 0;
+}
+
+#waybar {
+    background: @base;
+    margin: 2rem;
+    padding: 1.2rem;
+}
+
+#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces {
+    border-radius: 1rem;
+    margin: 5px;
+    background-color: @surface0;
+    margin-left: 1rem;
+}
+
+#workspaces button {
+    color: @text;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+#workspaces button.active {
+    color: @crust;
+    background-color: @blue;
+    border-radius: 1rem;
+}
+
+#workspaces button:hover {
+    color: @crust;
+    border-radius: 1rem;
+}
+
+#window {
+    color: @text;
+    border-radius: 1rem;
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+}
+
+#pulseaudio {
+    color: @text;
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+    border-radius: 1rem 1rem 1rem 1rem;
+}
+
+#clock {
+    color: @text;
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+    border-radius: 1rem 1rem 1rem 1rem;
+}
+
+#tray {
+    color: @text;
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+    border-radius: 1rem 1rem 1rem 1rem;
+}
+
+#cpu, #memory, #temperature {
+    color: @text;
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+    border-radius: 1rem 1rem 1rem 1rem;
+}
+
+#menu {
+    border-radius: 15px;
+    background: #161320;
+    color: #B5E8E0;
+}
+
+#menuitem {
+    border-radius: 15px;
+}
