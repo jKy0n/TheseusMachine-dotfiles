@@ -6,26 +6,33 @@
 //        Created:    2026-07-31
 //        Updated:    2026-07-31
 //        Notes:
-//                    modules/binds.kdl
 //                    Baseado no bind set padrão do niri — mantido quase inteiro de propósito,
 //                    pra você ir pegando o vocabulário de ações.
 //                    Mod = Super por padrão numa sessão de verdade (TTY/SDDM) — não precisa configurar isso.
 
 
 binds {
+    //  ---  Help menu  ---
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // --- Apps do dia a dia ---
+    //  ---  Terminal  ---
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+W hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
-    Mod+V hotkey-overlay-title="Open VS Code" { spawn "code"; }
-    Mod+P hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Control+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn-sh "NO_TMUX=1 alacritty"; }
 
+    //  ---  Apps do dia a dia  ---
+    Mod+C hotkey-overlay-title="Open Calculator" { spawn "gnome-calculator"; }
+    Mod+E hotkey-overlay-title="Open Dolphin" { spawn "dolphin"; }
+    Mod+V hotkey-overlay-title="Open VS Code" { spawn "code"; }
+    Mod+W hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
+
+    //  ---  Rofi  ---
+    Mod+P hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi  -config /home/jkyon/.config/rofi/config.rasi -modes \"drun\" -show drun -theme /home/jkyon/.config/rofi/theme.rasi"; }
+
+    // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
@@ -141,7 +148,7 @@ binds {
     Mod+Shift+F { fullscreen-window; }
     Mod+M { maximize-window-to-edges; }
     Mod+Ctrl+F { expand-column-to-available-width; }
-    Mod+C { center-column; }
+    Mod+Shift+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
     Mod+Minus { set-column-width "-10%"; }
@@ -157,12 +164,9 @@ binds {
     Mod+Ctrl+W { toggle-column-tabbed-display; }
 
     // --- Screenshot ---
-
-    Print { spawn-sh "grim -t ppm -g \"$(slurp -d)\" - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
-
-    // Print { screenshot; }
-    // Ctrl+Print { screenshot-screen; }
-    // Alt+Print { screenshot-window; }
+    Print { spawn-sh "grim -t ppm - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
+//  Mod+Print { spawn-sh }
+    Mod+Shift+Print { spawn-sh "grim -t ppm -g \"$(slurp -d)\" - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
 
     // --- Segurança/saída ---
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

@@ -16,25 +16,26 @@ window-rule {
 
 // --- Pinagem em workspace nomeado (equivalente ao tag = screen[N].tags[M]) ---
 
-window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
-window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "notes"; }
-window-rule { match app-id="(?i)^pavucontrol$"; open-on-workspace "audio"; }
-window-rule { match app-id="(?i)^pulseeffects$"; open-on-workspace "audio"; }
-window-rule { match app-id="(?i)^pwvucontrol$"; open-on-workspace "audio"; }
-window-rule { match app-id="^discord$"; open-on-workspace "chat"; }
-window-rule { match app-id="^Google-chrome$"; open-on-workspace "chrome"; }
-window-rule { match app-id="^Rambox$"; open-on-workspace "chat"; }
-window-rule { match app-id="^Spotify$"; open-on-workspace "audio"; }
-window-rule { match app-id="^thunderbird$"; open-on-workspace "mail"; }
-window-rule { match title="(?i)^kde connect$"; open-on-workspace "kde-utils"; }
+// window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
+// window-rule { match title="(?i)^kde connect$"; open-on-workspace "kde-utils"; }
+window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes"; }
+window-rule { match app-id="(?i)^pavucontrol$"; open-on-workspace "Audio"; }
+window-rule { match app-id="(?i)^pulseeffects$"; open-on-workspace "Audio"; }
+window-rule { match app-id="(?i)^pwvucontrol$"; open-on-workspace "Audio"; }
+window-rule { match app-id="^discord$"; open-on-workspace "Chat"; }
+window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media"; }
+window-rule { match app-id="^Rambox$"; open-on-workspace "Chat"; }
+window-rule { match app-id="^Spotify$"; open-on-workspace "Audio"; }
+window-rule { match app-id="^thunderbird$"; open-on-workspace "Mail"; }
 
 // --- Ex-"volatile tags": mesmo destino, mais o floating de quem tinha ---
 
 window-rule { match app-id="(?i)^gimp$"; open-on-workspace "GIMP"; }
-window-rule { match app-id="(?i)^telegram-desktop$"; open-on-workspace "telegram"; }
+window-rule { match app-id="(?i)^telegram-desktop$"; open-on-workspace "Telegram"; }
 window-rule { match app-id="(?i)^virt-manager$"; open-on-workspace "VirtManager"; open-floating true; }
 window-rule { match app-id="^steam$"; open-on-workspace "Steam"; }
 window-rule { match app-id="^teams-for-linux$"; open-on-workspace "Teams"; }
+
 window-rule { match title="(?i)^lm studio$"; open-on-workspace "LLMs"; }
 window-rule { match title="^Back In Time$"; open-on-workspace "BackUp"; open-floating true; }
 window-rule { match title="^GPT4All$"; open-on-workspace "LLMs"; }
