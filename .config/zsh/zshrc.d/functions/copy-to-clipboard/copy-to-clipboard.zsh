@@ -1,9 +1,17 @@
 #!/bin/zsh
-
-# copy-to-clipboard 2.0 - Zsh Function
-# Dual-output: Terminal (humanized) + Clipboard (IA-optimized)
-# Logic: 0=IA, 1=Humanized
-
+#
+#        Title:      copy-to-clipboard.zsh
+#        Brief:
+#        Path:       /home/jkyon/.config/zsh/zshrc.d/functions/copy-to-clipboard/copy-to-clipboard.zsh
+#        Author:     John Kennedy a.k.a. jKyon
+#        Created:    2026-06-21
+#        Updated:    2026-08-01
+#        Notes:
+#                    copy-to-clipboard 2.0 - Zsh Function
+#                    Dual-output: Terminal (humanized) + Clipboard (IA-optimized)
+#                    Logic: 0=IA, 1=Humanized
+#
+#
 # ========== PREEXEC HOOK ==========
 # Captures the full command line BEFORE execution (so fc isn't needed)
 if ! (( ${+functions[__ctc_preexec]} )); then
@@ -15,14 +23,31 @@ fi
 function copy-to-clipboard() {
     # ========== VERSION & HELP ==========
 
-    local version="2.0"
+    local version="2.1"
+
+    # ========== DISPLAY SERVER DETECTION ==========
+    # WAYLAND_DISPLAY is set by the compositor itself (niri, sway, etc.) and
+    # is inherited by every child process - checking it is more reliable than
+    # parsing XDG_SESSION_TYPE, which some setups forget to export.
+    # DISPLAY is checked second so a WAYLAND_DISPLAY leftover from XWayland
+    # apps doesn't get misread as "we're on X11".
+    local clipboard_backend=""
+    local clipboard_bin=""
+
+    if [[ -n "$WAYLAND_DISPLAY" ]]; then
+        clipboard_backend="wayland"
+        clipboard_bin="wl-copy"
+    elif [[ -n "$DISPLAY" ]]; then
+        clipboard_backend="x11"
+        clipboard_bin="xclip"
+    fi
 
     # Check for help/version first
     for arg in "$@"; do
         case "$arg" in
             -h|--help)
                 cat << 'EOF'
-copy-to-clipboard 2.0 - Dual-Output Clipboard Manager
+copy-to-clipboard 2.1 - Dual-Output Clipboard Manager
 
 USAGE:
     copy-to-clipboard [OPTIONS] [COMMAND]
@@ -61,42 +86,57 @@ EXAMPLES:
 
 FEATURES:
     ✓ Dual-output: humanized terminal + IA-optimized clipboard
-    ✓ Automatic fallback: xclip → OSC 52 → file
-    ✓ SSH-friendly (X11 forwarding support)
+    ✓ Auto-detects display server: Wayland (wl-copy) or X11 (xclip)
+    ✓ Automatic fallback: native backend → OSC 52 → file
+    ✓ SSH-friendly (OSC 52 works without X11/Wayland forwarding)
     ✓ Silent mode for scripts
     ✓ File export for emergencies
     ✓ Metadata in IA-format (status, method, size, timestamp)
 
 ENVIRONMENT:
-    DISPLAY             X11 display (for xclip)
-    TERM                Terminal type (for OSC 52 support)
+    WAYLAND_DISPLAY      Set by the compositor -> selects wl-copy (Wayland)
+    DISPLAY              X11 display -> selects xclip (X11, checked if no Wayland)
+    TERM                 Terminal type (for OSC 52 support)
 
 CLIPBOARD BACKENDS:
-    1. xclip (primary)
-    2. OSC 52 (SSH-friendly)
-    3. File export (fallback)
+    1. wl-copy (Wayland, auto-detected via $WAYLAND_DISPLAY)
+    2. xclip (X11, auto-detected via $DISPLAY)
+    3. OSC 52 (SSH-friendly, used if the native backend is unavailable)
+    4. File export (last-resort fallback)
 
 For more info: https://github.com/jKy0n/TheseusMachine-dotfiles/tree/main/.config/zsh
 EOF
                 return 0
                 ;;
             -v|--version)
-                if command -v xclip &> /dev/null; then
+                if [[ "$clipboard_backend" == "wayland" ]] && command -v wl-copy &> /dev/null; then
+                    local wl_version=$(wl-copy --version 2>&1 | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1)
+                    echo "copy-to-clipboard version $version (backend: wayland, wl-clipboard v${wl_version:-unknown})"
+                elif [[ "$clipboard_backend" == "x11" ]] && command -v xclip &> /dev/null; then
                     local xclip_version=$(xclip -version 2>&1 | head -n1 | grep -oE '[0-9]+\.[0-9]+' || echo "unknown")
-                    echo "copy-to-clipboard version $version (with xclip v$xclip_version)"
+                    echo "copy-to-clipboard version $version (backend: x11, xclip v$xclip_version)"
                 else
-                    echo "copy-to-clipboard version $version (xclip not found)"
+                    echo "copy-to-clipboard version $version (backend: ${clipboard_backend:-none}, $clipboard_bin not found)"
                 fi
                 return 0
                 ;;
         esac
     done
 
-    # ========== VERIFY XCLIP ==========
+    # ========== VERIFY CLIPBOARD BACKEND ==========
 
-    if ! command -v xclip &> /dev/null; then
-        echo "❌ Erro: xclip não está instalado"
-        echo "   Instale com: sudo pacman -S xclip"
+    if [[ -z "$clipboard_backend" ]]; then
+        echo "❌ Erro: nenhum display gráfico detectado (\$WAYLAND_DISPLAY e \$DISPLAY vazios)"
+        return 1
+    fi
+
+    if ! command -v "$clipboard_bin" &> /dev/null; then
+        echo "❌ Erro: $clipboard_bin não está instalado (backend: $clipboard_backend)"
+        if [[ "$clipboard_backend" == "wayland" ]]; then
+            echo "   Instale com: sudo emerge -av gui-apps/wl-clipboard"
+        else
+            echo "   Instale com: sudo emerge -av x11-misc/xclip"
+        fi
         return 1
     fi
 
@@ -179,7 +219,7 @@ EOF
     if [[ $clipboard_format -eq 0 ]]; then
         # IA-format (0)
         clipboard_content="[COPY_STATUS] success
-[COPY_METHOD] xclip
+[COPY_METHOD] $clipboard_bin
 [CONTENT_SIZE] $content_size bytes
 [TIMESTAMP] $timestamp
 [COMMAND] $command_str
@@ -195,10 +235,14 @@ $input
 
     local clipboard_success=0
 
-    # Try xclip first
-    if echo -n "$clipboard_content" | xclip -selection clipboard 2>/dev/null; then
+    # Try the detected native backend first (wl-copy on Wayland, xclip on X11).
+    # Both tools fork into the background on their own to hold clipboard
+    # ownership, so this call returns immediately either way - no & needed.
+    if [[ "$clipboard_backend" == "wayland" ]] && echo -n "$clipboard_content" | wl-copy 2>/dev/null; then
         clipboard_success=1
-    # Try OSC 52 if xclip fails
+    elif [[ "$clipboard_backend" == "x11" ]] && echo -n "$clipboard_content" | xclip -selection clipboard 2>/dev/null; then
+        clipboard_success=1
+    # Try OSC 52 if the native backend fails
     #elif [[ -n "$TERM" ]] && echo "$TERM" | grep -qE "(alacritty|kitty|wezterm|tmux|xterm-256color)"; then
     elif [[ -n "$TERM" ]] || [[ -n "$SSH_TTY" ]]; then
         local encoded=$(echo -n "$clipboard_content" | base64 -w0)
@@ -231,9 +275,9 @@ $input
         else
             # Humanized (1)
             if [[ $clipboard_success -eq 1 ]]; then
-                echo "✅ Copiado com xclip"
+                echo "✅ Copiado com $clipboard_bin"
             else
-                echo "⚠️  Clipboard indisponível (SSH sem X11?)"
+                echo "⚠️  Clipboard indisponível (SSH sem X11/Wayland?)"
                 echo "   Ativando fallback: --export automático"
             fi
 
@@ -270,7 +314,11 @@ $input
             if [[ $silent -eq 0 ]] && [[ $terminal_format -eq 1 ]]; then
                 echo ""
                 echo "💡 Dica: Para copiar do arquivo para clipboard:"
-                echo "   cat $export_file | xclip -selection clipboard"
+                if [[ "$clipboard_backend" == "wayland" ]]; then
+                    echo "   cat $export_file | wl-copy"
+                else
+                    echo "   cat $export_file | xclip -selection clipboard"
+                fi
             fi
         fi
     fi

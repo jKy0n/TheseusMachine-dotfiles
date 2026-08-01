@@ -28,6 +28,8 @@ binds {
     //  ---  Rofi  ---
     Mod+P hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi  -config /home/jkyon/.config/rofi/config.rasi -modes \"drun\" -show drun -theme /home/jkyon/.config/rofi/theme.rasi"; }
 
+    Mod+X hotkey-overlay-title="Clipboard history" { spawn-sh "cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy"; }
+
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 

@@ -52,9 +52,9 @@
         "on-scroll": 1,
         "on-click-right": "mode",
         "format": {
-          "months": "<span color='#737994'><b>{}</b></span>",
+          "months": "<span color='#8caaee'><b>{}</b></span>",
           "days": "<span color='#c6d0f5'><b>{}</b></span>",
-          "today": "<span color='#8caaee'><b><u>{}</u></b></span>"
+          "today": "<span color='#e78284'><b><u>{}</u></b></span>"
         }
       },
       "actions": {
@@ -73,18 +73,18 @@
       "menu-actions": {
         "shutdown": "shutdown",
         "reboot": "reboot",
-        "suspend": "systemctl suspend",
-        "hibernate": "systemctl hibernate"
+        // "hibernate": "systemctl hibernate",
+        "suspend": "systemctl suspend"
       }
     }
+  }
+//   -----  Waybar tela 2  -----
     // {
-    //   "output": [
-    //     "HDMI-A-1",
-    //     "HDMI-A-2"
-    //   ],
+    //   "output": "HDMI-A-2",
     //   "layer": "top",
-    //   "position": "top",
-    //   "height": 28,
+    //   "position": "right",
+    //   "width": 8,
+    //   "module-margin": 5,
     //   "modules-left": [
     //     "niri/workspaces"
     //   ],
@@ -94,6 +94,5 @@
     //   "niri/workspaces": {},
     //   // "clock": {
     //     "format": "%H:%M"
-    //   }
-  }
+    // }
 ]
