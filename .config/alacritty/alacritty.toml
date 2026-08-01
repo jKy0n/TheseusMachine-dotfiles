@@ -24,7 +24,7 @@
 # Configurações gerais
 [font]
     normal = { family = "MesloLGS Nerd Font" }
-    size = 9.0
+    size = 9.5
 
 [window]
     opacity = 0.8

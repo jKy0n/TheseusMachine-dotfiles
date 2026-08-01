@@ -29,13 +29,11 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPlay allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     // --- Overview / janela ---
     Mod+O repeat=false { toggle-overview; }
@@ -86,17 +84,12 @@ binds {
     // --- Workspaces ---
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up   { focus-workspace-up; }
-    Mod+U         { focus-workspace-down; }
-    Mod+I         { focus-workspace-up; }
+
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -164,13 +157,14 @@ binds {
     Mod+Ctrl+W { toggle-column-tabbed-display; }
 
     // --- Screenshot ---
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+
+    Print { spawn-sh "grim -t ppm -g \"$(slurp -d)\" - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
+
+    // Print { screenshot; }
+    // Ctrl+Print { screenshot-screen; }
+    // Alt+Print { screenshot-window; }
 
     // --- Segurança/saída ---
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
-    Mod+Shift+P { power-off-monitors; }
 }
