@@ -1,0 +1,29 @@
+//
+//        Title:      workspaces.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/workspaces.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-08-01
+//        Updated:    2026-08-01
+//        Notes:
+//                    modules/workspaces.kdl
+//                    Réplica dos agrupamentos de tag do Awesome. Os nomes SUBSTITUIR-SCREEN-N
+//                    correspondem aos seus antigos screen[1]/screen[2]/screen[3] — você sabe
+//                    qual físico é qual; eu não tenho como adivinhar essa correspondência.
+//                    Trocar pelo nome real assim que rodar `niri msg outputs`.
+
+
+workspace "audio"       { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }  // pavucontrol/pulseeffects/pwvucontrol/Spotify
+workspace "BackUp"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "chat"        { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }  // Discord + Rambox
+workspace "chrome"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "GIMP"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "kde-utils"   { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }  // kclock + KDE Connect
+workspace "LLMs"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }  // GPT4All + LM Studio
+workspace "mail"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }  // Thunderbird
+workspace "notes"       { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }  // Obsidian
+workspace "OBS"         { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Steam"       { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "Teams"       { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "telegram"    { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "VirtManager" { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }

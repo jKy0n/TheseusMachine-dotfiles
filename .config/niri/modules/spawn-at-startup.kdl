@@ -1,0 +1,21 @@
+//
+//        Title:      spawn-at-startup.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/spawn-at-startup.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-08-01
+//        Notes:
+//
+//
+// modules/spawn-at-startup.kdl
+//
+// Intencionalmente vazio: autostart é feito via systemd
+// (~/.config/systemd/user/niri.service.wants/), não aqui.
+// Motivo: ciclo de vida completo (Restart=on-failure, systemctl restart
+// individual, tudo cai junto no logout) — spawn-at-startup não oferece
+// nenhuma dessas garantias, é fire-and-forget sem supervisão.
+//
+// spawn-sh-at-startup existe como variante que aceita pipes/múltiplos
+// comandos, caso surja algum caso de uso pontual que não justifique
+// escrever um .service inteiro.

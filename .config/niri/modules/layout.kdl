@@ -1,0 +1,20 @@
+//
+//        Title:      layout.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/layout.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-08-01
+//        Notes:
+//                    modules/layout.kdl
+//                    Cores: Catppuccin Frappé, accent Blue
+
+layout {
+    gaps 16
+
+    focus-ring {
+        width 3
+        active-color "#8caaee"     // Catppuccin Frappé — Blue
+        inactive-color "#626880"   // Catppuccin Frappé — Surface2
+    }
+}

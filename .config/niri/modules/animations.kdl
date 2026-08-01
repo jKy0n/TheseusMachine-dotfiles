@@ -1,0 +1,51 @@
+//
+//        Title:      animations.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/animations.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-08-01
+//        Notes:
+//                    modules/animations.kdl
+//                    Valores documentados explicitamente (mesmo os que batem com o default)
+//                    pra manter single source of truth — igual você já faz no Portage.
+
+animations {
+    // off
+    // slowdown 3.0
+
+    // Troca de workspace (a pilha vertical de telas)
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    // O deslizar da fita horizontal — a animação que você elogiou
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    // Mover uma janela dentro do layout (arrastar, consumir/expelir)
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    // Redimensionar janela
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    // Abrir/fechar janela — easing, não spring: aqui duração fixa é melhor
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    // Popup de notificação de erro de config
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+}

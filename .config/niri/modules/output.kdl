@@ -1,0 +1,39 @@
+//
+//        Title:      output.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/output.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-07-31
+//        Notes:
+//                    modules/output.kdl
+//                    Convertido do screenlayout.sh (xrandr) pra sintaxe niri.
+//                    PENDENTE: rodar `niri msg outputs` dentro de uma sessão niri e trocar
+//                    os nomes abaixo pelos conectores DRM reais.
+
+
+// LG Ultrawide 34WP65C-B — era "DisplayPort-0" (--primary) no xrandr
+output "LG Electronics LG ULTRAWIDE 303AZAL1C616" {
+    mode "3440x1440@160.000"
+    position x=1080 y=0
+    transform "normal"
+}
+
+// LG 22BN550Y #1, em portrait — era "HDMI-A-0" (--rotate right)
+output "LG Electronics 22BN550Y 310AZFM8S459" {
+    mode "1920x1080@60.000"
+    position x=0 y=0
+    transform "270"
+}
+
+// LG 22BN550Y #2, landscape — era "HDMI-A-1"
+output "LG Electronics 22BN550Y 310AZVN8S031" {
+    mode "1920x1080@60.000"
+    position x=4520 y=95
+    transform "normal"
+}
+
+// "DisplayPort-1" estava --off no xrandr. Output desconectado não precisa
+// de bloco — o niri simplesmente ignora o que não existe fisicamente.
+// Se essa porta for de um monitor que liga/desliga (ex: dock), descomente
+// e coloque "off" dentro do bloco pra deixá-lo desabilitado por padrão.

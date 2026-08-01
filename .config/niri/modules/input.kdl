@@ -1,0 +1,40 @@
+//
+//        Title:      input.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/input.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-07-31
+//        Notes:
+//                    modules/input.kdl
+//                    Teclado: HyperX Alloy Origins Core TKL (ABNT2)
+//                    Mouse: Logitech G403 Hero
+//                    Numpad: Exbom BK-N30 (numlock ligado no boot)
+//                    Tablet: Wacom Intuos CTL4100
+//                    Sem touchpad/trackpoint no sistema — seções omitidas de propósito (KISS)
+
+
+input {
+    keyboard {
+        xkb {
+            layout "br"
+        }
+
+        // Exbom BK-N30 (numpad USB externo) precisa nascer com NumLock ativo.
+        numlock
+    }
+
+    mouse {
+        // Logitech G403 Hero
+        natural-scroll
+    }
+
+    tablet {
+        // Wacom Intuos CTL4100.
+        // Sem map-to-output, o tablet mapeia pra união de TODOS os monitores —
+        // fica torto com ultrawide + 2 telas em portrait (proporção quebrada).
+        // Preencher assim que fizermos output.kdl:
+        //   niri msg outputs   -> pega o nome real do monitor (ex: "DP-2")
+        // map-to-output "NOME-DO-MONITOR-AQUI"
+    }
+}

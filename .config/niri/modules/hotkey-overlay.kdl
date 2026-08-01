@@ -1,0 +1,16 @@
+//
+//        Title:      hotkey-overlay.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/hotkey-overlay.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-08-01
+//        Notes:
+//                    Popup informativo — não afeta o funcionamento dos binds, só a
+//                    apresentação visual deles. skip-at-startup desliga o popup automático
+//                    no primeiro login; o gatilho manual (Mod+Shift+Slash, em binds.kdl)
+//                    continua disponível como referência caso precise no futuro.
+
+hotkey-overlay {
+    skip-at-startup
+}
