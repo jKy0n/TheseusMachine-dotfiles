@@ -28,6 +28,7 @@ input {
         // Logitech G403 Hero
         natural-scroll
     }
+    focus-follows-mouse max-scroll-amount="0%"
 
     tablet {
         // Wacom Intuos CTL4100.
@@ -35,6 +36,6 @@ input {
         // fica torto com ultrawide + 2 telas em portrait (proporção quebrada).
         // Preencher assim que fizermos output.kdl:
         //   niri msg outputs   -> pega o nome real do monitor (ex: "DP-2")
-        // map-to-output "NOME-DO-MONITOR-AQUI"
+        map-to-output "DP-1"
     }
 }

@@ -8,6 +8,12 @@
 //        Notes:
 //
 //
+// --- Cantos arredondados globais ---
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
 // --- Pinagem em workspace nomeado (equivalente ao tag = screen[N].tags[M]) ---
 
 window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
