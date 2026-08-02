@@ -8,7 +8,7 @@
 //        Notes:
 //
 environment {
-    GTK_THEME "catppuccin-frappe-blue:dark"   // troca pelo que apareceu no ls acima
+    GTK_THEME "catppuccin-frappe-blue:dark"
 }
 
 prefer-no-csd

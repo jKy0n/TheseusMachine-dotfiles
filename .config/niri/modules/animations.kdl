@@ -6,9 +6,8 @@
 //        Created:    2026-07-31
 //        Updated:    2026-08-01
 //        Notes:
-//                    modules/animations.kdl
 //                    Valores documentados explicitamente (mesmo os que batem com o default)
-//                    pra manter single source of truth — igual você já faz no Portage.
+//                    pra manter single source of truth.
 
 animations {
     // off

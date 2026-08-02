@@ -6,29 +6,25 @@
 //        Created:    2026-08-01
 //        Updated:    2026-08-01
 //        Notes:
-//                    modules/workspaces.kdl
-//                    Réplica dos agrupamentos de tag do Awesome. Os nomes SUBSTITUIR-SCREEN-N
-//                    correspondem aos seus antigos screen[1]/screen[2]/screen[3] — você sabe
-//                    qual físico é qual; eu não tenho como adivinhar essa correspondência.
-//                    Trocar pelo nome real assim que rodar `niri msg outputs`.
+//                    Réplica dos agrupamentos de tag do Awesome.
 
 
 //  --- Tela Principal ---
-workspace "emerge"      { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
-workspace "SSH"         { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
-workspace "Code"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
-workspace "Mail"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
-workspace "Notes"       { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
-workspace "Finance"     { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "emerge (1)"      { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "SSH (2)"         { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "Code (3)"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "Mail (4)"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "Notes (5)"       { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+workspace "Finance (6)"     { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
 
 
 //  --- Tela 1 ---
-workspace "Monitor"     { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
-workspace "Chat"        { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
-workspace "Audio"       { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+workspace "Monitor (1)"     { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+workspace "Chat (2)"        { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+workspace "Audio (3)"       { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
 
 
 //  --- Tela 2 ---
-workspace "Sensors"     { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
-workspace "Search"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
-workspace "Media"       { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Sensors (1)"     { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Search (2)"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Media (3)"       { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }

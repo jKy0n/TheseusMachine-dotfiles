@@ -6,8 +6,7 @@
 //        Created:    2026-07-31
 //        Updated:    2026-08-01
 //        Notes:
-//                    modules/layout.kdl
-//                    Cores: Catppuccin Frappé, accent Blue
+//                    Colors: Catppuccin Frappé, accent Blue
 
 layout {
     gaps 8

@@ -3,8 +3,8 @@
     "output": "DP-1",
     "layer": "top",
     "position": "top",
-    "height": 14,
-    "max-height": 14,
+    "height": 12,
+    "max-height": 12,
 
   //  --------------------  Modules  --------------------
 
@@ -61,7 +61,7 @@
   //  --------------------  Right Bar  --------------------
 
     "cpu": {
-      "format": " <span size='16336' baseline_shift='-2pt'> </span>{usage}% | {avg_frequency} GHz "
+      "format": " <span size='16336' baseline_shift='-3pt'> </span>{usage}% | {avg_frequency} GHz "
     },
     "temperature": {
       "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",

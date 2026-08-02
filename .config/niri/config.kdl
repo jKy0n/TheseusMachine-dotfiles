@@ -1,12 +1,12 @@
 //
 //        Title:      config.kdl
-//        Brief:      Main configuration file for Niri
+//        Brief:      Main configuration file for niri
 //        Path:       /home/jkyon/.config/niri/config.kdl
 //        Author:     John Kennedy a.k.a. jKyon
 //        Created:    2026-07-31
 //        Updated:    2026-07-31
 //        Notes:
-//
+//                    Main modular niri configuration
 
 include "modules/animations.kdl"
 include "modules/binds.kdl"

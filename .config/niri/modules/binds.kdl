@@ -8,12 +8,15 @@
 //        Notes:
 //                    Baseado no bind set padrão do niri — mantido quase inteiro de propósito,
 //                    pra você ir pegando o vocabulário de ações.
-//                    Mod = Super por padrão numa sessão de verdade (TTY/SDDM) — não precisa configurar isso.
+//                    Mod = Super por padrão numa sessão de verdade (TTY/SDDM).
 
 
 binds {
     //  ---  Help menu  ---
     Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // ---  Quit  ---
+    Mod+Shift+E { quit; }
 
     //  ---  Terminal  ---
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
@@ -33,6 +36,7 @@ binds {
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
+    //  -----  Multimedia Keys -----
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -43,6 +47,14 @@ binds {
     XF86AudioPrev allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"; }
     XF86AudioNext allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"; }
 
+    // --- Screenshot ---
+    Print hotkey-overlay-title="Take a screenshot and open in Satty" { spawn-sh "grim -t ppm - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
+    Mod+Shift+Print hotkey-overlay-title="Select area, take a screenshot and copy to clipboard" { spawn-sh "grim -g \"$(slurp -d)\" - | wl-copy"; }
+    Mod+Control+Print hotkey-overlay-title="Select area, take a screenshot and open in Satty" { spawn-sh "grim -t ppm -g \"$(slurp -d)\" - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
+    // Mod+Alt+Print hotkey-overlay-title="Take a window screenshot" { screenshot-window; }
+
+    // --- Segurança/saída ---
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // --- Overview / janela ---
     Mod+O repeat=false { toggle-overview; }
@@ -159,18 +171,9 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // --- Floating (V virou o launcher do VSCode; ação original foi pra Ctrl+V) ---
-    Mod+Ctrl+V { toggle-window-floating; }
+    Mod+Ctrl+Space { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // --- Abas (W virou o launcher do Firefox; ação original foi pra Ctrl+W) ---
     Mod+Ctrl+W { toggle-column-tabbed-display; }
-
-    // --- Screenshot ---
-    Print { spawn-sh "grim -t ppm - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
-//  Mod+Print { spawn-sh }
-    Mod+Shift+Print { spawn-sh "grim -t ppm -g \"$(slurp -d)\" - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
-
-    // --- Segurança/saída ---
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Mod+Shift+E { quit; }
 }

@@ -18,15 +18,15 @@ window-rule {
 
 // window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
 // window-rule { match title="(?i)^kde connect$"; open-on-workspace "kde-utils"; }
-window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes"; }
-window-rule { match app-id="(?i)^pavucontrol$"; open-on-workspace "Audio"; }
-window-rule { match app-id="(?i)^pulseeffects$"; open-on-workspace "Audio"; }
-window-rule { match app-id="(?i)^pwvucontrol$"; open-on-workspace "Audio"; }
-window-rule { match app-id="^discord$"; open-on-workspace "Chat"; }
-window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media"; }
-window-rule { match app-id="^Rambox$"; open-on-workspace "Chat"; }
-window-rule { match app-id="^Spotify$"; open-on-workspace "Audio"; }
-window-rule { match app-id="^thunderbird$"; open-on-workspace "Mail"; }
+window-rule { match app-id="(?i)^pavucontrol$"; open-on-workspace "Audio (3)"; }
+window-rule { match app-id="(?i)^pwvucontrol$"; open-on-workspace "Audio (3)"; }
+window-rule { match app-id="(?i)^pulseeffects$"; open-on-workspace "Audio (3)"; }
+window-rule { match app-id="^Spotify$"; open-on-workspace "Audio (3)"; }
+window-rule { match app-id="^thunderbird$"; open-on-workspace "Mail (4)"; }
+window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes (5)"; }
+window-rule { match app-id="^discord$"; open-on-workspace "Chat (2)"; }
+window-rule { match app-id="^Rambox$"; open-on-workspace "Chat (2)"; }
+window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media (3)"; }
 
 // --- Ex-"volatile tags": mesmo destino, mais o floating de quem tinha ---
 
