@@ -7,8 +7,15 @@
 //        Updated:    2026-08-01
 //        Notes:
 //
+prefer-no-csd
+
 environment {
     GTK_THEME "catppuccin-frappe-blue:dark"
 }
 
-prefer-no-csd
+blur {
+    passes 2
+    offset 1.5
+    noise 0.02
+    saturation 1.5
+}

@@ -19,12 +19,12 @@ workspace "Finance (6)"     { open-on-output "LG Electronics LG ULTRAWIDE 303AZA
 
 
 //  --- Tela 1 ---
-workspace "Monitor (1)"     { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
-workspace "Chat (2)"        { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
-workspace "Audio (3)"       { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+workspace "Monitor"     { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+workspace "Chat"        { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+workspace "Audio"       { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
 
 
 //  --- Tela 2 ---
-workspace "Sensors (1)"     { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
-workspace "Search (2)"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
-workspace "Media (3)"       { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Sensors"     { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Search"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+workspace "Media"       { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }

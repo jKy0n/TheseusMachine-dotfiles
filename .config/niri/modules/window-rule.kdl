@@ -26,7 +26,7 @@ window-rule { match app-id="^thunderbird$"; open-on-workspace "Mail (4)"; }
 window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes (5)"; }
 window-rule { match app-id="^discord$"; open-on-workspace "Chat (2)"; }
 window-rule { match app-id="^Rambox$"; open-on-workspace "Chat (2)"; }
-window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media (3)"; }
+window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media"; }
 
 // --- Ex-"volatile tags": mesmo destino, mais o floating de quem tinha ---
 
@@ -41,8 +41,16 @@ window-rule { match title="^Back In Time$"; open-on-workspace "BackUp"; open-flo
 window-rule { match title="^GPT4All$"; open-on-workspace "LLMs"; }
 window-rule { match title="^OBS "; open-on-workspace "OBS"; }
 
+window-rule {
+    match app-id="^Alacritty$"
+    background-effect {
+        blur true
+    }
+}
+
 // window-rule {
-//     match app-id="^Alacritty$"
-//     opacity 1.0
-//     draw-border-with-background false
+//     match app-id="^waybar$"
+//     background-effect {
+//         blur true
+//     }
 // }

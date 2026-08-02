@@ -3,11 +3,8 @@
     "output": "DP-1",
     "layer": "top",
     "position": "top",
-    "height": 12,
-    "max-height": 12,
-
-  //  --------------------  Modules  --------------------
-
+    "module-margin": "2",
+    //  --------------------  Modules  --------------------
     "modules-left": [
       "niri/workspaces"
       // "niri/window"
@@ -23,16 +20,12 @@
       "tray",
       "custom/power"
     ],
-
-  //  --------------------  Left Bar  --------------------
-
+    //  --------------------  Left Bar  --------------------
     "niri/workspaces": {},
     // "niri/window": {
     //   "max-length": 120
     // },
-
-  //  --------------------  Center Bar  --------------------
-
+    //  --------------------  Center Bar  --------------------
     "clock": {
       "format": "{:%A, %d %B %Y - %R}",
       "tooltip-format": "<tt><span size='12000'>{calendar}</span></tt>",
@@ -57,21 +50,19 @@
         "on-scroll-down": "shift_down"
       }
     },
-
-  //  --------------------  Right Bar  --------------------
-
+    //  --------------------  Right Bar  --------------------
     "cpu": {
       "format": " <span size='16336' baseline_shift='-3pt'> </span>{usage}% | {avg_frequency} GHz "
     },
     "temperature": {
       "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-      "format": " <span size='11336' baseline_shift='-2pt'></span>  {temperatureC}°C "
+      "format": " <span size='11336' baseline_shift='-2pt'> </span> {temperatureC}°C "
     },
     "memory": {
-      "format": " <span size='16336' baseline_shift='-2pt'> </span> {}% "
+      "format": "<span size='16336' baseline_shift='-2pt'> </span>{}% "
     },
     "pulseaudio": {
-      "format": " <span size='16336' baseline_shift='-2pt'> </span> {volume}% ",
+      "format": " <span size='16336' baseline_shift='-2pt'> </span>{volume}% ",
       "scroll-step": 1,
       "on-click": "pwvucontrol"
     },
@@ -79,7 +70,97 @@
       "spacing": 8
     },
     "custom/power": {
-      "format": "<span size='14336'> ⏻ </span>",
+      "format": "<span size='14336'>⏻</span>",
+      "tooltip": false,
+      "menu": "on-click",
+      "menu-file": "~/.config/waybar/power_menu.xml",
+      "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend"
+      }
+    }
+  },
+  // --------------------  Waybar tela 1  --------------------
+  {
+    "output": "HDMI-A-1",
+    "layer": "top",
+    "position": "top",
+    "module-margin": 2,
+    //  --------------------  Left Modules  --------------------
+    "modules-left": [
+      "niri/workspaces"
+    ],
+    "niri/workspaces": {},
+    //  --------------------  Right Modules  --------------------
+    "modules-right": [
+      "cpu",
+      "memory",
+      "pulseaudio",
+      "clock",
+      "custom/power"
+    ],
+    "cpu": {
+      "format": " <span size='16336' baseline_shift='-3pt'> </span>{usage}% "
+    },
+    "memory": {
+      "format": "<span size='16336' baseline_shift='-2pt'> </span>{}% "
+    },
+    "pulseaudio": {
+      "format": " <span size='16336' baseline_shift='-2pt'> </span>{volume}% ",
+      "scroll-step": 1,
+      "on-click": "pwvucontrol"
+    },
+    "clock": {
+      "format": "{:%R}"
+    },
+    "custom/power": {
+      "format": "<span size='14336'>⏻</span>",
+      "tooltip": false,
+      "menu": "on-click",
+      "menu-file": "~/.config/waybar/power_menu.xml",
+      "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend"
+      }
+    }
+  },
+  // --------------------  Waybar tela 2  --------------------
+  {
+    "output": "HDMI-A-2",
+    "layer": "top",
+    "position": "right",
+    "module-margin": 2,
+    //  --------------------  Top Modules  --------------------
+    "modules-left": [
+      "niri/workspaces"
+    ],
+    "niri/workspaces": {},
+    //  --------------------  Bottom Modules  --------------------
+    "modules-right": [
+      "cpu",
+      "memory",
+      "pulseaudio",
+      "clock",
+      "custom/power"
+    ],
+    "cpu": {
+      "format": " <span size='16336' baseline_shift='-3pt'> </span>{usage}% "
+    },
+    "memory": {
+      "format": "<span size='16336' baseline_shift='-2pt'> </span>{}% "
+    },
+    "pulseaudio": {
+      "format": " <span size='16336' baseline_shift='-2pt'> </span>{volume}% ",
+      "scroll-step": 1,
+      "on-click": "pwvucontrol"
+    },
+    "clock": {
+      "format": "{:%R}"
+    },
+    "custom/power": {
+      "format": "<span size='14336'>⏻</span>",
       "tooltip": false,
       "menu": "on-click",
       "menu-file": "~/.config/waybar/power_menu.xml",
@@ -90,21 +171,4 @@
       }
     }
   }
-  //   -----  Waybar tela 2  -----
-  // {
-  //   "output": "HDMI-A-2",
-  //   "layer": "top",
-  //   "position": "right",
-  //   "width": 8,
-  //   "module-margin": 5,
-  //   "modules-left": [
-  //     "niri/workspaces"
-  //   ],
-  //   "modules-right": [
-  //     "clock"
-  //   ],
-  //   "niri/workspaces": {},
-  //   // "clock": {
-  //     "format": "%H:%M"
-  // }
 ]
