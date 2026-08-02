@@ -30,7 +30,7 @@ fi
 
 `WAYLAND_DISPLAY` is exported by the compositor itself the moment it starts, and is inherited by every child process — it's the most reliable signal available. `DISPLAY` is only checked as a fallback, so an XWayland app leaking `DISPLAY` into your environment doesn't cause a false read inside a native Wayland session.
 
-Both `xclip` and `wl-copy` fork into the background on their own to hold clipboard ownership after being fed stdin, so the call returns immediately either way — no `&` or wait logic required.
+Both `xclip` and `wl-copy` fork into the background on their own to hold clipboard ownership after being fed stdin, so the call returns immediately either way — no `&` or wait logic required. The call is also wrapped in `setsid`, giving the clipboard-holder process its own session up front so it's never affected by job-control signals tied to the invoking shell.
 
 ### Output modes: IA vs. Human
 
@@ -40,6 +40,21 @@ Both `xclip` and `wl-copy` fork into the background on their own to hold clipboa
 | `1` | **Humanized** — plain content with visual separators, meant for reading, not parsing |
 
 By default: **terminal = humanized**, **clipboard = IA-optimized**. `--human` flips both to humanized. `--export` forces the terminal to IA-format as well (so the exported file and what you see match).
+
+### Explicit MIME type on Wayland
+
+`wl-copy` behaves differently depending on how content reaches it:
+
+- **Argument** (`wl-copy "text"`) → defaults straight to `text/plain`
+- **stdin** (`echo -n "text" | wl-copy`) → tries to auto-detect the MIME type instead
+
+Since this function always feeds content through stdin, that auto-detection could produce a type paste targets don't recognize — the clipboard *looked* populated (it even showed up in cliphist's history), but `Ctrl+V` failed silently in every app, with "Paste" simply greyed out and no error anywhere. The fix is forcing the type explicitly:
+
+```zsh
+echo -n "$clipboard_content" | setsid wl-copy --type text/plain
+```
+
+If you ever strip this function down, keep the `--type text/plain` — it looks redundant until you hit this exact failure mode again.
 
 ### Fallback chain
 
@@ -68,17 +83,23 @@ On other distros, install `wl-clipboard` and/or `xclip` from your package manage
 
 ## Installation
 
-```sh
-git clone https://github.com/jky0n/copy-to-clipboard.git ~/.config/zsh/copy-to-clipboard # not setup yet
+Part of [TheseusMachine-dotfiles](https://github.com/jKy0n/TheseusMachine-dotfiles/blob/main/.config/zsh/zshrc.d/functions/copy-to-clipboard/copy-to-clipboard.zsh) — not a standalone repo yet (a dedicated zsh-functions repo is planned, but for now this lives inside the dotfiles).
+
+Local path:
+
+```
+~/.config/zsh/zshrc.d/functions/copy-to-clipboard/copy-to-clipboard.zsh
 ```
 
-Then source it from your `.zshrc`:
+Sourced from `.zshrc` (or a loader that walks `zshrc.d/functions/**`):
 
 ```zsh
-source ~/.config/zsh/zshrc.d/functions/copy-to-clipboard/copy-to-clipboard.zsh # not setup yet
+source ~/.config/zsh/zshrc.d/functions/copy-to-clipboard/copy-to-clipboard.zsh
 ```
 
 Reload your shell (`exec zsh`) and the `copy-to-clipboard` function is available.
+
+**Cloning it elsewhere?** Grab just this function from the dotfiles repo and adjust the `source` path in your own `.zshrc` to match wherever you put it.
 
 ## Usage
 
@@ -129,7 +150,10 @@ copy-to-clipboard "systemctl status sshd"
 - **`Erro: nenhum display gráfico detectado`** — neither `WAYLAND_DISPLAY` nor `DISPLAY` is set in the current shell. Check you're not running from a bare TTY or a stripped-down non-interactive session.
 - **`Erro: wl-copy/xclip não está instalado`** — the backend matching your display server isn't installed; the error prints the exact install command for your case.
 - **Clipboard silently falls back to a file over SSH** — your terminal emulator likely doesn't support OSC 52. Enable it (Alacritty, kitty, and WezTerm support it out of the box) or rely on `--export` + manual copy.
+- **Content shows up in `cliphist` history but `Ctrl+V` does nothing anywhere, "Paste" is greyed out** — this was a real bug hit on niri: `wl-copy` fed via stdin without an explicit `--type` can offer a MIME type paste targets don't recognize. Already fixed in this function (`--type text/plain` forced explicitly). If you're diffing against an older copy, that's the line to check.
+- **Clipboard content disappears right after the source shell/job finishes** — the background process holding the clipboard needs to survive independently of the invoking shell's session; this function wraps the call in `setsid` for exactly that reason. If you strip it out and see this symptom come back, that's why.
+- **Copy works from the terminal but not from a GUI app after switching focus (niri specifically)** — known upstream niri clipboard-protocol edge cases exist (see niri issues around selection re-offering on focus change). If the MIME-type and `setsid` fixes above don't resolve it, [`wl-clip-persist`](https://github.com/Linus789/wl-clip-persist) run as a background service is a reasonable mitigation, though it targets a different failure mode (source app closing, not type detection).
 
 ## License
 
-???
+Just credit me and be kind with others =)

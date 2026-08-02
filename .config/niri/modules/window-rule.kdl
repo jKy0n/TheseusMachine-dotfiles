@@ -40,3 +40,9 @@ window-rule { match title="(?i)^lm studio$"; open-on-workspace "LLMs"; }
 window-rule { match title="^Back In Time$"; open-on-workspace "BackUp"; open-floating true; }
 window-rule { match title="^GPT4All$"; open-on-workspace "LLMs"; }
 window-rule { match title="^OBS "; open-on-workspace "OBS"; }
+
+// window-rule {
+//     match app-id="^Alacritty$"
+//     opacity 1.0
+//     draw-border-with-background false
+// }

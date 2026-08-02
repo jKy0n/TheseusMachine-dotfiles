@@ -2,13 +2,15 @@
 
 * {
     font-family: mesloLGS Nerd Font mono;
-    font-weight: bold;
     font-size: 10px;
+    font-weight: bold;
     min-height: 0;
 }
 
+/* --------------------  WayBar  -------------------- */
+
 #waybar {
-    background: @base;
+    background: alpha(@base, 0.8);
     margin: 2rem;
     padding: 1.2rem;
 }
@@ -17,78 +19,101 @@
     opacity: 0.2;
 }
 
+/* --------------------  Left Bar  -------------------- */
+
 #workspaces {
-    border-radius: 1rem;
-    margin: 5px;
     background-color: @surface0;
+    border-radius: 1rem;
     margin-left: 1rem;
+    margin: 5px;
+    padding: 0.5rem;
 }
 
 #workspaces button {
-    color: @text;
     border-radius: 1rem;
-    padding: 0.4rem;
+    color: @text;
+    padding: 0.5rem;
 }
 
 #workspaces button.active {
-    color: @crust;
     background-color: @blue;
     border-radius: 1rem;
+    color: @crust;
 }
 
 #workspaces button:hover {
-    color: @crust;
+    background-color: @text;
     border-radius: 1rem;
+    color: @crust;
 }
 
-#window {
-    color: @text;
-    border-radius: 1rem;
+/* #window {
     background-color: @surface0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    color: @text;
     margin: 5px 0;
+    padding: 0.5rem 1rem;
+} */
+
+/* --------------------  Center Bar  -------------------- */
+
+#clock {
+    background-color: @surface0;
+    border-radius: 1rem 1rem 1rem 1rem;
+    color: @text;
+    margin: 5px 0;
+    padding: 0.5rem 1rem;
+}
+
+/* --------------------  Right Bar  -------------------- */
+
+#cpu, #memory, #temperature {
+    background-color: @surface0;
+    border-radius: 1rem 1rem 1rem 1rem;
+    color: @text;
+    margin: 5px 0;
+    padding: 0.5rem 1rem;
 }
 
 #pulseaudio {
-    color: @text;
     background-color: @surface0;
-    padding: 0.5rem 1rem;
-    margin: 5px 0;
     border-radius: 1rem 1rem 1rem 1rem;
-}
-
-#clock {
     color: @text;
-    background-color: @surface0;
-    padding: 0.5rem 1rem;
     margin: 5px 0;
-    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 0.5rem 1rem;
 }
 
 #tray {
-    color: @text;
     background-color: @surface0;
-    padding: 0.5rem 1rem;
-    margin: 5px 0;
     border-radius: 1rem 1rem 1rem 1rem;
+    color: @text;
+    margin: 5px 0;
+    padding: 0.5rem 1rem;
 }
 
-#cpu, #memory, #temperature {
-    color: @text;
+/* --------------------  Custom/Power  -------------------- */
+
+#custom-power {
     background-color: @surface0;
-    padding: 0.5rem 1rem;
-    margin: 5px 0;
     border-radius: 1rem 1rem 1rem 1rem;
+    color: @text;
+    margin: 5px 0;
+    padding: 0.5rem 1rem;
 }
 
 menu {
-    border-radius: 1rem;
-    background: @base;
+    background-color: @base;
+    border-radius: 1rem 1rem 1rem 1rem;
     color: @text;
+    margin: 5px 0;
+    padding: 0.5rem 1rem;
 }
 
 menuitem {
-    border-radius: 0.7rem;
+    background-color: @base;
+    border-radius: 1rem 1rem 1rem 1rem;
+    font-size: 10px;
+    margin: 5px 0;
     padding: 0.5rem 1rem;
 }
 

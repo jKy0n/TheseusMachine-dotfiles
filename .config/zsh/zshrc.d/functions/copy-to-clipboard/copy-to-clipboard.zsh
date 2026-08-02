@@ -23,7 +23,7 @@ fi
 function copy-to-clipboard() {
     # ========== VERSION & HELP ==========
 
-    local version="2.1"
+    local version="2.3"
 
     # ========== DISPLAY SERVER DETECTION ==========
     # WAYLAND_DISPLAY is set by the compositor itself (niri, sway, etc.) and
@@ -47,7 +47,7 @@ function copy-to-clipboard() {
         case "$arg" in
             -h|--help)
                 cat << 'EOF'
-copy-to-clipboard 2.1 - Dual-Output Clipboard Manager
+copy-to-clipboard 2.3 - Dual-Output Clipboard Manager
 
 USAGE:
     copy-to-clipboard [OPTIONS] [COMMAND]
@@ -237,10 +237,19 @@ $input
 
     # Try the detected native backend first (wl-copy on Wayland, xclip on X11).
     # Both tools fork into the background on their own to hold clipboard
-    # ownership, so this call returns immediately either way - no & needed.
-    if [[ "$clipboard_backend" == "wayland" ]] && echo -n "$clipboard_content" | wl-copy 2>/dev/null; then
+    # ownership - but that forked holder still inherits the invoking shell's
+    # process group/session by default. setsid gives it its own session up
+    # front, so it can't be affected by job-control signals tied to this
+    # shell (this is what was causing content to reach cliphist's history
+    # but not survive as the live, paste-ready clipboard owner).
+    # wl-copy also needs --type forced explicitly: when content arrives via
+    # stdin (as opposed to an argv argument), it tries to auto-detect the
+    # MIME type instead of defaulting to text/plain, and that detection can
+    # produce a type paste targets don't recognize - silently killing paste
+    # (no error anywhere, "Paste" just greys out in the target app).
+    if [[ "$clipboard_backend" == "wayland" ]] && echo -n "$clipboard_content" | setsid wl-copy --type text/plain 2>/dev/null; then
         clipboard_success=1
-    elif [[ "$clipboard_backend" == "x11" ]] && echo -n "$clipboard_content" | xclip -selection clipboard 2>/dev/null; then
+    elif [[ "$clipboard_backend" == "x11" ]] && echo -n "$clipboard_content" | setsid xclip -selection clipboard 2>/dev/null; then
         clipboard_success=1
     # Try OSC 52 if the native backend fails
     #elif [[ -n "$TERM" ]] && echo "$TERM" | grep -qE "(alacritty|kitty|wezterm|tmux|xterm-256color)"; then
@@ -315,9 +324,9 @@ $input
                 echo ""
                 echo "💡 Dica: Para copiar do arquivo para clipboard:"
                 if [[ "$clipboard_backend" == "wayland" ]]; then
-                    echo "   cat $export_file | wl-copy"
+                    echo "   cat $export_file | setsid wl-copy --type text/plain"
                 else
-                    echo "   cat $export_file | xclip -selection clipboard"
+                    echo "   cat $export_file | setsid xclip -selection clipboard"
                 fi
             fi
         fi
