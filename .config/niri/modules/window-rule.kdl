@@ -48,9 +48,14 @@ window-rule {
     }
 }
 
-// window-rule {
-//     match app-id="^waybar$"
-//     background-effect {
-//         blur true
-//     }
-// }
+window-rule {
+    match app-id="^FloatingTerminal$"
+    open-floating true
+}
+
+layer-rule {
+    match namespace="^waybar$"
+    background-effect {
+        blur true
+    }
+}

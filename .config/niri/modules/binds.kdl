@@ -21,6 +21,9 @@ binds {
     //  ---  Terminal  ---
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Control+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn-sh "NO_TMUX=1 alacritty"; }
+    Mod+Shift+Return hotkey-overlay-title="Open a floating terminal (no tmux)" {
+    spawn "env" "NO_TMUX=1" "alacritty" "--class" "FloatingTerminal";
+}
 
     //  ---  Apps do dia a dia  ---
     Mod+C hotkey-overlay-title="Open Calculator" { spawn "gnome-calculator"; }
@@ -32,6 +35,8 @@ binds {
     Mod+P hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi  -config /home/jkyon/.config/rofi/config.rasi -modes \"drun\" -show drun -theme /home/jkyon/.config/rofi/theme.rasi"; }
 
     Mod+X hotkey-overlay-title="Clipboard history" { spawn-sh "cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy"; }
+
+    Mod+F2 hotkey-overlay-title="Rename current workspace" { spawn-sh "~/ShellScript/niri/rename-workspace.sh"; }
 
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }

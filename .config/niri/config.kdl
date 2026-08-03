@@ -10,10 +10,10 @@
 
 include "modules/animations.kdl"
 include "modules/binds.kdl"
-include "modules/environment.kdl"
 include "modules/hotkey-overlay.kdl"
 include "modules/input.kdl"
 include "modules/layout.kdl"
+include "modules/miscellaneous.kdl"
 include "modules/output.kdl"
 include "modules/screenshot-path.kdl"
 include "modules/spawn-at-startup.kdl"

@@ -2,17 +2,16 @@
 
 * {
     font-family: mesloLGS Nerd Font mono;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: bold;
-    min-height: 0;
 }
 
 /* --------------------  WayBar  -------------------- */
 
 #waybar {
     background: alpha(@base, 0.8);
-    margin: 2rem;
-    padding: 1.2rem;
+    margin: 0.5rem;
+    padding: 2px;
 }
 
 #waybar.hidden {
@@ -21,18 +20,22 @@
 
 /* --------------------  Left Bar  -------------------- */
 
+#image-niri-logo {
+    padding: 2px 8px;
+    margin: 3px 8px 3px 8px;
+}
+
 #workspaces {
     background-color: @surface0;
     border-radius: 1rem;
-    margin-left: 1rem;
-    margin: 5px;
-    padding: 0.5rem;
+    margin: 2px 5px;
+    padding: 2px;
 }
 
 #workspaces button {
     border-radius: 1rem;
     color: @text;
-    padding: 0.5rem;
+    padding: 2px 6px;
 }
 
 #workspaces button.active {
@@ -59,62 +62,124 @@
 
 #clock {
     background-color: @surface0;
-    border-radius: 1rem 1rem 1rem 1rem;
-    color: @text;
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
 }
 
 /* --------------------  Right Bar  -------------------- */
 
-#cpu, #memory, #temperature {
+#waybar.bar-dp1 #sysinfo {
     background-color: @surface0;
-    border-radius: 1rem 1rem 1rem 1rem;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
+}
+
+#waybar.bar-hdmi1 #cpu {
+    background-color: @surface0;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
+}
+
+#waybar.bar-hdmi2 #cpu {
+    background-color: @surface0;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
+}
+
+/* #cpu {
+    background-color: @surface0;
+    border-radius: 1rem;
     color: @text;
     margin: 5px 0;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 1rem;
+} */
+
+/* #temperature {
+    background-color: @surface0;
+    border-radius: 1rem;
+    color: @text;
+    margin: 5px 0;
+    padding: 0.3rem 1rem;
+} */
+
+#memory {
+    background-color: @surface0;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
 }
 
 #pulseaudio {
     background-color: @surface0;
-    border-radius: 1rem 1rem 1rem 1rem;
-    color: @text;
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
 }
 
 #tray {
     background-color: @surface0;
-    border-radius: 1rem 1rem 1rem 1rem;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
+}
+
+/* --------------------  Mako DND  -------------------- */
+
+#custom-mako-dnd {
+    background-color: @surface0;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    margin: 3px 0;
+    font-size: 13px;
+}
+
+#custom-mako-dnd.active {
+    background-color: @blue;
+    color: @crust;
+}
+
+/* --------------------  Custom/Power  -------------------- */
+
+#custom-ephedrine {
+    background-color: @surface0;
     color: @text;
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    padding: 2px 8px;
+    margin: 3px 0;
+}
+
+#custom-ephedrine.active {
+    background-color: @blue;
+    color: @crust;
 }
 
 /* --------------------  Custom/Power  -------------------- */
 
 #custom-power {
     background-color: @surface0;
-    border-radius: 1rem 1rem 1rem 1rem;
-    color: @text;
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 2px 0;
+    padding: 2px 8px;
+    font-size: 1.1rem;
 }
 
 menu {
     background-color: @base;
-    border-radius: 1rem 1rem 1rem 1rem;
-    color: @text;
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
 }
 
 menuitem {
     background-color: @base;
-    border-radius: 1rem 1rem 1rem 1rem;
-    font-size: 10px;
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    margin: 3px 0;
+    padding: 0.3rem 1rem;
 }
 
 menuitem:hover {

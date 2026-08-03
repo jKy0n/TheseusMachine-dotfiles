@@ -29,8 +29,3 @@ output "LG Electronics 22BN550Y 310AZVN8S031" {
     position x=4520 y=95
     transform "normal"
 }
-
-// "DisplayPort-1" estava --off no xrandr. Output desconectado não precisa
-// de bloco — o niri simplesmente ignora o que não existe fisicamente.
-// Se essa porta for de um monitor que liga/desliga (ex: dock), descomente
-// e coloque "off" dentro do bloco pra deixá-lo desabilitado por padrão.
