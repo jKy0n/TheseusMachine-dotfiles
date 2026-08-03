@@ -1,0 +1,42 @@
+<!--
+       Title:      config
+       Brief:
+       Path:       /home/jkyon/.config/mako/config
+       Author:     John Kennedy a.k.a. jKyon
+       Created:    2026-08-02
+       Updated:    2026-08-02
+       Notes:
+-->
+
+
+format=<span size='12288'><b>%s</b></span>\n%b
+font=MesloLGS Nerd Font Mono 10
+width=340
+height=120
+padding=12
+margin=10
+border-size=3
+border-radius=12
+icons=1
+max-icon-size=48
+anchor=top-center
+max-visible=5
+default-timeout=5000
+ignore-timeout=1
+group-by=app-name
+
+background-color=#303446ee
+text-color=#c6d0f5
+border-color=#8caaee
+progress-color=over #414559
+
+[urgency=low]
+border-color=#626880
+default-timeout=3000
+
+[urgency=critical]
+border-color=#e78284
+default-timeout=0
+
+[mode=dnd]
+invisible=1
