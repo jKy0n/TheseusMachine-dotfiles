@@ -1,7 +1,7 @@
 @import "frappe.css";
 
 * {
-    font-family: mesloLGS Nerd Font mono;
+    font-family: mesloLGS Nerd Font;
     font-size: 11px;
     font-weight: bold;
 }
@@ -11,7 +11,7 @@
 #waybar {
     background: alpha(@base, 0.8);
     margin: 0.5rem;
-    padding: 2px;
+    padding: 1px;
 }
 
 #waybar.hidden {
@@ -22,7 +22,7 @@
 
 #image-niri-logo {
     padding: 2px 8px;
-    margin: 3px 8px 3px 8px;
+    margin: 2px 4px 2px 5px;
 }
 
 #workspaces {
@@ -62,6 +62,7 @@
 
 #clock {
     background-color: @surface0;
+    color: @text;
     border-radius: 1rem;
     margin: 3px 0;
     padding: 0.3rem 1rem;
@@ -162,7 +163,7 @@
 #custom-power {
     background-color: @surface0;
     border-radius: 1rem;
-    margin: 2px 0;
+    margin: 2px 4px 2px 4px;
     padding: 2px 8px;
     font-size: 1.1rem;
 }

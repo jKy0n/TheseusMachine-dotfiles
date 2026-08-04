@@ -10,11 +10,11 @@
     "module-margin": "2",
     //  --------------------  Modules  --------------------
     "modules-left": [
-      "image#niri-logo",
       "niri/workspaces"
       // "niri/window"
     ],
     "modules-center": [
+      "image#niri-logo",
       "clock"
     ],
     "modules-right": [
@@ -67,17 +67,17 @@
       "modules": ["cpu", "temperature"]
     },
     "cpu": {
-      "format": " {usage}% | {avg_frequency} GHz |"
+      "format": "<span size='large'> </span> {usage}% | {avg_frequency} GHz |"
     },
     "temperature": {
       "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
       "format": " {temperatureC}°C"
     },
     "memory": {
-      "format": "  {}%"
+      "format": "<span size='large'> </span> {}%"
     },
     "pulseaudio": {
-      "format": "  {volume}%",
+      "format": "<span size='large'> </span> {volume}%",
       "scroll-step": 1,
       "on-click": "pwvucontrol"
     },
@@ -124,6 +124,7 @@
       "niri/workspaces"
     ],
     "modules-center": [
+      "image#niri-logo",
       "clock"
     ],
     "niri/workspaces": {},
@@ -134,14 +135,19 @@
       "pulseaudio",
       "custom/power"
     ],
+    "image#niri-logo": {
+      "path": "/home/jkyon/Pictures/icons/niri/niri-logo.svg",
+      "size": 25,
+      "tooltip": false
+    },
     "cpu": {
-      "format": " <span size='16336' baseline_shift='-3pt'> </span>{usage}% "
+      "format": " <span size='large'> </span> {usage}% "
     },
     "memory": {
-      "format": "<span size='16336' baseline_shift='-2pt'> </span>{}% "
+      "format": "<span size='large'> </span> {}% "
     },
     "pulseaudio": {
-      "format": " <span size='16336' baseline_shift='-2pt'> </span>{volume}% ",
+      "format": " <span size='large'> </span> {volume}% ",
       "scroll-step": 1,
       "on-click": "pwvucontrol"
     },
@@ -176,6 +182,10 @@
       "niri/workspaces"
     ],
     "niri/workspaces": {},
+    //  --------------------  Center Modules  --------------------
+    "modules-center":[
+      "image#niri-logo"
+    ],
     //  --------------------  Bottom Modules  --------------------
     "modules-right": [
       "cpu",
@@ -183,14 +193,19 @@
       "pulseaudio",
       "custom/power"
     ],
+    "image#niri-logo": {
+      "path": "/home/jkyon/Pictures/icons/niri/niri-logo.svg",
+      "size": 40,
+      "tooltip": false
+    },
     "cpu": {
-      "format": " <span size='16336' baseline_shift='-3pt'> </span>{usage}% "
+      "format": " <span size='x-large'> </span> {usage}% "
     },
     "memory": {
-      "format": "<span size='16336' baseline_shift='-2pt'> </span>{}% "
+      "format": "<span size='x-large'> </span> {}% "
     },
     "pulseaudio": {
-      "format": " <span size='16336' baseline_shift='-2pt'> </span>{volume}% ",
+      "format": " <span size='x-large'> </span> {volume}% ",
       "scroll-step": 1,
       "on-click": "pwvucontrol"
     },

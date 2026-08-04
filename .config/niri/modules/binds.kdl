@@ -4,7 +4,7 @@
 //        Path:       /home/jkyon/.config/niri/modules/binds.kdl
 //        Author:     John Kennedy a.k.a. jKyon
 //        Created:    2026-07-31
-//        Updated:    2026-07-31
+//        Updated:    2026-08-03
 //        Notes:
 //                    Baseado no bind set padrão do niri — mantido quase inteiro de propósito,
 //                    pra você ir pegando o vocabulário de ações.
@@ -170,10 +170,10 @@ binds {
     Mod+Shift+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Minus { set-column-width "-5%"; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Shift+Minus { set-window-height "-5%"; }
+    Mod+Shift+Equal { set-window-height "+5%"; }
 
     // --- Floating (V virou o launcher do VSCode; ação original foi pra Ctrl+V) ---
     Mod+Ctrl+Space { toggle-window-floating; }

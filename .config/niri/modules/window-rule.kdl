@@ -16,17 +16,15 @@ window-rule {
 
 // --- Pinagem em workspace nomeado (equivalente ao tag = screen[N].tags[M]) ---
 
-// window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
-// window-rule { match title="(?i)^kde connect$"; open-on-workspace "kde-utils"; }
-window-rule { match app-id="(?i)^pavucontrol$"; open-on-workspace "Audio (3)"; }
-window-rule { match app-id="(?i)^pwvucontrol$"; open-on-workspace "Audio (3)"; }
-window-rule { match app-id="(?i)^pulseeffects$"; open-on-workspace "Audio (3)"; }
+window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
+window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes (5)"; }
+
+window-rule { match app-id="^discord$"; open-on-workspace "Chat (2)"; }
+window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media"; }
+window-rule { match app-id="^Rambox$"; open-on-workspace "Chat"; }
 window-rule { match app-id="^Spotify$"; open-on-workspace "Audio (3)"; }
 window-rule { match app-id="^thunderbird$"; open-on-workspace "Mail (4)"; }
-window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes (5)"; }
-window-rule { match app-id="^discord$"; open-on-workspace "Chat (2)"; }
-window-rule { match app-id="^Rambox$"; open-on-workspace "Chat (2)"; }
-window-rule { match app-id="^Google-chrome$"; open-on-workspace "Media"; }
+window-rule { match title="(?i)^kde connect$"; open-on-workspace "kde-utils"; }
 
 // --- Ex-"volatile tags": mesmo destino, mais o floating de quem tinha ---
 
@@ -34,12 +32,16 @@ window-rule { match app-id="(?i)^gimp$"; open-on-workspace "GIMP"; }
 window-rule { match app-id="(?i)^telegram-desktop$"; open-on-workspace "Telegram"; }
 window-rule { match app-id="(?i)^virt-manager$"; open-on-workspace "VirtManager"; open-floating true; }
 window-rule { match app-id="^steam$"; open-on-workspace "Steam"; }
-window-rule { match app-id="^teams-for-linux$"; open-on-workspace "Teams"; }
 
 window-rule { match title="(?i)^lm studio$"; open-on-workspace "LLMs"; }
 window-rule { match title="^Back In Time$"; open-on-workspace "BackUp"; open-floating true; }
 window-rule { match title="^GPT4All$"; open-on-workspace "LLMs"; }
 window-rule { match title="^OBS "; open-on-workspace "OBS"; }
+
+
+//  -------------------- Window Rules --------------------
+
+// A  ------------------------------------------------------------
 
 window-rule {
     match app-id="^Alacritty$"
@@ -53,9 +55,46 @@ window-rule {
     open-floating true
 }
 
+// B  // C
+
+// D  ------------------------------------------------------------
+
+window-rule {
+    match app-id="^org.kde.dolphin$"
+    open-floating true
+    default-column-width { fixed 1140; }
+    default-window-height { fixed 875; }
+}
+
+// E // F
+
+// G  ------------------------------------------------------------
+
+window-rule {
+    match app-id="^org.gnome.Calculator$"
+    open-floating true
+    default-column-width { fixed 700; }
+    default-window-height { fixed 655; }
+}
+
+// H // I // J // K // L // M // N // O
+
+// P  ------------------------------------------------------------
+
+window-rule {
+    match app-id="^com.saivert.pwvucontrol$"
+    open-on-workspace "Audio"
+}
+
+// Q // R // S // T // U // V
+
+// W  ------------------------------------------------------------
+
 layer-rule {
     match namespace="^waybar$"
     background-effect {
         blur true
     }
 }
+
+// X // Y // Z
