@@ -29,10 +29,15 @@ is_vscode_terminal() {
     [[ "$TERM_PROGRAM" == "vscode" ]]
 }
 
-# Iniciar o Tmux automaticamente, se não estiver dentro de uma sessão e não for VS Code
+# Função para detectar se está rodando dentro do Konsole (inclui o KPart embutido no Dolphin)
+is_konsole() {
+    [[ -n "$KONSOLE_VERSION" ]]
+}
+
+# Iniciar o Tmux automaticamente, se não estiver dentro de uma sessão e não for VS Code/Konsole
 if [[ -t 1 ]]; then
     if command -v tmux >/dev/null 2>&1; then
-        if [[ -z "$TMUX" ]] && ! is_vscode_terminal && [[ -z "$NO_TMUX" ]]; then
+        if [[ -z "$TMUX" ]] && ! is_vscode_terminal && ! is_konsole && ! [[ -n "$SSH_CONNECTION" && -n "$DISPLAY" ]] && [[ -z "$NO_TMUX" ]]; then
             # Cria uma nova sessão numerada sempre
             tmux new-session
         fi

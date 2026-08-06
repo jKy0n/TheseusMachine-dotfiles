@@ -15,7 +15,6 @@ window-rule {
 }
 
 // --- Pinagem em workspace nomeado (equivalente ao tag = screen[N].tags[M]) ---
-
 window-rule { match app-id="(?i)^kclock$"; open-on-workspace "kde-utils"; }
 window-rule { match app-id="(?i)^obsidian$"; open-on-workspace "Notes (5)"; }
 
@@ -27,14 +26,12 @@ window-rule { match app-id="^thunderbird$"; open-on-workspace "Mail (4)"; }
 window-rule { match title="(?i)^kde connect$"; open-on-workspace "kde-utils"; }
 
 // --- Ex-"volatile tags": mesmo destino, mais o floating de quem tinha ---
-
 window-rule { match app-id="(?i)^gimp$"; open-on-workspace "GIMP"; }
 window-rule { match app-id="(?i)^telegram-desktop$"; open-on-workspace "Telegram"; }
 window-rule { match app-id="(?i)^virt-manager$"; open-on-workspace "VirtManager"; open-floating true; }
 window-rule { match app-id="^steam$"; open-on-workspace "Steam"; }
 
 window-rule { match title="(?i)^lm studio$"; open-on-workspace "LLMs"; }
-window-rule { match title="^Back In Time$"; open-on-workspace "BackUp"; open-floating true; }
 window-rule { match title="^GPT4All$"; open-on-workspace "LLMs"; }
 window-rule { match title="^OBS "; open-on-workspace "OBS"; }
 
@@ -53,6 +50,13 @@ window-rule {
 window-rule {
     match app-id="^FloatingTerminal$"
     open-floating true
+}
+
+window-rule {
+    match app-id="^org.kde.ark$"
+    open-floating true
+    default-column-width { fixed 1140; }
+    default-window-height { fixed 875; }
 }
 
 // B  // C
