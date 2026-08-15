@@ -75,7 +75,7 @@
       "on-click-right": "playerctl -p spotify next",
       "smooth-scrolling-threshold": 1,
       "on-scroll-up": "playerctl -p spotify next",
-      "exec": "$HOME/.config/waybar/scripts/mediaplayer.py spotify 2> /dev/null",
+      "exec": "$HOME/.config/waybar/scripts/media-player.py spotify 2> /dev/null",
       "tooltip": true
     },
     "custom/spotify_player": {
@@ -92,7 +92,7 @@
       "on-click-right": "playerctl -p spotify_player next",
       "smooth-scrolling-threshold": 1,
       "on-scroll-up": "playerctl -p spotify_player next",
-      "exec": "$HOME/.config/waybar/scripts/mediaplayer.py spotify_player 2> /dev/null",
+      "exec": "$HOME/.config/waybar/scripts/media-player.py spotify_player 2> /dev/null",
       "tooltip": true
     },
     //  --------------------  Bottom Bar  ------------------
@@ -376,7 +376,7 @@
       "on-click-right": "playerctl -p spotify next",
       "smooth-scrolling-threshold": 1,
       "on-scroll-up": "playerctl -p spotify next",
-      "exec": "$HOME/.config/waybar/scripts/mediaplayer.py spotify 2> /dev/null",
+      "exec": "$HOME/.config/waybar/scripts/media-player.py spotify 2> /dev/null",
       "tooltip": true
     },
     "custom/spotify_player": {
@@ -393,7 +393,7 @@
       "on-click-right": "playerctl -p spotify_player next",
       "smooth-scrolling-threshold": 1,
       "on-scroll-up": "playerctl -p spotify_player next",
-      "exec": "$HOME/.config/waybar/scripts/mediaplayer.py spotify_player 2> /dev/null",
+      "exec": "$HOME/.config/waybar/scripts/media-player.py spotify_player 2> /dev/null",
       "tooltip": true
     },
     "pulseaudio/slider#out": {
