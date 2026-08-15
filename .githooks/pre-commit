@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Bloqueia commit se houver segredo no diff staged
+# --redact evita imprimir o valor do segredo encontrado no log/terminal
+set -eo pipefail
+gitleaks protect --staged --redact -v

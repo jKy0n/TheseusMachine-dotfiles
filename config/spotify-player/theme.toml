@@ -1,0 +1,36 @@
+[[themes]]
+name = "Catppuccin-frappe"
+[themes.palette]
+# background = "#303446"
+foreground = "#c6d0f5"
+black = "#303446"
+blue = "#8caaee"
+cyan = "#99d1db"
+green = "#a6d189"
+magenta = "#ca9ee6"
+red = "#e78284"
+white = "#c6d0f5"
+yellow = "#e5c890"
+bright_black = "#303446"
+bright_blue = "#8caaee"
+bright_cyan = "#99d1db"
+bright_green = "#a6d189"
+bright_magenta = "#ca9ee6"
+bright_red = "#e78284"
+bright_white = "#c6d0f5"
+bright_yellow = "#e5c890"
+
+[themes.component_style]
+selection = { bg = "#414559", modifiers = ["Bold"] }
+block_title = { fg = "Magenta" }
+playback_track = { fg = "Cyan", modifiers = ["Bold"] }
+playback_album = { fg = "Yellow" }
+playback_metadata = { fg = "Blue" }
+playback_progress_bar = { bg = "#414559", fg = "Green" }
+current_playing = { fg = "Green", modifiers = ["Bold"] }
+page_desc = { fg = "Cyan", modifiers = ["Bold"] }
+table_header = { fg = "Blue" }
+border = {}
+playback_status = { fg = "Cyan", modifiers = ["Bold"] }
+playback_artists = { fg = "Cyan", modifiers = ["Bold"] }
+playlist_desc = { fg = "#a5adce" }

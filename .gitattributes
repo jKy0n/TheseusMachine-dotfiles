@@ -1,0 +1,3 @@
+# git-crypt — nenhum arquivo cifrado no momento (gitleaks limpo em 2026-08-14)
+# Exemplo de uso futuro, se necessário:
+# config/<app>/<arquivo-sensivel> filter=git-crypt diff=git-crypt

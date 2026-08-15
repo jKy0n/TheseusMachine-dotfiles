@@ -1,0 +1,424 @@
+/*
+ *        Title:      style.css
+ *        Brief:
+ *        Path:       /home/jkyon/.config/waybar/style.css
+ *        Author:     John Kennedy a.k.a. jKyon
+ *        Created:    2026-08-01
+ *        Updated:    2026-08-09
+ *        Notes:      Voltou a ser arquivo único — a separação em
+ *                     displays/ virou mais atrito que ajuda. A partir
+ *                     de agora a organização é por SEÇÃO (comentários
+ *                     grandes ====), não por arquivo. Índice:
+ *                       1. Tema (import da paleta)
+ *                       2. Configurações Globais
+ *                       3. Módulos Padrão (fonte única pro espaçamento)
+ *                       4. Por Monitor (só o que É exclusivo de cada um)
+ *                       5. Menu de Energia (popup)
+ */
+
+/* ============================================================================
+   1. TEMA — Catppuccin Frappé
+   ----------------------------------------------------------------------------
+   Mantive a paleta em arquivo separado (catppuccin-frappe-palette.css):
+   ela não é um "módulo" que causa a bagunça que você queria resolver,
+   é a definição de cor em si — location natural pra trocar de tema
+   inteiro no futuro sem mexer em layout. Se quiser ela junto também é
+   só falar.
+   ============================================================================ */
+@import "catppuccin-frappe-palette.css";
+
+
+/* ============================================================================
+   2. CONFIGURAÇÕES GLOBAIS
+   ============================================================================ */
+* {
+    font-family: "MesloLGS Nerd Font", "Font Awesome 6 Free Solid", "Font Awesome 6 Free Regular", sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* -- Base Comum: a janela de cada uma das 3 barras --
+   "margin" já cria o espaço vazio entre a barra e a borda da tela —
+   é isso que dá a sensação de "flutuante" (o fundo por trás da
+   margem fica transparente, não pintado). "border-radius" arredonda
+   os 4 cantos dessa caixa flutuante. Como as duas propriedades estão
+   aqui (sem #waybar.bar-X na frente), valem pras 3 barras de uma vez —
+   mesma lógica de sempre. Quer a barra "mais solta" da borda? É só
+   aumentar o valor do margin, nada mais muda. */
+#waybar {
+    background: alpha(@base, 0.8);
+    border: 4px solid transparent;
+    border-radius: 16px;
+    /* margin: 4px;
+    padding: 1px; */
+}
+
+/* .hidden é uma classe extra que o Waybar adiciona quando a barra some
+   (modo "hide"/toggle). Continua valendo pra qualquer uma das 3. */
+#waybar.hidden {
+    opacity: 0.2;
+}
+
+
+/* ============================================================================
+   3. MÓDULOS PADRÃO — fonte única de verdade pro espaçamento
+   ----------------------------------------------------------------------------
+   MECANISMO: isto é um "seletor agrupado" — uma lista de seletores
+   separada por VÍRGULA compartilhando o MESMO bloco {}. É a forma
+   correta (e a única, no GTK3 que o Waybar usa) de dizer "esses N
+   itens diferentes têm exatamente a mesma aparência". Muda um valor
+   aqui, muda nos 11 módulos ao mesmo tempo — sem precisar de variável
+   CSS (var()/--foo), que só existe a partir do GTK4.16 e o Waybar
+   ainda roda em GTK3.
+
+   Como não tem "#waybar.bar-X" na frente, isso vale pras 3 barras ao
+   mesmo tempo — é o PADRÃO. Só a HDMI-2 tem um motivo físico real pra
+   ser diferente (36px de largura) — o override dela está na Seção 4,
+   e ganha por especificidade mesmo vindo depois (ver comentário lá).
+   ============================================================================ */
+#workspaces,
+#clock,
+#sysinfo,
+#cpu,
+#memory,
+#pulseaudio,
+/* #network, */
+#tray,
+#custom-mako-dnd,
+#custom-ephedrine,
+#custom-power,
+#custom-gpu-monitor,
+#custom-psu-monitor {
+    background-color: @surface0;
+    border-radius: 12px;
+    border: 2px solid @base;
+    margin: 1px 1px;
+    padding: 5px 5px;
+}
+
+/* -- Estados especiais: cada um só sobrescreve a propriedade que MUDA
+   (cor de fundo), o resto (radius, padding, margin) continua vindo do
+   bloco padrão acima. É assim que o CSS resolve: propriedade por
+   propriedade, não bloco por bloco — por isso não precisa repetir tudo
+   de novo aqui. */
+/* #network.disconnected {
+    background-color: @red;
+    color: @crust;
+} */
+
+#custom-mako-dnd {
+    font-size: 13px; /* ícone precisa de um tamanho próprio */
+}
+
+#custom-mako-dnd:hover {
+    background-color: @text;
+    color: @crust;
+}
+
+#custom-mako-dnd.active,
+#custom-ephedrine.active {
+    background-color: @blue;
+    color: @crust;
+}
+
+#custom-ephedrine:hover {
+    background-color: @text;
+    color: @crust;
+}
+
+/* Botão de energia: ao contrário do "menu" (container que os itens
+   cobrem), #custom-power é o próprio botão clicável — um widget "de
+   ponta", igual #workspaces button. :hover funciona nele direto, sem
+   o problema de z-order que rola no menu (ver Seção 5). */
+#custom-power:hover {
+    background-color: @red;
+    color: @crust;
+}
+
+/* -- Workspaces: o container é tratado no grupo acima (é um módulo
+   igual aos outros); os BOTÕES de dentro dele são outra "família"
+   (comportamento de clique/hover), por isso ficam à parte. */
+#workspaces button {
+    border-radius: 12px;
+    color: @text;
+    padding: 2px 6px;
+}
+
+#workspaces button.active {
+    background-color: @blue;
+    border-radius: 12px;
+    color: @crust;
+}
+
+#workspaces button:hover {
+    background-color: @text;
+    border-radius: 12px;
+    color: @crust;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    border-radius: 12px;
+    color: @crust;
+}
+
+/* Colapsado por padrão (internet full = texto vazio). Só ganha caixa
+   visível quando a classe muda — mesmo mecanismo de #network.disconnected
+   que já existia, só que agora cobre "sem link" E "sem internet real". */
+#custom-network {
+    background-color: transparent;
+    border: 2px solid transparent;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+#custom-network.limited {
+    background-color: @yellow;
+    border-radius: 12px;
+    border: 2px solid @base;
+    color: @crust;
+    margin: 1px 1px;
+    padding: 5px 5px;
+}
+
+#custom-network.disconnected {
+    background-color: @red;
+    border-radius: 12px;
+    border: 2px solid @base;
+    color: @crust;
+    margin: 1px 1px;
+    padding: 5px 5px;
+}
+
+#custom-spotify {
+    background-color: @overlay0;
+    border-radius: 10px;
+    border: 4px solid transparent;
+    color: @text; /* Catppuccin Frappe green */
+    font-family: "Font Awesome 6 Free", mesloLGS Nerd Font;
+    font-weight: 900;
+    margin: 10px 2px;
+    padding: 8px 10px;
+}
+
+#custom-spotify.playing {
+    background-color: @green;
+    color: @crust; /* blue - tocando */
+}
+
+#custom-spotify.paused {
+    background-color: @red; /* cinza apagado - pausado */
+    color: @crust; /* cinza apagado - pausado */
+}
+
+#custom-spotify:hover {
+    /* background-color: #51576d; */
+    border: 4px solid @surface2; /* cinza apagado - pausado */
+}
+
+#custom-spotify_player {
+    background-color: @overlay0;
+    border-radius: 10px;
+    border: 4px solid transparent;
+    color: @text; /* Catppuccin Frappe green */
+    font-family: "Font Awesome 6 Free", mesloLGS Nerd Font;
+    font-weight: 900;
+    margin: 10px 2px;
+    padding: 8px 10px;
+}
+
+#custom-spotify_player.playing {
+    background-color: @green;
+    color: @crust; /* blue - tocando */
+}
+
+#custom-spotify_player.paused {
+    background-color: @red; /* cinza apagado - pausado */
+    color: @crust; /* cinza apagado - pausado */
+}
+
+#custom-spotify_player:hover {
+    /* background-color: #51576d; */
+    border: 4px solid @surface2; /* cinza apagado - pausado */
+}
+
+/* ============================================================================
+   4. POR MONITOR — só o que É de fato exclusivo de cada barra
+   ----------------------------------------------------------------------------
+   Tudo da Seção 3 já vale pras 3 barras. Aqui só entra o que tem
+   motivo físico real pra variar: tamanho de ícone (logo), a única
+   restrição de largura real (HDMI-2) e um widget que só existe na
+   DP-1 (slider de volume).
+   ============================================================================ */
+
+/* -------- DP-1 — Monitor Principal (LG UltraWide 34", 3440x1440@160Hz) ---- */
+
+/* Logo: ícone em 25px (ver config.jsonc) — padding/margin ao redor
+   dele é sempre por-barra, não entra no grupo padrão (senão as barras
+   com ícone menor ficam com respiro desproporcional).
+   NOTA (evidência pendente): seletor usa "#image-niri-logo" (1 ID,
+   hífen). Depuração anterior registrou que o certo seria
+   "#image.niri-logo" (ID "image" + classe "niri-logo"). Não troquei
+   sem confirmar com `waybar -l debug` — primeiro suspeito se o
+   padding não estiver pegando no ícone. */
+#waybar.bar-dp1 #image-niri-logo {
+    padding: 1px 4px;
+    margin: 2px 4px;
+}
+
+/* Slider de volume (pulseaudio/slider): widget próprio, estrutura
+   diferente de um módulo de texto (trough/highlight/slider internos)
+   — por isso não entra no grupo padrão da Seção 3. Só existe na DP-1. */
+#pulseaudio-slider slider {
+    background-color: @surface2;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+}
+
+#pulseaudio-slider trough {
+    background: @crust;
+    border-radius: 5px;
+    min-height: 80px;
+    min-width: 8px;
+}
+
+#pulseaudio-slider highlight {
+    background: @blue;
+    border-radius: 5px;
+    min-width: 8px;
+}
+
+#pulseaudio-slider.muted highlight {
+    background-color: @red;
+}
+
+/* ATENÇÃO — provável bug funcional (dessa vez não é seletor errado):
+   "slider" começa com opacity: 0 lá em cima. Esta regra só troca a
+   COR dele no hover, mas não mexe na opacidade — ele continua
+   invisível mesmo com o mouse em cima, então a mudança de cor não vai
+   aparecer. Se a intenção é "o thumb aparece no hover", precisa somar
+   "opacity: 1;" aqui também. Deixei do jeito que você escreveu, só
+   sinalizando antes que você teste e ache que "não funcionou" de
+   novo por outro motivo. */
+#pulseaudio-slider:hover slider {
+    background-color: @text;
+}
+
+/* -------- HDMI-1 — Monitor Secundário (LG 22" paisagem, 1920x1080@60) ----- */
+
+/* Usa o mesmo espaçamento padrão da DP-1 (Seção 3) — sem restrição de
+   largura, não precisa de override. Só o logo é específico daqui. */
+#waybar.bar-hdmi1 #image-niri-logo,
+#waybar.bar-hdmi1 #workspaces,
+#waybar.bar-hdmi1 #clock,
+#waybar.bar-hdmi1 #cpu,
+#waybar.bar-hdmi1 #memory {
+    padding: 2px 10px;
+    margin: 1px 1px;
+}
+
+#waybar.bar-hdmi1 #custom-power {
+    padding: 2px 15px;
+    margin: 1px 1px;
+}
+
+/* -------- HDMI-2 — Monitor Terciário (LG 22" retrato/vertical, 1080x1920) - */
+
+/* Override de espaçamento — a ÚNICA barra que precisa disso, e por
+   motivo físico real (não é gosto): width: 36px no config.jsonc, o
+   padrão da Seção 3 não cabe aqui.
+   MECANISMO: este seletor tem MAIS especificidade que o grupo da
+   Seção 3 (aqui: #waybar + .bar-hdmi2 + o ID do módulo = 2 IDs e 1
+   classe; lá: só 1 ID) — por isso ganha, mesmo vindo depois no
+   arquivo. Muda um valor aqui, muda nos 5 módulos de uma vez, igual
+   ao padrão global faz pras outras barras. */
+#waybar.bar-hdmi2 #workspaces,
+#waybar.bar-hdmi2 #clock,
+#waybar.bar-hdmi2 #cpu,
+#waybar.bar-hdmi2 #memory,
+#waybar.bar-hdmi2 #pulseaudio,
+#waybar.bar-hdmi2 #custom-power {
+    margin: 1px 0;
+    padding: 2px 4px;
+}
+
+#waybar.bar-hdmi2 #workspaces button {
+    padding: 1px 3px;
+}
+
+/* Ícone em 24px (ver config.jsonc) — específico daqui. */
+#waybar.bar-hdmi2 #image-niri-logo {
+    padding: 2px 4px;
+    margin: 2px;
+}
+
+
+/* ============================================================================
+   5. MENU DE ENERGIA (popup do custom/power)
+   ----------------------------------------------------------------------------
+   Acionado por "menu-file": "~/.config/waybar/power_menu.xml" nas 3
+   barras. É um GtkMenu — uma JANELA POPUP separada da janela #waybar,
+   então "#waybar.bar-X menu {...}" NUNCA vai casar (menu não é filho
+   de #waybar na árvore de widgets, é uma janela irmã). O mesmo vale
+   pra tentar escopar via "#custom-power menu": o botão que abre o
+   popup também não é pai dele na árvore renderizada.
+
+   Por isso essa regra fica solta, sem #waybar e sem "#custom-power" na
+   frente, e sem "#" no nome (menu/menuitem são o TIPO do nó no GTK,
+   não um ID). Vale pras 3 barras ao mesmo tempo — não tem como ter um
+   menu vermelho na DP-1 e azul nas outras, é a mesma janela popup pro
+   sistema inteiro.
+   ============================================================================ */
+menu {
+    background-color: @surface0;
+    color: @text;
+    border-radius: 16px;
+    margin: 3px 0;
+    padding: 5px 12px;
+}
+
+/* Lembrete de quando a gente debateu isso: o menuitem cobre quase
+   toda a área do menu com o próprio fundo opaco, então esse hover só
+   deve aparecer como uma borda fina (a "padding" do menu + os 3px de
+   margin entre itens) — não o popup inteiro ficando vermelho. E como
+   o cursor já costuma estar dentro do popup assim que ele abre, pode
+   parecer "sempre vermelho" em vez de um hover de verdade. Mantive
+   porque você decidiu manter — só deixando o efeito esperado
+   registrado. */
+menu:hover {
+    background-color: @red;
+    color: @crust;
+}
+
+menuitem {
+    background-color: @surface0;
+    color: @text;
+    border-radius: 16px;
+    font-size: 18px;
+    margin: 3px 0;
+    padding: 5px 12px;
+}
+
+menuitem:hover {
+    background-color: @text;
+    color: @crust;
+}
+
+/*  ---------------  Tooltip  ---------------  */
+
+tooltip {
+    background-color: @surface0;
+    border-radius: 12px;
+    border: 3px solid @blue;
+    padding: 4px;
+}
+
+tooltip label {
+    color: @text;
+    padding: 8px;
+}

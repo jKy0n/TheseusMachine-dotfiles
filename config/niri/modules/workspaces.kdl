@@ -1,0 +1,30 @@
+//
+//        Title:      workspaces.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/workspaces.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-08-01
+//        Updated:    2026-08-01
+//        Notes:
+//                    Réplica dos agrupamentos de tag do Awesome.
+
+
+//  --- Tela Principal ---
+// workspace "emerge (1)"      { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+// workspace "SSH (2)"         { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+// workspace "Code (3)"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+// workspace "Mail (4)"        { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+// workspace "Notes (5)"       { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+// workspace "Finance (6)"     { open-on-output "LG Electronics LG ULTRAWIDE 303AZAL1C616"; }
+
+
+// //  --- Tela 1 ---
+// workspace "Monitor"     { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+// workspace "Chat"        { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+// workspace "Audio"       { open-on-output "LG Electronics 22BN550Y 310AZFM8S459"; }
+
+
+// //  --- Tela 2 ---
+// workspace "Sensors"     { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+// workspace "Search"      { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }
+// workspace "Media"       { open-on-output "LG Electronics 22BN550Y 310AZVN8S031"; }

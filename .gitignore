@@ -1,0 +1,3 @@
+# Backups/residuos locais que não devem ir pro repo por engano
+*.bak
+*.orig

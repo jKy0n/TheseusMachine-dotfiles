@@ -1,0 +1,29 @@
+//
+//        Title:      environment.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/environment.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-08-01
+//        Updated:    2026-08-01
+//        Notes:
+//
+prefer-no-csd
+
+environment {
+    GTK_THEME "catppuccin-frappe-blue:dark"
+}
+
+blur {
+    passes 2
+    offset 1.5
+    noise 0.02
+    saturation 1.5
+}
+
+cursor {
+    xcursor-theme "Future-black-cursors"
+    xcursor-size 32
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}

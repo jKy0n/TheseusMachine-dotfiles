@@ -1,0 +1,307 @@
+//
+//        Title:      window-rule.kdl
+//        Brief:
+//        Path:       /home/jkyon/.config/niri/modules/window-rule.kdl
+//        Author:     John Kennedy a.k.a. jKyon
+//        Created:    2026-07-31
+//        Updated:    2026-08-08
+//        Notes:
+//
+//
+
+//  --- Cantos arredondados globais ---
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+//  -----------------------  Window Rules  -----------------------
+//
+//      Use command:
+//
+//                  niri msg pick-window
+//
+//      to see properties of a window and apply rules to it.
+//
+// A ------------------------------------------------------------
+
+window-rule {  // Alacritty - Terminal
+    match app-id="^Alacritty$"
+    draw-border-with-background false
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {  // Ark - Compressed File Manager
+    match app-id="^org.kde.ark$"
+    open-floating true
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 600; }
+}
+
+// B  // C  ------------------------------------------------------------
+
+// D  ------------------------------------------------------------
+
+window-rule {  // Discord - Gamer Messenger App
+    match app-id="discord"
+    open-maximized true
+    open-on-workspace " chat "
+}
+
+window-rule { // Dolphin - File Manager
+    match app-id="^org.kde.dolphin$"
+    open-floating true
+    default-column-width { fixed 1140; }
+    default-window-height { fixed 875; }
+}
+
+window-rule {  // Dolphin - Portal KDE
+    match app-id="org.freedesktop.impl.portal.desktop.kde"
+    open-floating true
+    default-column-width { fixed 1140; }
+    default-window-height { fixed 875; }
+}
+
+// E  ------------------------------------------------------------
+
+// F  ------------------------------------------------------------
+
+window-rule {  // feh - Image Viewer
+    match app-id="feh"
+    open-floating true
+    default-column-width { fixed 1536; }
+    default-window-height { fixed 864; }
+}
+
+// window-rule {  // Bitwarden in Firefox
+//     match title="^Extension: \\\\(Bitwarden Password Manager\\\\) - Bitwarden — jkyon — Mozilla Firefox$"
+//     open-floating true
+//     // open-focused true
+//     default-column-width { fixed 400; }
+//     default-window-height { fixed 600; }
+
+// }
+
+// G  ------------------------------------------------------------
+
+window-rule {  // Gedit - Simple Text Viewer/Editor
+    match app-id="gedit"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 1000; }
+}
+
+window-rule {  // GIMP - Gnu Image Manipulation Program
+    match app-id="gimp"
+    open-on-workspace " gimp "
+    open-maximized true
+}
+
+window-rule {  // Google Chrome - Internet Browser
+    match app-id="google-chrome"
+    open-on-workspace " video "
+    open-maximized true
+}
+
+window-rule {  // Gnome Disks - Disk Management Tool
+    match app-id="gnome-disks"
+    open-floating true
+    default-column-width { fixed 830; }
+    default-window-height { fixed 500; }
+}
+
+window-rule {  // Gnome Calculator
+    match app-id="^org.gnome.Calculator$"
+    open-floating true
+    default-column-width { fixed 700; }
+    default-window-height { fixed 655; }
+}
+
+// H // I // J
+
+// K  ------------------------------------------------------------
+
+window-rule {  // KDEconnect -
+    match app-id="org.kde.kclock"
+    default-column-width { fixed 650; }
+    default-window-height { fixed 800; }
+    open-floating true
+}
+
+window-rule {  // KDEconnect -
+    match app-id="org.kde.kdeconnect.app"
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 650; }
+    open-floating true
+}
+
+window-rule {  // Kitty - Floating Terminal rule
+    match app-id="^FloatingTerminal$"
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 1280; }
+    draw-border-with-background false
+    open-floating true
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+window-rule {  // Kitty Terminal
+    match app-id="^kitty$"
+    draw-border-with-background false
+    opacity 1.0
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// L  ------------------------------------------------------------
+
+// M  ------------------------------------------------------------
+
+window-rule {  // mpv - Video Player
+    match app-id="mpv"
+    default-column-width { fixed 1280; }
+    default-window-height { fixed 720; }
+    open-floating true
+}
+
+window-rule {  // muPDF - Quick PDF reader   <<<---  APP-ID INDEFINIDO
+    match app-id="MuPDF"
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 1000; }
+    open-floating true
+}
+
+// N  ------------------------------------------------------------
+
+// O  ------------------------------------------------------------
+
+window-rule {  // OBS - Open Broadcast Software
+    match app-id="com.obsproject.Studio"
+    open-on-workspace " obs "
+    open-maximized true
+}
+
+window-rule {  // Obsidian - Note App
+    match app-id="md.Obsidian"
+    open-on-workspace " notas "
+    open-maximized true
+}
+
+window-rule {  // Okular - PDF reader with advanced features
+    match app-id="org.kde.okular"
+    default-column-width { fixed 2000; }
+    default-window-height { fixed 1200; }
+    open-floating true
+}
+
+window-rule {  // OpenRGB - Lights Control
+    match app-id="org.openrgb.OpenRGB"
+    default-column-width { fixed 860; }
+    default-window-height { fixed 825; }
+    open-floating true
+}
+
+// P  ------------------------------------------------------------
+
+window-rule {  // pwvucontrol - Audio mixer
+    match app-id="^com.saivert.pwvucontrol$"
+    open-on-workspace " music "
+}
+
+// Q  ------------------------------------------------------------
+
+// R  ------------------------------------------------------------
+
+window-rule {  // Rambox - Messenger Aggregator App
+    match app-id="^rambox$"
+    open-maximized true
+    open-on-workspace " chat "
+}
+
+// S  ------------------------------------------------------------
+
+window-rule {  // Satty - Quick image editor
+    match app-id="com.gabm.satty"
+    default-column-width { fixed 2400; }
+    default-window-height { fixed 1200; }
+    open-floating true
+}
+
+window-rule {  // Skanpage - Image scanner with OCR
+    match app-id="org.kde.skanpage"
+    // open-maximized true
+    open-on-workspace " Scanner "
+}
+
+window-rule {  // Spotify Laucher - Music Player
+    match app-id="^Spotify$"
+    open-maximized true
+    open-on-workspace " music "
+}
+
+window-rule {  // Steam - Video Games
+    match app-id="steam"
+    open-maximized true
+    open-on-workspace " Games "
+}
+
+window-rule {  // System Settings - KDE Plasma Settings
+    match app-id="kdesystemsettings"
+    default-column-width { fixed 1700; }
+    default-window-height { fixed 1200; }
+    open-floating true
+}
+
+// T  ------------------------------------------------------------
+
+window-rule {  // Thunderbird - Mail Client
+    match app-id="thunderbird-esr"
+    default-column-width { fixed 2000; }
+    default-window-height { fixed 1200; }
+    open-floating true
+}
+
+// U  ------------------------------------------------------------
+
+// V  ------------------------------------------------------------
+
+window-rule {  // virt-manager - Virtual Machines manager
+    match app-id="virt-manager"
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 700; }
+    open-floating true
+}
+
+window-rule {  // virt-manager - Virtual Machines manager
+    match app-id="remote-viewer"
+    default-column-width { fixed 1700; }
+    default-window-height { fixed 1100; }
+    open-floating true
+}
+
+// W  ------------------------------------------------------------
+
+layer-rule {  // Waybar - Wayland bar
+    match namespace="^waybar$"
+    background-effect {
+        blur true
+    }
+}
+
+// X  ------------------------------------------------------------
+
+window-rule {  // xconfig - X Configuration Manager for kernel
+    match app-id="qconf"
+    default-column-width { fixed 700; }
+    default-window-height { fixed 850; }
+    open-floating true
+}
+
+// Y // Z  ------------------------------------------------------------
