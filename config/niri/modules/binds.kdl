@@ -58,6 +58,10 @@ binds {
     Mod+Control+Print hotkey-overlay-title="Select area, take a screenshot and open in Satty" { spawn-sh "grim -t ppm -g \"$(slurp -d)\" - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
     // Mod+Alt+Print hotkey-overlay-title="Take a window screenshot" { screenshot-window; }
 
+    // Intercepta Ctrl + Scroll no Wayland e injeta a troca de abas no Firefox/Apps - Necessita de wtype
+    Ctrl+WheelScrollDown { spawn "wtype" "-M" "ctrl" "-k" "Page_Down"; }
+    Ctrl+WheelScrollUp   { spawn "wtype" "-M" "ctrl" "-k" "Page_Up"; }
+
     // --- Overview  ---
     Mod+Shift+O repeat=false { toggle-overview; }
     Mod+MouseMiddle repeat=false { toggle-overview; }
