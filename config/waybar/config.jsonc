@@ -27,6 +27,7 @@
     "modules-right": [
       "pulseaudio/slider#out",
       "custom/network",
+      "custom/portage-updates",
       "group/sysinfo",
       "memory",
       "custom/gpu-monitor",
@@ -119,6 +120,13 @@
         "on-scroll-up": "shift_up",
         "on-scroll-down": "shift_down"
       }
+    },
+    "custom/portage-updates": {
+      "exec": "/usr/local/bin/portage-updates-waybar.sh",
+      "return-type": "json",
+      "signal": 8,
+      "hide-empty-text": true,
+      "tooltip": true
     },
     "group/sysinfo": {
       "orientation": "vertical",

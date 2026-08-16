@@ -7,9 +7,9 @@ playback_format = """
 """
 app_refresh_duration_in_ms = 32
 border_type = "Rounded"
-cover_img_length = 12
+cover_img_length = 48
 cover_img_scale = 1.0
-cover_img_width = 5
+cover_img_width = 20
 default_device = "spotify-player"
 enable_cover_image_cache = true
 enable_media_control = true
@@ -27,7 +27,7 @@ progress_bar_type = "Rectangle"
 tracks_playback_limit = 50
 
 [copy_command]
-command = "xclip" 
+command = "xclip"
 args = [
     "-sel",
     "c",

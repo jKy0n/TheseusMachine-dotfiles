@@ -162,6 +162,15 @@
     color: @crust;
 }
 
+#custom-portage-updates.has-updates {
+    background-color: @surface0;
+    border-radius: 12px;
+    border: 2px solid @base;
+    color: @peach;
+    margin: 1px 1px;
+    padding: 5px 5px;
+}
+
 /* Colapsado por padrão (internet full = texto vazio). Só ganha caixa
    visível quando a classe muda — mesmo mecanismo de #network.disconnected
    que já existia, só que agora cobre "sem link" E "sem internet real". */
