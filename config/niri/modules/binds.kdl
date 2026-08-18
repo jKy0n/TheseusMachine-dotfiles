@@ -47,10 +47,17 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    XF86AudioPlay allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"; }
-    XF86AudioStop allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"; }
-    XF86AudioPrev allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"; }
-    XF86AudioNext allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"; }
+    //  -----  Específico para o Spotify oficial  -----
+    // XF86AudioPlay allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"; }
+    // XF86AudioStop allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"; }
+    // XF86AudioPrev allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"; }
+    // XF86AudioNext allow-when-locked=true { spawn-sh "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"; }
+
+    //  -----  Específico para o spotify_player  -----
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl --player=spotify_player,spotify play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl --player=spotify_player,spotify pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl --player=spotify_player,spotify previous"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl --player=spotify_player,spotify next"; }
 
     // --- Screenshot ---
     Print hotkey-overlay-title="Take a screenshot and open in Satty" { spawn-sh "grim -t ppm - | satty --filename - --copy-command wl-copy --actions-on-enter=\"save-to-clipboard,exit\" --output-filename \"$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png\""; }
